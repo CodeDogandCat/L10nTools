@@ -1,0 +1,30 @@
+#################################################################################
+###############
+###############        parameters checking result for ../windows/language_zh_cn.xml
+###############
+#################################################################################
+                         difference  5 item(s)
+
+
+	<ID1006 text="This meeting has reached a maximum of %d participants. Please try again later."></ID1006>
+	<ID1006 text="这个会议室已达到方上限。请稍后重试。"></ID1006>
+
+
+	<ID219 text="{f 1}Fail to send   %s . {a}Resend{/a}{/f}"></ID219>
+	<ID219 text="{f 1}发送消息失败：。{a}重发{/a}{/f}"></ID219>
+
+
+	<ID1005 text="Your microphone %s is not working. Please go to Settings to try a different one."></ID1005>
+	<ID1005 text="您的麦克风无法使用。请查看设置并更换麦克风。"></ID1005>
+
+
+	<ID33020 text="%d voted"></ID33020>
+	<ID33020 text="%g已投票"></ID33020>
+
+
+	<ID33009 text="%s in Progress"></ID33009>
+	<ID33009 text="%正在进行中"></ID33009>
+
+
+
+

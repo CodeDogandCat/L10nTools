@@ -1,0 +1,36 @@
+#################################################################################
+###############
+###############        parameters checking result for ../android/strings2.xml
+###############
+#################################################################################
+                         difference  5 item(s)
+
+
+	<string formatted="false" name="zm_msg_invitation_message_template">%1$s is calling you from Zoom, click link to join.\r\n%2$s</string>
+	<string formatted="false" name="zm_msg_invitation_message_template">%s正通过Zoom呼叫您，点击这个链接即可加入。\r\n%s</string>
+
+
+	<plurals name="zm_lbl_folder_items">
+        <item quantity="one">1 Item</item>
+        <item quantity="other">%d Items</item>
+    </plurals>
+	<plurals name="zm_lbl_folder_items">
+        <!-- <item quantity="one">1个文件</item> -->
+        <item quantity="other">%s个文件</item>
+    </plurals>
+
+
+	<string formatted="false" name="zm_today_time">Today, ${time}</string>
+	<string formatted="false" name="zm_today_time">今天, ${uuuuuuuuuuuuuuuuuuu}</string>
+
+
+	<string name="zm_mm_msg_remove_buddy_from_group_failed">Unable to remove the contact from this group message. (Error Code: %d)</string>
+	<string name="zm_mm_msg_remove_buddy_from_group_failed">无法将联系人从群组中移除。（错误代码: %.2f）</string>
+
+
+	<string name="zm_mm_group_action_quit_group_other">%1$s left this group message</string>
+	<string name="zm_mm_group_action_quit_group_other">%5$s退出聊天群组</string>
+
+
+
+

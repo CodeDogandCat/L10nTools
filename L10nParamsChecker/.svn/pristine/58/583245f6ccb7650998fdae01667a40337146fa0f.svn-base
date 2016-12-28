@@ -1,0 +1,43 @@
+
+1.如果在default存在，在other中不存在，则忽略
+eg.   
+   "Password: %d" = "Password: %@";     
+   "Password: %s" = "密码: %@"; 
+
+2.不能检查name中的参数是否正确
+eg.  
+   "Password: %@" = "Password: %@";     
+   "Password: %@" = "密码: %@";     
+   
+        如下，检查不出来
+   "Password: %p" = "Password: %@";     
+   "Password: %P" = "密码: %@"; 
+     
+3. 假定default文件为正确的的规范的，如果  default 中不满足下列条件的参数，忽略 
+android:
+	%% 认为是%的转义，不比较
+	%s
+	%d
+	%f
+	%.【2到9】f
+	%【1到9】$【s 或 d 或 .【2到9】f】
+	${xxxxxxxx}
+
+
+windows:
+	%% 认为是%的转义，不比较
+	%s
+	%d
+	%f
+	%.【2到9】f
+
+
+ios/mac:
+    %% 认为是%的转义，不比较
+	%s
+	%d
+	%@
+	%qu
+	%f
+	%.【2到9】f
+

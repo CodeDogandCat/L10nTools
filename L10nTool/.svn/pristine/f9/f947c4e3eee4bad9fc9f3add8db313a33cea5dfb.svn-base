@@ -1,0 +1,24 @@
+#################################################################################
+###############
+###############         checking result for ../windows/language_zh_cn.xml
+###############
+#################################################################################
+                         miss  5 item(s)
+
+
+	<ID5209 text="Missed Call"></ID5209>
+	<ID34006 text="%s's Meeting"></ID34006>
+	<ID34005 text="Private Meeting"></ID34005>
+	<ID5210 text="Incoming Call - Declined"></ID5210>
+	<ID34004 text="No Subject"></ID34004>
+
+
+                         extra  4 item(s)
+
+
+	<ID2769 text="使用 Zoom 电脑客户端软件"></ID2769>
+	<ID2772 text="Pairing Code"></ID2772>
+	<ID2771 text="共享到 Zoom Rooms"></ID2771>
+	<ID2770 text="点击"></ID2770>
+
+

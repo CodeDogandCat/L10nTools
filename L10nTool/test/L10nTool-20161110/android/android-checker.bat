@@ -1,0 +1,13 @@
+@echo off
+
+::set branch=B_35_7196
+set branch=B_35_7196
+
+call ..\l10nTool.bat -p android -f checker -dr D:\SVN\%branch%\Client\src\application\Android\videobox\res\values\strings.xml -cr D:\SVN\%branch%\Client\src\application\Android\zoom\res\values-zh-rCN\strings.xml -o .\android-checker-cn.txt
+call ..\l10nTool.bat -p android -f checker -dr D:\SVN\%branch%\Client\src\application\Android\videobox\res\values\strings.xml -cr D:\SVN\%branch%\Client\src\application\Android\zoom\res\values-zh-rTW\strings.xml -o .\android-checker-tw.txt
+call ..\l10nTool.bat -p android -f checker -dr D:\SVN\%branch%\Client\src\application\Android\videobox\res\values\strings.xml -cr D:\SVN\%branch%\Client\src\application\Android\zoom\res\values-de\strings.xml -o .\android-checker-de.txt
+call ..\l10nTool.bat -p android -f checker -dr D:\SVN\%branch%\Client\src\application\Android\videobox\res\values\strings.xml -cr D:\SVN\%branch%\Client\src\application\Android\zoom\res\values-es\strings.xml -o .\android-checker-es.txt
+call ..\l10nTool.bat -p android -f checker -dr D:\SVN\%branch%\Client\src\application\Android\videobox\res\values\strings.xml -cr D:\SVN\%branch%\Client\src\application\Android\zoom\res\values-fr\strings.xml -o .\android-checker-fr.txt
+call ..\l10nTool.bat -p android -f checker -dr D:\SVN\%branch%\Client\src\application\Android\videobox\res\values\strings.xml -cr D:\SVN\%branch%\Client\src\application\Android\zoom\res\values-ja\strings.xml -o .\android-checker-ja.txt
+
+pause

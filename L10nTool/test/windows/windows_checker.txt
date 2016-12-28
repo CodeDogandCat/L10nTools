@@ -1,0 +1,35 @@
+#################################################################################
+###############
+###############         checking result for ../windows/language_zh_cn.xml
+###############
+#################################################################################
+                         miss  16 item(s)
+
+
+	<ID5209 text="Missed Call"></ID5209>
+	<ID170 text="You cannot start screen share while the other participant is sharing."></ID170>
+	<ID34006 text="%s's Meeting"></ID34006>
+	<ID34005 text="Private Meeting"></ID34005>
+	<ID34004 text="No Subject"></ID34004>
+	<ID142 text="You are using the phone"></ID142>
+	<ID175 text="%s is requesting remote control"></ID175>
+	<ID143 text="You are using the computer audio"></ID143>
+	<ID144 text="Switching to gallery view will degrade the recording quality. Do you want to continue?"></ID144>
+	<ID145 text="Switching to speaker view will improve the recording quality. Do you want to continue?"></ID145>
+	<ID171 text="The invitation URL has been copied to Clipboard."></ID171>
+	<ID172 text="The invitation Email has been copied to Clipboard."></ID172>
+	<ID173 text="Can not edit meeting ID while meeting is in progress."></ID173>
+	<ID141 text="Click to start the mouse/keyboard control of the shared screen."></ID141>
+	<ID174 text="You have left this meeting."></ID174>
+	<ID5210 text="Incoming Call - Declined"></ID5210>
+
+
+                         extra  4 item(s)
+
+
+	<ID2769 text="使用 Zoom 电脑客户端软件"></ID2769>
+	<ID2772 text="Pairing Code"></ID2772>
+	<ID2771 text="共享到 Zoom Rooms"></ID2771>
+	<ID2770 text="点击"></ID2770>
+
+

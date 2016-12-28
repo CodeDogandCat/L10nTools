@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+   
+    <string name="fb_msg_loading">不许动…</string>
+	<string name="zm_btn_retry">重试</string>    
+ 	<string name="zm_lbl_create_private_group_des">A Private Social Network A private online community that is exclusive to a club\'s members, trainers, and staff.</string>
+ 	<plurals name="zm_lbl_webinar_telephony_user_count">
+        <!-- <item quantity="one">共有1位电话听众</item> -->
+        <item quantity="other">共有%d位电话听众</item>
+    </plurals>
+    <!-- <string name="zm_btn_rating">在Google Play上评价我们</string> -->
+    <!-- 
+    <string name="zm_msg_chat_notification_single">%s条未读消息</string>
+    <string name="zm_msg_chat_notification_multiple">%s条未读消息</string>
+    --> 
+    
+    <!-- A username is concatnated with this string, but they are visually separated into two lines.  -->
+    <string name="zm_msg_calling">正在呼叫…</string>
+    
+</resources>

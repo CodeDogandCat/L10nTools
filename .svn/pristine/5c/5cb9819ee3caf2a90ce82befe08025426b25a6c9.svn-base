@@ -1,0 +1,113 @@
+#################################################################################
+###############
+###############         value checking result for ../windows/win-Ge.xml
+###############
+#################################################################################
+                        update  103 item(s)
+
+
+	<ID4038 text="Bitte überprüfen Sie Ihre Netzwerkverbindung. Klicken Sie dann auf Wiederholen, um sich erneut zu verbinden."></ID4038>
+	<ID4032 text="Bitte überprüfen Sie Ihre Netzwerkverbindung. Klicken Sie dann auf Wiederholen, um sich erneut zu verbinden."></ID4032>
+	<ID4005 text="Bitte überprüfen Sie Ihre Netzwerkverbindung. Klicken Sie dann auf Wiederholen, um sich erneut zu verbinden."></ID4005>
+	<ID2716 text="Unternehmenskontakte"></ID2716>
+	<ID2721 text="Geben Sie Ihre eigene Audiokonferenz-Information ein"></ID2721>
+	<ID2708 text="Unternehmenskontakte"></ID2708>
+	<ID8011 text="Zoom Cloudmeetings"></ID8011>
+	<ID8015 text="Zoom"></ID8015>
+	<ID8004 text="Zoom"></ID8004>
+	<ID31065 text="Moderator hat ihre Rolle auf Zuschauer abgeändert."></ID31065>
+	<ID2772 text="hat Ihre Kontaktanfrage angenommen"></ID2772>
+	<ID31075 text="Eine Verbindung zum Cloudserver wird aufgebaut ..."></ID31075>
+	<ID2763 text="Systembenachrichtigung"></ID2763>
+	<ID2748 text="Sie müssen mit dem spezifizierten Zoomkonto angemeldet sein, um diesem Meeting beizutreten. Bitte wenden Sie sich an den Host für weitere Informationen."></ID2748>
+	<ID31098 text="Moderator hat Sie gebeten, Ihr Video zu starten."></ID31098>
+	<ID31092 text="Sendet ..."></ID31092>
+	<ID31029 text="Zoom"></ID31029>
+	<ID1003 text="Zoom"></ID1003>
+	<ID1041 text="Mikrofon ist stummgeschaltet, so dass Sie den Ton der anderen Teilnehmer während des Screen-Sharings hören können."></ID1041>
+	<ID1044 text="Stummschaltung Ihres Mikrofons ist aufgehoben. Spotlight-Video ist gestoppt."></ID1044>
+	<ID1043 text="Mikrofon ist stummgeschaltet, um das Spotlight-Video auf %s zu fokussieren."></ID1043>
+	<ID1042 text="Stummschaltung Ihres Mikrofons wurde aufgehoben. Screen-Sharing mit Remote-Audio wurde gestoppt."></ID1042>
+	<ID1028 text="Moderator hat ein Meeting, das derzeit stattfindet. Sobald jenes Meeting endet, können Sie diesem Meeting beitreten."></ID1028>
+	<ID1030 text="Meeting wird in %d Minuten beendet, da der Moderator noch nicht beigetreten ist."></ID1030>
+	<ID1024 text="Ihr kostenfreies Meeting endet in 10 Minuten. Bitte wechseln Sie zu einem kostenpflichtigen Konto für $14.99 pro Monat, um zeitlich unbegrenzte Konferenzen führen zu können."></ID1024>
+	<ID1023 text="Zu Pro wechseln"></ID1023>
+	<ID1006 text="Dieses Meeting hat die maximale Anzahl von %d Teilnehmern erreicht. Versuchen Sie es bitte später erneut."></ID1006>
+	<ID1016 text="Dieses Meeting wurde vom Moderator beendet."></ID1016>
+	<ID1010 text="Meeting-ID ist ungültig. Bitte überprüfen Sie sie und versuchen Sie es erneut."></ID1010>
+	<ID7601 text="Testen Sie das Computer-Audio"></ID7601>
+	<ID5072 text="Die Freigabe wurde unterbrochen. Bringen Sie Ihr freigegebenes Fenster in den Vordergrund."></ID5072>
+	<ID5074 text="Die Freigabe wurde unterbrochen. Bringen Sie Ihr freigegebenes Fenster in den Vordergrund."></ID5074>
+	<ID5057 text="Das Versenden Ihres Feedbacks schlug fehl. Versuchen Sie es bitte später erneut."></ID5057>
+	<ID5056 text="Sendet ..."></ID5056>
+	<ID2837 text="Bitte melden Sie sich mit Ihrem Unternehmenskonto an, um beizutreten."></ID2837>
+	<ID2836 text="Meeting ist ausschließlich intern."></ID2836>
+	<ID2820 text="Testen Sie das Computer-Audio"></ID2820>
+	<ID5095 text="Falsches Meetingpasswort, bitte versuchen Sie es erneut."></ID5095>
+	<ID9060 text="Getrennt"></ID9060>
+	<ID32075 text="Die Breakoutsession verlassen"></ID32075>
+	<ID32073 text="Zur Hauptsession zurückkehren"></ID32073>
+	<ID32074 text="Breakoutsession verlassen und zur Hauptsession zurückkehren?"></ID32074>
+	<ID32072 text="Sie werden automatisch zur Hauptsession zurückgebracht."></ID32072>
+	<ID32087 text="Moderator hat Breakoutsessions begonnen. Warten Sie bitte auf Ihre Zuordnung."></ID32087>
+	<ID5109 text="Moderator auf %s ändern?"></ID5109>
+	<ID61018 text="Sie senden zu häufig, bitte versuchen Sie es später erneut."></ID61018>
+	<ID5106 text="Diesem Meeting können keine neuen Teilnehmer beitreten, nachdem es gesperrt wird."></ID5106>
+	<ID5108 text="%s entfernen?"></ID5108>
+	<ID61020 text="[Dies ist eine verschlüsselte Nachricht]"></ID61020>
+	<ID6019 text="Jetzt Meeting beginnen"></ID6019>
+	<ID61001 text="[Dies ist eine verschlüsselte Nachricht]"></ID61001>
+	<ID61002 text="Chatverschlüsselung wurde für diese Gruppe aktiviert; Offline-Mitglieder können Ihre Nachrichten nicht sehen."></ID61002>
+	<ID61007 text="Chatverschlüsselung wurde für Ihr Konto aktiviert, so dass Sie keine Nachrichten an eine Person senden können, die nicht Ihr Kontakt ist."></ID61007>
+	<ID61008 text="Chatverschlüsselung wurde für Ihr Konto aktiviert, so dass Sie in einer Gruppe keine Nachrichten ohne Verschlüsselung senden können."></ID61008>
+	<ID6004 text="Video beenden"></ID6004>
+	<ID6003 text="Stummschaltung aufheben"></ID6003>
+	<ID6007 text="Freigabe stoppen"></ID6007>
+	<ID61010 text="[Entschlüsselung der Nachricht schlug fehl]"></ID61010>
+	<ID61011 text="Chatverschlüsselung wurde für Ihr Konto aktiviert, so dass Sie %s online einladen müssen, um den Chat zu starten."></ID61011>
+	<ID6002 text="stummschalten"></ID6002>
+	<ID61015 text="[%s lädt Sie zum Chat ein. Sie müssen Ihren Client aktualisieren, um teilzunehmen]"></ID61015>
+	<ID5144 text="Dieses Meeting löschen?"></ID5144>
+	<ID5139 text="Die planmäßigen Meetings werden hier aufgeführt."></ID5139>
+	<ID6037 text="Zum Sprecher umschalten"></ID6037>
+	<ID6031 text="Sendet ..."></ID6031>
+	<ID6020 text="Meeting verlassen"></ID6020>
+	<ID5173 text="Ich"></ID5173>
+	<ID6021 text="Teilnehmen"></ID6021>
+	<ID221 text="Video beenden"></ID221>
+	<ID6066 text="Aufzeichnung untersagen"></ID6066>
+	<ID6067 text="Aufzeichnung stoppen   "></ID6067>
+	<ID2525 text="Audio aller ein"></ID2525>
+	<ID2566 text="E-Mail-Adressen bitte hier eingeben, durch Kommas getrennt."></ID2566>
+	<ID2565 text="Um Leute zu Google IM einzuladen, geben Sie deren E-Mail-Adressen ein:"></ID2565>
+	<ID2560 text="In Zwischenablage kopieren"></ID2560>
+	<ID6518 text="An Meeting teilnehmen"></ID6518>
+	<ID6525 text="Raumsystem einladen"></ID6525>
+	<ID6510 text="Zu Meeting einladen"></ID6510>
+	<ID6539 text="Webinar wird jetzt an alle Zuschauer übertragen"></ID6539>
+	<ID5211 text="Meeting in China abhalten"></ID5211>
+	<ID6117 text="Getrennt"></ID6117>
+	<ID6101 text="Zum Sprecher umschalten"></ID6101>
+	<ID6172 text="Eine Verbindung zum Cloudserver wird aufgebaut ..."></ID6172>
+	<ID6164 text="Meeting"></ID6164>
+	<ID6145 text="Zu Pro wechseln"></ID6145>
+	<ID2609 text="Löschen"></ID2609>
+	<ID32033 text="Der Breakoutsession beitreten"></ID32033>
+	<ID32037 text="Moderator befindet sich momentan in dieser Session."></ID32037>
+	<ID32038 text="Moderator hilft momentan anderen. Versuchen Sie es bitte später erneut."></ID32038>
+	<ID32035 text="Die Breakoutsession verlassen"></ID32035>
+	<ID32036 text="Moderator wurde eingeladen."></ID32036>
+	<ID2652 text="Hand heben"></ID2652>
+	<ID32048 text="Löschen"></ID32048>
+	<ID32051 text="Teilnehmen"></ID32051>
+	<ID2632 text="Meeting starten "></ID2632>
+	<ID2698 text="Messenger ist inaktiv. Sie können keinen Zoomkontakt hinzufügen."></ID2698>
+	<ID159 text="Persönliche Meeting-ID (PMI)"></ID159>
+	<ID32013 text="Kamera wechseln"></ID32013>
+	<ID32020 text="Teilnehmen"></ID32020>
+	<ID3503 text="Videomeeting"></ID3503>
+	<ID32028 text="Der Breakoutsession beitreten"></ID32028>
+	<ID170 text="Sie können Screen-Share nicht starten, während ein anderer Teilnehmer seinen Bildschirm freigibt."></ID170>
+	<ID179 text="Meeting wurde beendet, da jemand ein neues Meeting mit diesem Konto startete."></ID179>
+
+

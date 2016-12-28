@@ -1,0 +1,3 @@
+@echo off
+call L10nMerger-Android.bat  strings.xml strings2.xml patch.xml result.xml
+pause

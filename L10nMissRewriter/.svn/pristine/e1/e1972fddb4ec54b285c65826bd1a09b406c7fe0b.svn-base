@@ -1,0 +1,118 @@
+#################################################################################
+###############
+###############        parameters checking result for test/mac/Mac-Fr.strings
+###############
+#################################################################################
+                        rewrite  3 item(s)
+
+
+".zoom.us" = ".zoom.us ";
+"Original size" = "Taille d’origine";
+"Room" = "Salle";
+                        rewrite  miss 102 item(s)
+
+
+"Allow panelists to vote" = "Allow panelists to vote";
+"Start a meeting with video" = "Start a meeting with video";
+"Please wait for the host to start this webinar" = "Please wait for the host to start this webinar";
+"%d participants per room" = "%d participants per room";
+"%d-%d participants per room" = "%d-%d participants per room";
+"& others" = "& others";
+"Breakout Rooms will close in %d seconds." = "Breakout Rooms will close in %d seconds.";
+"Enable HD video" = "Enable HD video";
+"Leave Breakout Room" = "Leave Breakout Room";
+"To:" = "To:";
+"Breakout Room Participants" = "Breakout Room Participants";
+"The Host Key you entered is invalid." = "The Host Key you entered is invalid.";
+"Original Ratio" = "Original Ratio";
+"The host has moved you to %@" = "The host has moved you to %@";
+"Breakout Room %d" = "Breakout Room %d";
+"Give Up Remote Control" = "Give Up Remote Control";
+"The shared screen cannot be recorded properly. Please try to stop and restart sharing to solve this issue." = "The shared screen cannot be recorded properly. Please try to stop and restart sharing to solve this issue.";
+"Network error, please try later" = "Network error, please try later";
+"Request Remote Control" = "Request Remote Control";
+"Find and Replace…" = "Find and Replace…";
+"Format" = "Format";
+"OR" = "OR";
+"Zoom Chat" = "Zoom Chat";
+"is already a contact." = "is already a contact.";
+"Sent you a file." = "Sent you a file.";
+"Assign %d participants into 5 Rooms:" = "Assign %d participants into 5 Rooms:";
+"Co-Host" = "Co-Host";
+"Advanced Features" = "Advanced Features";
+"Breakout Rooms - %@" = "Breakout Rooms - %@";
+"Verifying Host Key..." = "Verifying Host Key...";
+"Do you want to leave this Breakout Room and return to the main session?" = "Do you want to leave this Breakout Room and return to the main session?";
+"%@ is asking for permission to remotely control your application." = "%@ is asking for permission to remotely control your application.";
+"Shared a file in the meeting." = "Shared a file in the meeting.";
+"Learn more." = "Learn more.";
+"Create Breakout Rooms" = "Create Breakout Rooms";
+"Find a viewer" = "Find a viewer";
+"Enable Advanced Features" = "Enable Advanced Features";
+"Disconnect" = "Disconnect";
+"Others could not hear me" = "Others could not hear me";
+"Quit Zoom" = "Quit Zoom";
+"Please check your network and try again." = "Please check your network and try again.";
+"Your network connection is unstable which may impact your audio & video quality." = "Your network connection is unstable which may impact your audio & video quality.";
+"Joining Breakout Rooms..." = "Joining Breakout Rooms...";
+"Group Chat" = "Group Chat";
+"Re-launch will clear current polling%u's result, do you want to continue?" = "Re-launch will clear current polling%u's result, do you want to continue?";
+"%@ is asking for permission to restart your computer. After your computer restarted, you will be auto rejoined into this meeting again." = "%@ is asking for permission to restart your computer. After your computer restarted, you will be auto rejoined into this meeting again.";
+"Open All Rooms" = "Open All Rooms";
+"From %@ to everyone: %@" = "From %@ to everyone: %@";
+"You can invite the host to this Breakout Room for assistance." = "You can invite the host to this Breakout Room for assistance.";
+"Because annotation is disabled, your participants need to upgrade to the latest version of Zoom to share their screen." = "Because annotation is disabled, your participants need to upgrade to the latest version of Zoom to share their screen.";
+"I could not see others" = "I could not see others";
+"The host is inviting you to join Breakout Room:" = "The host is inviting you to join Breakout Room:";
+"Recreate All Rooms" = "Recreate All Rooms";
+"You've been assigned to a new breakout room." = "You've been assigned to a new breakout room.";
+"You can join Breakout Rooms from here." = "You can join Breakout Rooms from here.";
+"You've been assigned to Breakout Room:" = "You've been assigned to Breakout Room:";
+"Add a Room" = "Add a Room";
+"Someone try to use host’ email to register the webinar" = "Someone try to use host’ email to register the webinar";
+"Download" = "Download";
+"You've been assigned to a Breakout Room." = "You've been assigned to a Breakout Room.";
+"You've been automatically signed out for being inactive %d minutes due to your account security policy." = "You've been automatically signed out for being inactive %d minutes due to your account security policy.";
+"Others could not see me" = "Others could not see me";
+"Open in default browser" = "Open in default browser";
+"All participants have been invited to join Breakout Rooms." = "All participants have been invited to join Breakout Rooms.";
+"All Breakout Rooms will close in %d seconds." = "All Breakout Rooms will close in %d seconds.";
+"companydomain" = "companydomain";
+"Type to filter..." = "Type to filter...";
+"Find…" = "Find…";
+"All participants have been assigned to Breakout Rooms." = "All participants have been assigned to Breakout Rooms.";
+"Line Width" = "Line Width";
+"host" = "host";
+"The host is inviting you to join Breakout Rooms." = "The host is inviting you to join Breakout Rooms.";
+"View More..." = "View More...";
+"Join Breakout Room" = "Join Breakout Room";
+"I could not hear others" = "I could not hear others";
+"Enter the Host Key to claim host role" = "Enter the Host Key to claim host role";
+"The host is currently in this room." = "The host is currently in this room.";
+" asked:" = " asked:";
+"Find a panelist" = "Find a panelist";
+"Host Key is a 6-digit number." = "Host Key is a 6-digit number.";
+"Failed to expel viewer. Error code:%d" = "Failed to expel viewer. Error code:%d";
+"[You were mentioned] " = "[You were mentioned] ";
+"Login to Claim Host" = "Login to Claim Host";
+"Poor video quality" = "Poor video quality";
+"Close All Rooms" = "Close All Rooms";
+"Login..." = "Login...";
+"You are now in a Breakout Room" = "You are now in a Breakout Room";
+"Show Myself" = "Show Myself";
+"The host has opened Breakout Rooms. Please wait to be assigned." =  "The host has opened Breakout Rooms. Please wait to be assigned.";
+"panelist" = "panelist";
+"Delete Room" = "Delete Room";
+"Re-Launch Polling" = "Re-Launch Polling";
+"Start a meeting without video" = "Start a meeting without video";
+"Low system resources may affect your audio & video quality. Try closing some applications to improve performance." = "Low system resources may affect your audio & video quality. Try closing some applications to improve performance.";
+"Mute Participants On Entry" = "Mute Participants On Entry";
+"Recording" = "Recording";
+"Poor audio quality" = "Poor audio quality";
+"Hide Myself" = "Hide Myself";
+"Broadcast a Message to All" = "Broadcast a Message to All";
+"All existing rooms will be replaced." = "All existing rooms will be replaced.";
+"All participants have been given 60 seconds to leave their Breakout Rooms." = "All participants have been given 60 seconds to leave their Breakout Rooms.";
+"Automatically copy Invitation URL to Clipboard after meeting starts" = "Automatically copy Invitation URL to Clipboard after meeting starts";
+
+

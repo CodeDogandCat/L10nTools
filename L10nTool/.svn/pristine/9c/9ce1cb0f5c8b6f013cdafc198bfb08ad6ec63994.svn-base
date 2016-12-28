@@ -1,0 +1,5 @@
+@echo off
+
+call ..\l10nTool.bat -p android -f history-compare -dr D:\SVN\B_35_7196\Client\src\application\Android\videobox\res\values\strings.xml -revision 56630 -svnpath  https://svn2.zoom.us/repos/zoom/B_35_7196/Client/src/application/Android/videobox/res/values/strings.xml -o .\android_his.txt
+
+pause

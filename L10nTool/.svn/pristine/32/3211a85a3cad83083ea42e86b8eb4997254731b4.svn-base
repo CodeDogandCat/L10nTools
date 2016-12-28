@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+	<string name="zm_lbl_room_status_available">Verfügbar</string>
+	<string name="zm_lbl_room_status_busy">Besetzt</string>
+	<string name="zm_fecc_btn_request">Kamerasteuerung beantragen</string>
+	<string name="zm_alert_select_count_reach_max">Sie haben die maximale Anzahl Gruppenmitglieder erreicht.</string>
+	<string name="zm_tab_content_contact">Kontakte</string>
+	<string name="zm_lbl_share_category_contact">Kontakte</string>
+	<string name="zm_fecc_btn_switch_cam">Kamera auswechseln</string>
+	<string name="zm_tab_content_groups">Gruppen</string>
+	<string name="zm_btn_retry">Erneut versuchen</string>
+	<string name="zm_msg_conffail_meeting_name_unvalid">Diese Meeting-Raum-ID ist nicht gültig.Bitte überprüfen Sie sie und versuchen Sie es erneut.</string>
+	<string name="zm_btn_end_conference">Meeting beenden</string>
+	<string name="zm_lbl_add_contact">Einen Kontakt hinzufügen</string>
+	<string name="zm_btn_leave_conference">Das Meeting verlassen</string>
+	<string name="zm_alert_msg_success">Erfolg</string>
+	<string name="zm_btn_continue">Fortfahren</string>
+	<string name="zm_lbl_groups">Gruppen</string>
+	<string name="zm_fecc_btn_give_up">Die Kamerasteuerung abgeben</string>
+	<string name="zm_lbl_room_status_offline">Offline</string>
+	<string name="zm_record_btn_stop">Stop</string>
+	<string name="zm_record_status_recording">Aufzeichnung läuft…</string>
+</resources>

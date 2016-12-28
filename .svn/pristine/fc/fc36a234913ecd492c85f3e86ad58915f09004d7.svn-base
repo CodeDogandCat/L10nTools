@@ -1,0 +1,322 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Merger {
+
+	public static Map<String, String> readFileByLines(String fileName) {
+
+		File file = new File(fileName);
+		BufferedReader reader = null;
+		Map<String, String> tag_Map = new HashMap<String, String>();
+		try {
+
+			InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
+			reader = new BufferedReader(isr);
+			String tempString = null;
+			// read line by line ,until the end of the file
+			while ((tempString = reader.readLine()) != null) {
+
+				// eg
+				// <string name="zm_msg_no_zoom_rooms">No Rooms yet</string>
+				// operation
+				// operation
+				String regEx = "<string.*?name=\\\"(.*?)\\\".*?>.*?</string>";
+				Pattern pattern = Pattern.compile(regEx);
+				Matcher matcher = pattern.matcher(tempString);
+				if (matcher.find()) {
+					tag_Map.put(matcher.group(1), tempString);
+				} else {
+
+					// operation
+					regEx = "<plurals.*?name=\\\"(.*?)\\\">";
+					pattern = Pattern.compile(regEx);
+					matcher = pattern.matcher(tempString);
+					if (matcher.find()) {
+						StringBuilder builder = new StringBuilder(tempString + "\n");
+						while (!((tempString = reader.readLine()).trim().equals("</plurals>"))) {
+							builder.append(tempString + "\n");
+						}
+						builder.append("\t</plurals>");
+						tag_Map.put(matcher.group(1), builder.toString());
+					} else {
+						// eg
+						// just care <string> in comment
+						//
+						// 1.different , has same single tag ,single line
+						// <!-- <string name="zm_btn_rating">Rate us in Google
+						// Play</string> -->
+						//
+						// 2.totally same ,single line
+						// <!-- "Room System" stands for traditional video
+						// conference rooms equiped with video devices that
+						// supports H.323 or SIP protocols. -->
+						//
+						// 3.different , has same single tag ,multi lines
+						// <!--
+						// <string
+						// name="zm_record_cmr_notification">当云端录制内容准备好之后，您将会收到我们的提醒邮件。</string>
+						// -->
+						// <!--
+						// <string name="zm_record_cmr_notification">You will
+						// receive an email when cloud recording is
+						// available.</string>
+						// -->
+						//
+						// 4.different , Has same multiple tag ,multi lines , i
+						// just consider you won't add sub tag separately
+						// <!--
+						// <string
+						// name="zm_msg_chat_notification_single">%s条未读消息</string>
+						// <string
+						// name="zm_msg_chat_notification_multiple">%s条未读消息</string>
+						// -->
+						// <!--
+						// <string name="zm_msg_chat_notification_single">%s
+						// unread message</string>
+						// <string name="zm_msg_chat_notification_multiple">%s
+						// unread messages</string>
+						// -->
+						//
+						// but only 2 is useful
+
+						// operation
+
+						regEx = "<!--\\s*<string.*?name=\\\"(.*?)\\\".*?>.*?</string>\\s*-->";
+						pattern = Pattern.compile(regEx);
+						matcher = pattern.matcher(tempString);
+
+						if (matcher.find()) {// deal 1
+
+							tag_Map.put("#" + matcher.group(1), tempString);
+						} else {
+
+							regEx = "<!--.*?-->";
+							pattern = Pattern.compile(regEx);
+							matcher = pattern.matcher(tempString);
+
+							if (matcher.find()) {// deal 2
+
+								tag_Map.put("#" + tempString, "");
+							} else {
+								// deal 3,4
+								if (tempString.trim().contains("<!--")) {
+									StringBuilder builder_name = new StringBuilder();
+									StringBuilder builder_value = new StringBuilder(tempString + "\n");
+
+									regEx = "<string.*?name=\\\"(.*?)\\\".*?>.*?</string>";
+									pattern = Pattern.compile(regEx);
+
+									while (!(tempString = reader.readLine()).trim().contains("-->")) {
+										matcher = pattern.matcher(tempString);
+										if (matcher.find()) {
+
+											builder_name.append("#" + matcher.group(1));
+										}
+										builder_value.append(tempString + "\n");
+
+									}
+									builder_value.append("\t-->" + "\n");
+									tag_Map.put(builder_name.toString().trim(), builder_value.toString());
+								}
+							}
+						}
+					}
+				}
+
+			}
+
+			reader.close();
+
+		} catch (IOException e) {
+			// e.printStackTrace();
+			System.err.println("read xml file error , maybe path error");
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e1) {
+					System.err.println("close BufferedReader error");
+				}
+
+			}
+			return tag_Map;
+		}
+	}
+
+	public static void Merge(String path_en, Map<String, String> other_Map, Map<String, String> patch_Map,
+			String path_output) {
+
+		BufferedReader reader = null;
+		OutputStreamWriter osw = null;
+		try {
+			FileOutputStream fos = null;
+			File file = new File(path_en);
+			fos = new FileOutputStream(path_output);
+			osw = new OutputStreamWriter(fos, "utf-8");
+
+			InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
+			reader = new BufferedReader(isr);
+			String tempString = null;
+			String name = "";
+
+			// override other_Map with patch_Map
+			other_Map.putAll(patch_Map);
+
+			if ((tempString = reader.readLine()) != null) {
+				osw.write(tempString + "\n");
+				osw.write("<resources>" + "\n");
+				// read line by line ,until the end of the file
+				while ((tempString = reader.readLine()) != null) {
+
+					// operation
+					String regEx = "<string.*?name=\\\"(.*?)\\\".*?>.*?</string>";
+					Pattern pattern = Pattern.compile(regEx);
+					Matcher matcher = pattern.matcher(tempString);
+					if (matcher.find()) {
+						name = matcher.group(1);
+						if (other_Map.containsKey(name)) {
+							osw.write(other_Map.get(name) + "\n");
+
+						}
+					} else {
+
+						// operation
+						regEx = "<plurals.*?name=\\\"(.*?)\\\">";
+						pattern = Pattern.compile(regEx);
+						matcher = pattern.matcher(tempString);
+						if (matcher.find()) {
+							name = matcher.group(1);
+							if (other_Map.containsKey(name)) {
+								osw.write(other_Map.get(name) + "\n");
+
+							}
+						} else {
+
+							// operation
+
+							regEx = "<!--\\s*<string.*?name=\\\"(.*?)\\\".*?>.*?</string>\\s*-->";
+							pattern = Pattern.compile(regEx);
+							matcher = pattern.matcher(tempString);
+
+							if (matcher.find()) {// deal 1
+								name = "#" + matcher.group(1);
+								if (other_Map.containsKey(name)) {
+									osw.write(other_Map.get(name) + "\n");
+
+								}
+							} else {
+
+								regEx = "<!--.*?-->";
+								pattern = Pattern.compile(regEx);
+								matcher = pattern.matcher(tempString);
+
+								if (matcher.find()) {// deal 2
+									name = "#" + tempString;
+									if (other_Map.containsKey(name)) {
+										osw.write(tempString + "\n");
+
+									}
+								} else {
+									// deal 3,4
+									if (tempString.trim().contains("<!--")) {
+										StringBuilder builder_name = new StringBuilder();
+
+										regEx = "<string.*?name=\\\"(.*?)\\\".*?>.*?</string>";
+										pattern = Pattern.compile(regEx);
+
+										while (!(tempString = reader.readLine()).trim().contains("-->")) {
+											matcher = pattern.matcher(tempString);
+											if (matcher.find()) {
+
+												builder_name.append("#" + matcher.group(1));
+											}
+
+										}
+										name = builder_name.toString().trim();
+										if (other_Map.containsKey(name)) {
+											osw.write(other_Map.get(name) + "\n");
+
+										}
+									} else if (tempString.trim().equals("")) {// blank
+																				// line
+
+										osw.write("\n");
+									}
+								}
+							}
+						}
+					}
+
+				}
+
+				osw.write("</resources>");
+				osw.flush();
+				osw.close();
+				reader.close();
+			} else {
+				throw new Exception("default xml format error");
+			}
+
+		} catch (Exception e) {
+			System.out.println("result output failed ");
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e1) {
+					System.err.println("close BufferedReader error");
+				}
+
+			}
+			if (osw != null) {
+				try {
+					osw.close();
+				} catch (IOException e1) {
+					System.err.println("close OutputStreamWriter error");
+				}
+
+			}
+		}
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String path_output = "src/out.xml";
+		String path_en = "src/strings.xml";
+		String path_zh = "src/strings2.xml";
+		String path_patch = "src/patch.xml";
+
+		// Scanner in = new Scanner(System.in);
+
+		// System.out.println("input output file path ,then input enter");
+		// path_output = in.nextLine();
+
+		// System.out.println("input default strings.xml path ,then input enter");
+		// path_en = in.nextLine();
+		// System.out.println("input other strings.xml path ,then input enter");
+		// String path = in.nextLine();
+		// System.out.println("input patch strings.xml path ,then input enter");
+		// String path_patch = in.nextLine();
+
+		Map<String, String> other_Map = readFileByLines(args[1]);
+		Map<String, String> patch_Map = readFileByLines(args[2]);
+		Merge(args[0], other_Map, patch_Map, args[3]);
+		// Map<String, String> other_Map = readFileByLines(path_zh);
+		// Map<String, String> patch_Map = readFileByLines(path_patch);
+		// Merge(path_en, other_Map, patch_Map, path_output);
+		System.out.println("**DONE**");
+	}
+
+}

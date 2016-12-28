@@ -1,0 +1,103 @@
+#################################################################################
+###############
+###############         value checking result for ../android/and-de.XML
+###############
+#################################################################################
+                        update  93 item(s)
+
+
+	<string name="zm_lbl_schedule_for_myself">Ich</string>
+	<string name="zm_alert_other_is_sharing">Sie können Screen-Share nicht starten, während ein anderer Teilnehmer seinen Bildschirm freigibt.</string>
+	<string name="zm_btn_raise_hand">Hand heben</string>
+	<string name="zm_mi_disallow_record">Aufzeichnung untersagen</string>
+	<string name="zm_webinar_msg_host_change_you_to_attendee">Moderator hat ihre Rolle auf Zuschauer abgeändert.</string>
+	<string name="zm_btn_stop_share">Freigabe stoppen</string>
+	<string name="zm_msg_conffail_internal_only">Meeting ist ausschließlich intern.</string>
+	<string name="zm_btn_start_a_meeting">Meeting starten </string>
+	<string name="zm_mi_invite_to_conf">Zu Meeting einladen</string>
+	<string name="zm_msg_no_upcoming_meetings_sub_note">Die planmäßigen Meetings werden hier aufgeführt.</string>
+	<string name="zm_msg_meeting_player_reminder_for_host">Ihr kostenfreies Meeting endet in 10 Minuten. Bitte wechseln Sie zu einem kostenpflichtigen Konto für $14.99 pro Monat, um zeitlich unbegrenzte Konferenzen führen zu können.</string>
+	<string name="zm_lbl_enable_address_book">Telefonkontakte zuordnen</string>
+	<string name="zm_bo_btn_join_bo">Teilnehmen</string>
+	<string name="zm_msg_e2e_receiver_not_buddy">Chatverschlüsselung wurde für Ihr Konto aktiviert, so dass Sie keine Nachrichten an eine Person senden können, die nicht Ihr Kontakt ist.</string>
+	<string name="zm_mi_start_conf">Jetzt Meeting beginnen</string>
+	<string name="zm_btn_unmute_all">Audio aller ein</string>
+	<string name="zm_msg_video_host_ask_to_start_video">Moderator hat Sie gebeten, Ihr Video zu starten.</string>
+	<string name="zm_btn_recommend">Andere über Zoom informieren</string>
+	<string name="zm_record_btn_stop_record">Aufzeichnung stoppen   </string>
+	<string name="zm_btn_start_conf">Jetzt Meeting beginnen</string>
+	<string name="zm_msg_meeting_end_by_host_start_another_meeting">Meeting wurde beendet, da jemand ein neues Meeting mit diesem Konto startete.</string>
+	<string name="zm_webinar_txt_broadcasting_tip">Webinar wird jetzt an alle Zuschauer übertragen</string>
+	<string name="zm_msg_unmuted_for_sharing_audio_stopped">Stummschaltung Ihres Mikrofons wurde aufgehoben. Screen-Sharing mit Remote-Audio wurde gestoppt.</string>
+	<string name="zm_tab_chats_no_messenger">Meeting</string>
+	<string name="zm_lbl_join_a_meeting">An Meeting teilnehmen</string>
+	<string name="zm_lbl_buddy_invite_email">Um Leute zu Google IM einzuladen, geben Sie deren E-Mail-Adressen ein:</string>
+	<string name="zm_msg_e2e_decrypt_failed">[Entschlüsselung der Nachricht schlug fehl]</string>
+	<string name="zm_msg_e2e_in_normal_group">Chatverschlüsselung wurde für Ihr Konto aktiviert, so dass Sie in einer Gruppe keine Nachrichten ohne Verschlüsselung senden können.</string>
+	<string name="zm_bo_btn_leave_bo">Zur Hauptsession zurückkehren</string>
+	<string name="zm_bo_btn_leave_meeting">Meeting verlassen</string>
+	<string name="zm_msg_conffail_webinar_register_enforce_login">Sie müssen mit dem spezifizierten Zoomkonto angemeldet sein, um diesem Meeting beizutreten. Bitte wenden Sie sich an den Host für weitere Informationen.</string>
+	<string name="zm_lbl_incorrect_meeting_password">Falsches Meetingpasswort, bitte versuchen Sie es erneut.</string>
+	<string name="zm_lbl_allow_join_choose_type">Usertyp auswählen</string>
+	<string name="zm_app_name">Zoom</string>
+	<string name="zm_title_join_conf">An Meeting teilnehmen</string>
+	<string name="zm_app_full_name">Zoom Cloudmeetings</string>
+	<string name="zm_msg_warn_muc_traffic_limit">Sie senden zu häufig, bitte versuchen Sie es später erneut.</string>
+	<string name="zm_hint_enter_3rd_party_audio_info">Geben Sie Ihre eigene Audiokonferenz-Information ein</string>
+	<string name="zm_lbl_tele_conf">Zugang zur Telekonferenz:</string>
+	<string name="zm_msg_conffail_single_meeting_restricted_jbh_confirm">Moderator hat ein Meeting, das derzeit stattfindet. Sobald jenes Meeting endet, können Sie diesem Meeting beitreten.</string>
+	<string name="zm_lbl_zoom_contacts">Unternehmenskontakte</string>
+	<string name="zm_msg_e2e_invite_e2e_warn_detail">Chatverschlüsselung wurde für Ihr Konto aktiviert, so dass Sie %s online einladen müssen, um den Chat zu starten.</string>
+	<string name="zm_title_choose_user_type">Usertyp auswählen</string>
+	<string name="zm_mi_video_stop">Video beenden</string>
+	<string name="zm_mm_opt_video_call">Videomeeting</string>
+	<string name="zm_msg_conf_no_host">Meeting wird in %d Minuten beendet, da der Moderator noch nicht beigetreten ist.</string>
+	<string name="zm_msg_conffail_internal_only_sign">Bitte melden Sie sich mit Ihrem Unternehmenskonto an, um beizutreten.</string>
+	<string name="zm_msg_e2e_fake_message">[Dies ist eine verschlüsselte Nachricht]</string>
+	<string name="zm_bo_lbl_leave_bo">Breakoutsession verlassen und zur Hauptsession zurückkehren?</string>
+	<string name="zm_chk_host_cn_meeting">Meeting in China abhalten</string>
+	<string name="zm_alert_lock_meeting_confirm">Diesem Meeting können keine neuen Teilnehmer beitreten, nachdem es gesperrt wird.</string>
+	<string name="zm_bo_btn_breakout">Der Breakoutsession beitreten</string>
+	<string name="zm_description_contact_request_accept_byother">hat Ihre Kontaktanfrage angenommen</string>
+	<string name="zm_system_notification_title">Systembenachrichtigung</string>
+	<string name="zm_bo_msg_host_cannot_help">Moderator hilft momentan anderen. Versuchen Sie es bitte später erneut.</string>
+	<string name="zm_mm_msg_cannot_add_buddy_no_connection">Messenger ist inaktiv. Sie können keinen Zoomkontakt hinzufügen.</string>
+	<string name="zm_btn_join_a_meeting_on_welcome">An Meeting teilnehmen</string>
+	<string name="zm_btn_stop_video">Video beenden</string>
+	<string name="zm_lbl_meeting_type_video_meeting">Videomeeting</string>
+	<string name="zm_msg_unmuted_for_leadership_mode_stopped">Stummschaltung Ihres Mikrofons ist aufgehoben. Spotlight-Video ist gestoppt.</string>
+	<string name="zm_alert_change_host_confirm">Moderator auf %s ändern?</string>
+	<string name="zm_btn_start_conf_short">Jetzt Meeting beginnen</string>
+	<string name="zm_btn_delete">Löschen</string>
+	<string name="zm_msg_conffail_userfull_confirm">Dieses Meeting hat die maximale Anzahl von %d Teilnehmern erreicht. Versuchen Sie es bitte später erneut.</string>
+	<string name="zm_title_invite_room_system">Raumsystem einladen</string>
+	<string name="zm_btn_unmute_audio">Stummschaltung aufheben</string>
+	<string name="zm_hint_buddy_invite_email">E-Mail-Adressen bitte hier eingeben, durch Kommas getrennt.</string>
+	<string name="zm_msg_e2e_get_invite_for_old_client">[%s lädt Sie zum Chat ein. Sie müssen Ihren Client aktualisieren, um teilzunehmen]</string>
+	<string name="zm_title_matching">Telefonkontakte zuordnen</string>
+	<string name="zm_mi_switch_camera">Kamera wechseln</string>
+	<string name="zm_btn_join_a_meeting">An Meeting teilnehmen</string>
+	<string name="zm_bo_msg_host_been_in_session">Moderator befindet sich momentan in dieser Session.</string>
+	<string name="zm_system_notification_delete_reqeust">Löschen</string>
+	<string name="zm_bo_lbl_wait_assigned">Moderator hat Breakoutsessions begonnen. Warten Sie bitte auf Ihre Zuordnung.</string>
+	<string name="zm_alert_expel_user_confirm">%s entfernen?</string>
+	<string name="zm_msg_e2e_group_offline_unreceived">Chatverschlüsselung wurde für diese Gruppe aktiviert; Offline-Mitglieder können Ihre Nachrichten nicht sehen.</string>
+	<string name="zm_msg_sent_feedback_failed">Das Versenden Ihres Feedbacks schlug fehl. Versuchen Sie es bitte später erneut.</string>
+	<string name="zm_btn_start_video_meeting">Videomeeting</string>
+	<string name="zm_tab_favorite_contacts">Unternehmenskontakte</string>
+	<string name="zm_msg_e2e_unable_decrypt">[Dies ist eine verschlüsselte Nachricht]</string>
+	<string name="zm_msg_conffail_callnotthere_confirm">Meeting-ID ist ungültig. Bitte überprüfen Sie sie und versuchen Sie es erneut.</string>
+	<string name="zm_bo_msg_host_notified">Moderator wurde eingeladen.</string>
+	<string name="zm_btn_invite_to_conf">Zu Meeting einladen</string>
+	<string name="zm_lbl_copy_to_clipboard">In Zwischenablage kopieren</string>
+	<string name="zm_msg_muted_for_sharing_audio_started">Mikrofon ist stummgeschaltet, so dass Sie den Ton der anderen Teilnehmer während des Screen-Sharings hören können.</string>
+	<string name="zm_lbl_personal_meeting_id_with_abbr">Persönliche Meeting-ID (PMI)</string>
+	<string name="zm_lbl_delete">Löschen</string>
+	<string name="zm_msg_conffail_callover_confirm">Dieses Meeting wurde vom Moderator beendet.</string>
+	<string name="zm_bo_msg_close">Sie werden automatisch zur Hauptsession zurückgebracht.</string>
+	<string name="zm_btn_mute_audio">stummschalten</string>
+	<string name="zm_alert_delete_meeting_confirm">Dieses Meeting löschen?</string>
+	<string name="zm_msg_muted_for_leadership_mode_started">Mikrofon ist stummgeschaltet, um das Spotlight-Video auf %s zu fokussieren.</string>
+	<string name="zm_btn_join">Teilnehmen</string>
+
+

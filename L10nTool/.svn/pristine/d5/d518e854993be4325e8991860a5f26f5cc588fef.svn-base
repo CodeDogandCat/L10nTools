@@ -1,0 +1,6 @@
+@echo off
+::call l10n-tool.bat -p android -f checker -dr ../android/En.xml -cr ../android/Fr.xml -o result.txt 
+call l10n-tool.bat -p android -f checker -dr strings.xml -cr strings2.xml -o result.txt
+::call l10n-tool.bat -p android -f merger -dr ../android/strings.xml -cr ../android/strings2.xml -nr ../android/patch.xml -o merger.xml
+::call l10n-tool.bat -p android -f history-compare -dr ../android/strings.xml -revision 18 -svnpath  https://10.100.56.178/svn/zoom/trunk/tools/l10n/L10nHistoryChange-Android/src/values/strings.xml  -o his_change.txt
+pause

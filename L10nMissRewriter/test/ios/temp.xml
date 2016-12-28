@@ -1,0 +1,27 @@
+#################################################################################
+###############
+###############        parameters checking result for ../ios/IOS-Fr.strings
+###############
+#################################################################################
+                        rewrite  8 item(s)
+
+
+"Enter your company domain" = "Saisir le domaine de votre société";
+"Groups" = "Groupes";
+"You have been removed from this group." = "Vous avez été retiré de ce groupe.";
+"Zoom Room" = "Salle Zoom ";
+"Room" = "Salle";
+"No matching domain found" = "Aucun domaine correspondant n’a été trouvé";
+"Rooms" = "Salles Zoom";
+"Clear History" = "Effacer l’historique";
+                        rewrite  miss 6 item(s)
+
+
+"," = ",";
+"To:" = "To:";
+"Available" = "Available";
+"You cannot send photo or file in e2e chat" = "You cannot send image or file in an encrypted chat.";
+"You can’t start your video" = "You can’t start your video because the host has disabled it.";
+"Chat Topic" = "Chat Topic";
+
+

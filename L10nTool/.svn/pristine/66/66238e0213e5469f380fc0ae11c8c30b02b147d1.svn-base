@@ -1,0 +1,2613 @@
+/* 
+  Localizable.strings
+  iZipow
+
+  Created by Robust Hu on 3/8/12.
+  Copyright (c) 2012 Zipow. All rights reserved.
+*/
+
+"Room" = "会议室";
+
+"Rooms" = "Zoom会议室";
+
+"Zoom Room" = "Zoom会议室";
+
+"Desktop" = "电脑";
+
+"Mobile" = "手机";
+
+"Phone Contact" = "手机联系人";
+
+/*Used to mean the offline status of user*/
+"Offline" = "离线";
+
+"Available" = "在线";
+
+"Settings" = "设置";
+
+"Send Feedback" = "发送反馈";
+
+"About" = "关于";
+
+"Messages" = "即时消息";
+
+"In-App Vibrate" = "振动";
+
+"In-App Alert Sound" = "声音";
+
+"Add IM Contacts" = "添加IM联系人";
+
+"OK" = "确定";
+
+"Send" = "发送";
+
+"Zoom" = " Zoom ";
+
+"Cancel" = "取消";
+
+"Close" = "关闭";
+
+"Continue" = "继续";
+
+"Update" = "更新";
+
+"Share" = "共享";
+
+"Done(%d)" = "完成(%d)";
+
+"Mute Video" = "停止视频";
+
+"Unmute Video" = "请求启动视频";
+
+"Mute Audio" = "静音";
+
+"Unmute Audio" = "解除静音";
+
+"Rename" = "改名";
+
+"Enter new name:" = "请输入新的屏幕显示姓名：";
+
+"Input Name" = "输入姓名";
+
+"Leave" = "离开";
+
+"Leave Meeting" = "离开会议";
+
+"End Meeting" = "结束会议";
+
+"Users (%d)" = "参与人 (%d)";
+
+"Everyone" = "所有人";
+
+"Join Zoom Template" = "%s通过Zoom呼叫您，您可点击链接加入会议。\r\n%s";
+
+"Invitee Send out" = "%d个邀请已发送";
+
+"Confirm to leave Zoom" = "您确定要离开这个会议吗？";
+
+"%@ joined in the Zoom" = "%@加入会议";
+
+"%@ left the video call" = "%@离开会议";
+
+"%@ to me" = "%@对我说";
+
+"%@ to All" = "%@对大家说";
+
+"Version: %s" = "版本: %s";
+
+"Connecting..." = "连接中...";
+
+"Invite more reminder" = "点击邀请按键即可邀请更多人参加";
+
+"Wait user join reminder" = "等待%@加入...";
+
+"Yes" = "是";
+
+"No" = "否";
+
+"%@'s screen" = "%@的屏幕";
+
+"%@' screen" = "%@的屏幕";
+
+"Zoom Full Participant Error" = "此会议室已达到%d人数上限，请稍后重试。";
+
+"Zoom Network Connection Error" = "不能连接我们的服务，请检查您的网络连接并重试。";
+
+"Zoom Service Unavailable Error" = "系统正忙，请稍后重试。";
+
+"Zoom Call Closed Error" = "会议已结束。";
+
+"Zoom Call NotExist Error" = "此会议ID不存在，请检查并重试。";
+
+"Zoom Call Vanity Url NotExist Error" = "会议室名称不正确，请检查后重试。";
+
+"Zoom Version Old Error" = "Zoom有新版本啦！请立即更新。";
+
+"Zoom Exception Error" = "会议出现异常。错误代码： %d";
+
+"Failed to connect to Zoom video conferencing server" = "无法连接会议服务器，更多信息请访问：https://support.zoom.us/hc/en-us/articles/201362683";
+
+"Zoom NoMMR Error" = "系统正忙，请稍后重试。";
+
+"Getting Buddies List..." = "正在获取好友列表...";
+
+"Facebook IM service unavailable" = "Facebook IM服务有误，请稍后重试。";
+
+"Logout with Video Call ongoing" = "您正在会议中，一旦您注销，会议将结束。是否继续？";
+
+"from who" = "来自%@ (私聊)";
+
+"to who" = "送至%@ (私聊)";
+
+"from who to All" = "%@对所有人";
+
+"All" = "全部";
+
+"Network Connection Not Good" = "您的带宽不足，无法支持高质量的%@";
+
+"audio" = "音频";
+
+"video" = "视频";
+
+"screen share" = "屏幕共享";
+
+"Join Video Call" = "加入会议";
+
+"Join" = "加入";
+
+"Cannot join video call because you are already in a video call" = "不能加入会议，因为您已在另一个会议中";
+
+"Start Video Call" = "召开会议";
+
+"(optional)" = "(可选)";
+
+"Meeting Password" = "会议密码";
+
+"Incorrect meeting password, please try again" = "会议密码错误，请重试";
+
+"Please enter your meeting password" = "请输入您的会议密码";
+
+"Please enter your name and meeting password" = "请输入您的名字和会议密码";
+
+"Please enter your name" = "请输入您的姓名";
+
+"Meeting password" = "会议密码";
+
+"Meeting ID" = "会议ID";
+
+"Meeting Room Name" = "会议室名称";
+
+"Join with a meeting room name" = "使用会议室名称加会";
+
+"Join with meeting ID" = "使用会议号加会";
+
+"Date" = "日期";
+
+"Time" = "时间";
+
+"If you are the host, please log in" = "如果您是主持人，请登录并启动会议";
+
+"Logout" = "退出";
+
+"This is a recurring meeting" = "周期会议";
+
+"IDS_SEND_FEEDBACK_SUCCESS" = "谢谢您的反馈\r\n\r\n您的反馈对我们非常重要，我们将更努力的改善我们的服务。";
+
+"IDS_SEND_FEEDBACK_FAILED" = "无法发送反馈，请稍后重试。";
+
+"IDS_PUBLISH_TIMELINE" = "发布会议活动信息到Facebook时间线";
+
+"IDS_PUBLISH_TIMELINE_SHORT" = "发布时间线";
+
+"IDS_VIDEOCALL" = "Zoom会议";
+
+"IDS_3GNETWORK_MESSAGE" = "为节省您的手机流量，我们只为您显示正在发言的人的视频";
+
+"Back" = "返回";
+
+"IDS_GOOGLE_IM_UNAVAILABLE" = "Google IM服务有误，请稍后重试。";
+
+"IDS_INVITATION_EMAIL_SUBJECT" = "Zoom会议邀请";
+
+"IDS_INVITATION_EMAIL_BODY_HEADER" = "您好,\r\n\r\n%@邀请您加入一个预约会议。\r\n\r\n";
+
+"IDS_INVITATION_EMAIL_BODY_TIME" = "时间: %@\r\n\r\n";
+
+"IDS_INVITATION_EMAIL_BODY_TIME_REPEAT" = "时间: 这是一个周期会议\r\n\r\n";
+
+"IDS_INVITATION_EMAIL_BODY_JOININFO" = "通过PC, Mac, iPad, iPhone或者Android设备加入:\r\n\r\n    请点击此URL开启或加入会议 %@\r\n    或去%@加入，会议ID: %@";
+
+"IDS_INVITATION_EMAIL_BODY_PASSWORD" = " 密码: %@";
+
+"IDS_INVITATION_EMAIL_BODY_TELEPHONY" = "\r\n\r\n通过电话加入:\r\n\r\n    呼叫 %@ (只限美国/加拿大用户). 全球呼入号码 %@\r\n    会议ID: %@\r\n    参与者ID: 在加入会议后显示";
+
+"IDS_INVITATION_EMAIL_BODY_323_1" = "\r\n\r\n通过H.323/SIP 会议室系统加入:\r\n\r\n    IP地址: %@\r\n    会议ID: %qu";
+
+"IDS_INVITATION_EMAIL_BODY_323_2" = " 或 %@##%qu";
+
+"IDS_INVITATION_EMAIL_BODY_FOOTER" = "\r\n\r\n您可以通过PC, Mac, iPad, iPhone或者Android设备加入";
+
+"IDS_EMAIL_INVITATION" = "邮件联系人";
+
+"IDS_CONNECTION_ERROR" = "无法连接到服务器，请检查您的网络连接并重试。";
+
+"Message Invite" = "发送短信";
+
+"Email Invite" = "发送邮件";
+
+"IM Invite" = "发送IM";
+
+"Copy URL" = "复制URL";
+
+"Feedback" = "反馈";
+
+"Verify Meeting..." = "验证会议...";
+
+"Failed to connect Google" = "连接Google失败";
+
+"Join a Meeting" = "加入会议";
+
+"Schedule Meeting" = "安排会议";
+
+"Starts" = "开始";
+
+"Duration" = "会议时长";
+
+"hour" = "hour";
+
+"hours" = "hours";
+
+"min" = "min";
+
+"mins" = "mins";
+
+"Waiting..." = "等待中...";
+
+"Leaving..." = "离开中...";
+
+"Sending..." = "发送中...";
+
+"Recurring Meeting Hint" = "请切记检查您日历邀请项里的再发生事项或重复事项";
+
+"Meeting Topic" = "会议主题";
+
+"My Meeting" = "我的会议";
+
+"Recurring Meeting" = "周期会议";
+
+"Schedule Error Timeout" = "无法安排会议。请检查您的网络连接并重试。";
+
+"Schedule Error Unknown" = "无法安排会议。错误代码：%d";
+
+"Meeting Password is optional" = "会议密码（可选）";
+
+"Schedule Meeting success" = "会议已安排并成功添加到您的日历中";
+
+"Proxy Setting" = "代理设置";
+
+"Meetings" = "会议";
+
+"IM" = "IM";
+
+"Add" = "添加";
+
+"Tell Others about Zoom" = "向他人推荐Zoom";
+
+"has started screen sharing" = "开始屏幕共享";
+
+"Meeting number: %@" = "会议ID: %@";
+
+"Duration: %d" = "时间: %d分钟";
+
+"Recurring meeting" = "周期会议";
+
+"Zoom Meeting locked" = "会议已被主持人加锁";
+
+"Conf Fail Meeting Restricted" = "您当前有一场会议正在召开，请结束本场会议后再开始一场新的会议。";
+
+"Conf Fail Meeting Restricted JBH" = "本场会议的主持人正在另一场会议中。一旦那场会议结束，您即可入会。";
+
+"Expel Meeting by Host" = "主持人已将您从本场会议中移除。";
+
+"End Meeting by Host" = "会议已被主持人结束。";
+
+"Meeting Lock Indication" = "会议已被主持人加锁";
+
+"Meeting Unlock Indication" = "会议已被主持人解锁";
+
+"Chat with All" = "群聊";
+
+"Mute All" = "全体静音";
+
+"Unmute All" = "解除全体静音";
+
+"Lock Meeting" = "会议加锁";
+
+"Unlock Meeting" = "会议解锁";
+
+"Lock Share" = "共享加锁";
+
+"Unlock Share" = "共享解锁";
+
+"Mute" = "静音";
+
+"Unmute" = "解除静音";
+
+"Remove" = "移除";
+
+"Make Host" = "设为主持人";
+
+"Chat" = "聊天";
+
+"When" = "时间";
+
+"Edit" = "编辑";
+
+"Select" = "选择";
+
+"Meeting Information" = "会议信息";
+
+"Switch Meeting Indication" = "您正在另一场会议中，是否结束当前会议并加入本场会议？";
+
+"Expel User Alert" = "您是否确认移除%@？";
+
+"Lock Meeting Indication" = "会议一旦加锁，将不能有新的参与者进入本场会议";
+
+"Unlock Meeting Indication" = "会议一旦解锁，新的参与者将进入本场会议";
+
+"Lock Share Indication" = "共享一旦加锁，只有主持人才能共享屏幕";
+
+"Unlock Share Indication" = "共享一旦解锁，参会者将可进行屏幕共享";
+
+"Info" = "信息";
+
+"Topic" = "主题";
+
+"Password" = "密码";
+
+"Copy to clipboard" = "复制到剪贴板";
+
+"History" = "历史";
+
+"Front Camera" = "前置摄像头";
+
+"Back Camera" = "后置摄像头";
+
+"No Camera" = "无摄像头";
+
+"Edit Meeting" = "编辑会议";
+
+"Edit Error Timeout" = "编辑错误超时";
+
+"Edit Error Unknown" = "编辑未知错误";
+
+"Meeting" = "会议";
+
+"Your network bandwidth is low" = "您的带宽较低";
+
+"%@'s network bandwidth is low" = "%@的带宽较低";
+
+"%@' network bandwidth is low" = "%@的带宽较低";
+
+"JBH Timeout" = "JBH超时";
+
+"Free Meeting Timeout" = "免费会议超时";
+
+"Ended by host started another meeting" = "会议结束因为相同帐号在别处开了一场新的会议。";
+
+"You are host now" = "您已成为主持人";
+
+"%@ is host now" = "%@已成为主持人";
+
+"Screen Share" = "屏幕共享";
+
+"Meeting Alert" = "会议提醒";
+
+"Upgrade to Pro" = "升级至Pro账号";
+
+"Attendee Free Meeting Reminder" = "您的免费会议将在10分钟后结束，感谢您选择Zoom！";
+
+"Host Free Meeting Reminder" = "您的免费会议时间仅剩10分钟，请通过您的桌面升级为收费版本";
+
+"Your microphone muted" = "您的麦克风已被静音，请解除静音后说话。";
+
+"Favorite Invite" = "企业通讯录";
+
+"Add Favorite" = "添加";
+
+"We can't find matched user, please input more information." = "无法找到匹配用户，请输入更多信息。";
+
+"Please search for your favorite since too many members in your orgnization..." = "请输入电子邮箱添加用户到您的通讯录。";
+
+"No Company Contacts" = "无联系人";
+
+"No Online Buddies" = "没有好友在线";
+
+"Getting Buddy List..." = "获取好友列表中...";
+
+"Add Buddy" = "添加好友";
+
+"Topic: %@" = "主题: %@";
+
+"Schedule" = "安排会议";
+
+"Close Other Meeting Message" = "您当前有一场会议正在召开，如想召开一场新的会议，请点击结束按钮将本场会议结束。";
+
+"End" = "结束";
+
+"No Host meeting end message" = "如果主持人仍未加入，您的会议将在%d分钟后结束。";
+
+"Cannot Start Meeting Message" = "无法开启会议，错误代码：%d";
+
+"Your screen sharing is paused" = "屏幕共享暂停";
+
+"Meeting Invitation copied to clipboard" = "会议邀请已复制到剪贴板";
+
+"Please select a way to add your invitees." = "请选择您添加受邀者的方式。";
+
+"Add invitees" = "添加受邀者";
+
+"Send Email Invitation after meeting scheduled" = "通过电子邮箱邀请";
+
+"Send Message Invitation after meeting scheduled" = "通过信息邀请";
+
+"Copy invitation information after meeting scheduled" = "通过复制到剪贴板邀请";
+
+"Add invitees via" = "添加邀请通过";
+
+"Select Audio Source" = "选择声音源";
+
+"Switch Camera" = "切换摄像头";
+
+"Meeting Information" = "会议信息";
+
+"Oops! Failed to load members in your orgnization" = "无法加载公司联系人，请稍后重试。";
+
+"Select content to share" = "选择您想共享的内容";
+
+"Dropbox" = "Dropbox";
+
+"Box" = "Box";
+
+"Website" = "网站";
+
+"Photos" = "照片";
+
+"Tap this button to share your screen with others" = "点击这里开始共享";
+
+"Failed to connect to the service. Please try again later." = "无法连接服务，请稍后重试。";
+
+"Please join Zoom meeting in progress" = "请加入进行中的Zoom会议";
+
+"Invalid account or wrong password" = "用户名不存在或密码错误";
+
+"Enter URL" = "输入SSO站点URL";
+
+"Please set your new password for login." = "请设置新登录密码。";
+
+"We have sent a confirmation email to %@. Please click the confirmation link to activate and start using your Zoom service." = "我们已向%@发送了确认邮件。请点击确认链接去激活并开始使用Zoom。";
+
+"Cannot get your favorite information, Please check your network connection." = "无法获取您的通讯录信息，请检查您的网络连接。";
+
+"Add to iCalendar" = "添加到日历";
+
+"Repeat" = "重复";
+
+"End Repeat" = "结束重复";
+
+"Never" = "从不";
+
+"Daily" = "每天的";
+
+"Weekly" = "每周的";
+
+"Biweekly" = "双周的";
+
+"Monthly" = "每月的";
+
+"Yearly" = "每年的";
+
+"None" = "无";
+
+"Every Day" = "每天";
+
+"Every Week" = "每周";
+
+"Every 2 Weeks" = "每两周";
+
+"Every Month" = "每月";
+
+"Every Year" = "每年";
+
+"Repeat Forever" = "永远重复";
+
+"Add IM contacts successfully." = "添加IM联系人成功";
+
+"Add IM contacts failed." = "添加IM联系人失败";
+
+"Zoom-Meeting" = "Zoom会议";
+
+"Disallow Record" = "禁止录制";
+
+"Allow Record" = "允许录制";
+
+"Sign up unknown error" = "注册失败";
+
+"Sign up user exist" = "邮箱%@已被占用";
+
+"Sign up input error" = "注册信息无效";
+
+"SSO authentication failed, please try it later" = "验证失败，请重试";
+
+"Stop Screen Share Alert" = "这将停止别人的屏幕共享，是否继续？";
+
+"Start Share" = "开始共享";
+
+"Input Share URL" = "在此输入URL";
+
+"Pinch out for a bigger view" = "双指轻拨放大";
+
+"Your video is paused during mobile screen sharing" = "屏幕共享时您的视频将被暂停";
+
+"Unable to access photos" = "照片被禁用";
+
+"Photos Privacy Settings" = "请在iPhone的“设置”-“隐私”-“照片”中允许Zoom访问您的照片。";
+
+"Photos Location Services" = "请在iPhone的“设置”-“隐私”-“定位服务”中允许Zoom访问您的定位服务";
+
+"User not exist" = "用户%@不存在";
+
+"User input error" = "您输入的信息不正确";
+
+"Unkown error" = "不可预知的错误";
+
+"Password reset link expired" = "抱歉，您的密码重置链接已过期。";
+
+"Load photo failed" = "加载照片失败，请重试";
+
+"Add Bookmark" = "添加书签";
+
+"Edit Bookmark" = "编辑书签";
+
+"Bookmarks" = "书签";
+
+"example@email.com" = "example@email.com";
+
+"Rate Zoom in the App Store" = "给我们评分";
+
+"IDS_SCHEDULEDMEETING_INVITATION_MESSAGE_BODY_TEMPLATE" = "点击 %@ 开启或加入一场已安排好的会议。";
+
+"IDS_INMEETING_INVITATION_MESSAGE_BODY_TEMPLATE" = "点击 %@ 加入会议。";
+
+"Albums" = "相册";
+
+"Host is not in the meeting yet." = "主持人未入会";
+
+"Address Book" = "地址簿";
+
+"Phone Number" = "电话号码";
+
+"Country Codes" = "国家电话代码";
+
+"Verification Code" = "验证码";
+
+"Contacts using Zoom" = "Zoom联系人";
+
+"Contacts not using Zoom" = "邀请使用Zoom";
+
+"Share Photos" = "照片";
+
+"Share from Dropbox" = "Dropbox";
+
+"Share from Box" = "Box";
+
+"Share from Google Drive" = "Google Drive";
+
+"Share from One Drive" = "Microsoft OneDrive";
+
+"Share from One Drive Biz" = "Microsoft OneDrive for Business";
+
+"Share from iCloud Drive" = "iCloud Drive";
+
+"Share Web" = "网页";
+
+"Share from Bookmark" = "书签";
+
+"Input URL" = "输入URL并点击共享即可让每个人都看到";
+
+"Contact Details" = "详细信息";
+
+"Disable" = "解除绑定";
+
+"Phone Contacts Matching" = "联系人匹配";
+
+"Contacts" = "联系人";
+
+"How would you like to invite %@ to Zoom?" = "您想通过什么方式邀请 %@ 去使用Zoom？";
+
+"Address Book Invite" = "地址薄";
+
+"Failed to register phone number, please retry." = "无法注册电话号码，请稍后重试";
+
+"Wrong verification code, please try again." = "验证码错误，请重试";
+
+"You are not able to register your phone number since you had registered phone number three times today." = "您不能在一天内用自己的电话号码注册超过三次。";
+
+"Audio Share started" = "您的麦克风已被静音，在屏幕共享时，您可听到远程音频";
+
+"Audio Share stopped" = "您的麦克风已解除静音，有语音的屏幕共享已结束";
+
+"Spotlight video mute user" = "由于已锁定视频，您的麦克风已被静音，并聚焦到%@";
+
+"Spotlight video unmute user" = "您的麦克风已解除静音，视频已被解除锁定";
+
+"Spotlight Video" = "锁定视频";
+
+"Unspotlight Video" = "取消锁定视频";
+
+"Cannot unmute yourself" = "主持人已将全体静音，您无法自我解除静音";
+
+"We found the phone number you registered is not valid for your device, if it is the phone number you are using, please register the phone number again and pass the SMS verification" = "无法注册您的电话号码。请重试";
+
+"Spotlight Video Alert" = "这将使全体静音，您是否继续？";
+
+"Unspotlight Video Alert" = "这将解除全体静音，您是否继续？";
+
+"Do you want to change the host to %@" = "您是否要将主持人设为%@？";
+
+"is calling..." = "拨号中...";
+
+"You lost remote control privilege" = "您的远程控制权限已被撤销";
+
+"Touch here to start controlling %@'s screen" = "点击这里即可控制%@的屏幕";
+
+"Touch here to start controlling %@' screen" = "点击这里即可控制%@的屏幕";
+
+"Video Call" = "视频通话";
+
+"Phone Call" = "语音通话";
+
+"Remove Favorite" = "移除";
+
+"Meeting Infomation" = "会议信息";
+
+"Invite Contacts" = "邀请联系人";
+
+"Invite Contact by Email" = "通过电子邮件邀请联系人";
+
+"Add Company Contacts" = "添加企业联系人";
+
+"Add Phone Contacts" = "添加手机联系人";
+
+"We need your phone number to access your phone contacts" = "我们需要验证您的手机号码来访问您的手机联系人";
+
+"%@ didn't answer." = "%@无应答";
+
+"%@ declined." = "%@已拒绝。";
+
+"Enter IP address ## meeting number on your H.323 device" = "输入IP地址## 会议号在您的H.323 device";
+
+"Oops! We have problem to get your Zoom contacts. Please try the refresh icon later." = "无法获取您的Zoom联系人。请稍后点击刷新按钮";
+
+"Get the free Zoom app at http://zoom.us then let's have a Zoom meeting!" = "我正在使用手机版Zoom会议，您可在 http://www.zoom.us下载免费app";
+
+"Dial Telephone Alert Message" = "您是否想自动拨入会议？\n\n在拨入会议后，请返回Zoom";
+
+"Dial" = "拨号";
+
+"%@ is calling you" = "%@正在呼叫您";
+
+"Invite Alert Message" = "正在呼叫您。您正在另一场会议中，是否结束当前会议并加入此会议？";
+
+"Accept" = "接受";
+
+"Decline" = "拒绝";
+
+"Select All" = "选择全部";
+
+"Deselect All" = "取消全部选择";
+
+"Cannot Verify Server Identity" = "无法验证服务器身份";
+
+"Zoom cannot verify this server identity. Would you like to continue anyway?" = "Zoom 无法验证服务器身份。您是否想继续？";
+
+"Zoom cannot verify this server identity. Please try again later." = "Zoom 无法验证服务器身份。请稍后重试。";
+
+"Audio Switch to telephone line" = "您正在使用电话";
+
+"Audio Switch to VoIP" = "您正在使用设备语音";
+
+"Phone Number Confirm Message" = "您是否继续使用下面的号码？\n\n%@";
+
+"Start from Video" = "启动视频";
+
+"Start from Screen Share" = "启动屏幕共享";
+
+"Select your meeting option" = "选择您的开始会议选项";
+
+"Stop" = "停止";
+
+"Stop Share" = "停止共享";
+
+"%@ is controling , tap to resume remote control." = "您的远程控制已被%@暂停。轻点这个按钮继续";
+
+"Disable Address Book Matching" = "解除绑定";
+
+"You will NOT be able to identify mobile contacts that are using Zoom." = "将无法显示您的手机通讯录中使用Zoom的联系人";
+
+"Driving Mode" = "安全驾驶模式";
+
+"Tap to Speak" = "轻击说话";
+
+"Done Speaking" = "完成说话";
+
+"%@ is speaking" = "%@正在说话";
+
+"Sign In" = "登录";
+
+"Please sign in to use meeting scheduler." = "请登录您的账号以便安排会议";
+
+"Screen share not supported on this device." = "此设备无法支持屏幕共享";
+
+"Driving Mode Setting" = "安全驾驶模式下，扬声器开启，视频关闭，麦克风静音";
+
+"Screen Share locked alert" = "他人正在共享屏幕，此时您无法进行屏幕共享";
+
+"Unable to access mic" = "麦克风被禁用";
+
+"Mic Privacy Settings" = "请在iPhone的“设置”-“隐私”-“麦克风”中允许Zoom访问您的麦克风。";
+
+"Unable to access camera" = "相机被禁用";
+
+"Camera Privacy Settings" = "请在iPhone的“设置”-“隐私”-“相机”中允许Zoom访问您的相机。";
+
+"Meeting Service is not available" = "会议服务无效";
+
+"Chats" = "聊天";
+
+"Group Chat (%d)" = "群消息(%d)";
+
+"Chat Options" = "聊天选项";
+
+"Chat Option (%d)" = "聊天选项(%d)";
+
+"Not Set" = "未设置";
+
+"Edit Topic" = "编辑主题";
+
+"Clear Chat History" = "清空聊天记录";
+
+"Clear History" = "清除历史记录";
+
+"You will no longer receive messages from this group chat." = "您将不再接收此群组发出的消息";
+
+"Google Contacts" = "Google通讯录";
+
+"Facebook Contacts" = "Facebook通讯录";
+
+"Invite" = "邀请";
+
+"Send message..." = "发送信息...";
+
+"Save" = "保存";
+
+"Time Zone" = "时区";
+
+"Meeting Type" = "会议类型";
+
+"Screen Share Meeting" = "屏幕共享会议";
+
+"Video Meeting" = "视频会议";
+
+"Myself" = "我自己";
+
+"Schedule for" = "安排给";
+
+"Start Chat" = "开始聊天";
+
+"Take a Photo" = "拍照";
+
+"Photo Album" = "相册";
+
+"Meeting ID: %@" = "会议ID: %@";
+
+"Today" = "今天";
+
+"Screen Name" = "屏幕姓名";
+
+"OR, JOIN BY MEETING ID" = "或通过会议ID加入";
+
+"Version" = "版本";
+
+"Personal Meeting ID" = "个人会议ID";
+
+"Linked Account" = "绑定帐号";
+
+"Not Linked" = "未绑定";
+
+"My Profile" = "我的资料";
+
+"Link Account Description" = "请绑定您的账号以便召开或安排会议，并拥有您的个人会议ID。";
+
+"Unlink Account Description" = "解除绑定您的账号将无法召开或安排会议。";
+
+"Link Account" = "绑定帐号";
+
+"Unlink Account" = "解除绑定账号";
+
+"Delete and Quit" = "删除并退出";
+
+"Delete and Leave" = "删除并离开";
+
+"Name" = "姓名";
+
+"Failed to change your name, please try again." = "无法更改您的姓名，请重试";
+
+"First Name" = "名";
+
+"Last Name" = "姓";
+
+"Applying..." = "提交中...";
+
+"Uploading..." = "上传中...";
+
+"Failed to upload your profile photo." = "无法上传您的照片";
+
+"Failed to save photo to disk, maybe your disk is full." = "无法保存相片，请检查您的设备存储空间";
+
+"You changed the group name to \"%@\"" = "您将群消息更名为\"%@\"";
+
+"%@ changed the group name to \"%@\"" = "%@将群消息更名为\"%@\"";
+
+"You've invited %@ to the group chat" = "您邀请%@加入聊天";
+
+"%@ invited %@ to the group chat" = "%@邀请%@加入聊天";
+
+"%@ invited you and %@ to the group chat" = "%@邀请您和%@加入聊天";
+
+"%@ invited you to the group chat" = "%@邀请您加入聊天";
+
+"%@ has quit the group chat" = "%@退出聊天";
+
+"You've remove %@ from the group chat" = "您将%@从群消息中移除";
+
+"%@ removed %@ from the group chat" = "%@将%@从群消息中移除";
+
+"%@ removed you from the group chat" = "%@把您从群消息中移除";
+
+"Type your favorite 10-digits ID" = "输入您的十位数ID";
+
+"Type your favorite 11-digits ID" = "输入您的十一位数ID";
+
+"The ID you input is not valid." = "您输入的ID无效";
+
+"Your Personal Meeting ID cannot start with 0 or 1" = "您的个人会议ID不能以0或1为开头";
+
+"Recommended to use your phone number as your Personal Meeting ID" = "建议使用您的手机号码作为您的个人会议ID";
+
+"Google" = "Google";
+
+"Facebook" = "Facebook";
+
+"SSO" = "SSO";
+
+"Please input your email and password" = "请输入您的邮箱地址和密码";
+
+"Or, Sign In With" = "或登录";
+
+"Invite your contacts to join this meeting" = "邀请您的联系人加入此会议";
+
+"Audio" = "音频";
+
+"Video" = "视频";
+
+"Join Audio" = "加入音频";
+
+"Participant" = "参与人";
+
+"Please select a phone number to chat" = "请选择一个电话号码";
+
+"Disconnected" = "未连接";
+
+"Chats (%d)" = "聊天(%d)";
+
+"Please sign in to check your upcoming meetings" = "请登录您的账号以便查看我的会议";
+
+"(US/Canada only)" = "(只限美国/加拿大用户)";
+
+/* For NOS Format String*/
+"NOS_VIDEO" = "%@想与您视频通话";
+
+"NOS_AUDIO" = "%@想与您通话";
+
+"NOS_SHARE" = "%@想向您共享屏幕";
+
+"NOS_VOICEMSG" = "%@发送了一个语音消息";
+
+"NOS_IMAGEMSG" = "%@发送了一张图片";
+
+"NOS_FILEMSG" = "%@发送了一个文件";
+
+"NOS_ACCEPTREQUEST" = "%@接受了您的请求";
+
+"NOS_ACCEPT" = "接受";
+
+"Disconnect Internet Audio" = "断开";
+
+"Switch Audio Source" = "切换声音源";
+
+"Switch to using Internet" = "切换到设备语音";
+
+"Call via Internet" = "通过设备语音加入";
+
+"Dial in" = "呼入";
+
+"[Image]" = "[图片]";
+
+"[Voice]" = "[声音]";
+
+"[File]" = "[文件]";
+
+"Audio Feedback Detected Tooltip" = "由于有回音您的音频设备已断开，请点击重连";
+
+"Login SSO" = "登录SSO";
+
+"Login with SSO" = "登录SSO";
+
+"company domain" = "企业域名";
+
+"Enter your company domain" = "输入您的企业域名";
+
+"I don't know the company domain" = "不太清楚我的企业域名";
+
+"Invalid email" = "无效邮件地址";
+
+"No matching domain found" = "没有找到匹配的域名";
+
+"Network error, please try later." = "网络错误，请稍后重试。";
+
+"Find domain by email address" = "通过邮件地址匹配企业域名";
+
+"Your company email address" = "您的企业邮件地址";
+
+"Manually enter domain" = "手动输入域名";
+
+"Login Google" = "登录Google";
+
+"This Contact is using old version which not support Chat." = "由于此联系人仍在使用较早的版本，因此无法使用群消息";
+
+//For Annotation and Whiteboard"Whiteboard" = "白板";
+
+"Spotlight" = "激光笔";
+
+"Highlighter" = "荧光笔";
+
+"Pen" = "钢笔";
+
+"Undo" = "撤销";
+
+"Redo" = "重做";
+
+"Color" = "颜色";
+
+"Line" = "直线";
+
+"Arrow" = "箭头";
+
+"Rectangle" = "矩形";
+
+"Oval" = "椭圆";
+
+"Text" = "文字";
+
+"Edit" = "编辑";
+
+"Line width (%dpt)" = "线条宽度(%d像素)";
+
+
+"Eraser" = "擦除";
+
+"Clear" = "清空";
+
+"Save to Photos Album" = "保存到相册";
+
+"Hold To Talk" = "按住说话";
+
+"Voice is too short" = "录制的语音太短";
+
+"Move up will cancel" = "手指上滑取消发送";
+
+"Release to cancel" = "松开手指取消发送";
+
+"Switch to Active Speaker" = "切换到正在发言的人";
+
+"Switch to Screen Share" = "切换到正在共享的屏幕";
+
+"Favorite" = "企业通讯录";
+
+"Add Business Contacts" = "添加企业联系人";
+
+"Use Photo" = "使用照片";
+
+"Add to Zoom Contact" = "添加到Zoom联系人";
+
+"Create New Contact" = "创建新联系人";
+
+"Remove Contact" = "移除联系人";
+
+"Add to Existing Contact" = "添加到现有联系人";
+
+"Failed to start a group chat for network" = "无法启动群消息，请检查网络连接";
+
+"Failed to start a group chat for more members" = "由于组员已达50人上限，无法启动群消息";
+
+"Failed to add buddies to the group chat for network" = "无法在群消息中添加联系人，请检查您的网络连接";
+
+"Failed to add buddies to the group chat for more members" = "由于组员已达50人上限，无法再添加联系人";
+
+"wants to add you to the IM list." = "想将您添加至IM列表中";
+
+"Message Notifications" = "消息通知";
+
+"Upgrade to pro to get your favorite personal meeting ID" = "升级至Pro账号以便更改您的个人会议ID";
+
+"AirPlay Setting Mode" = "如果您想通过Airplay显示Zoom，请打开这个选项";
+
+"Start attendee on hold" = "设为等待状态";
+
+"Stop attendee on hold" = "取消等待状态";
+
+"You are on hold" = "您处于等待状态";
+
+"Request Share Permission" = "主持人锁定了参与人屏幕共享的权限。";
+
+"IDS_ZOOM_DESCRIPTION" = "ZOOM Cloud Meetings";
+
+"IDS_DEFAULT_MEETING_TOPIC" = "%@的Zoom会议";
+
+"Unable to start a group message. (Error Code: %d)" = "无法启动群消息 (错误代码: %d)";
+
+"Unable to add contacts to the group message. (Error Code: %d)" = "无法在群消息中添加联系人 (错误代码: %d)";
+
+"Unable to change the topic" = "无法更改主题";
+
+"Unable to leave this group message. (Error Code: %d)" = "无法离开群消息 (错误代码: %d)";
+
+"Unable to remove the contact from this group message. (Error Code: %d)" = "从群消息中排除联系人失败 (错误代码: %d)";
+
+"Group Chat" = "群聊";
+
+"Personal Meeting ID (PMI)" = "个人会议ID(PMI)";
+
+"Use PMI for instant meeting" = "总是使用PMI召开会议";
+
+"Edit PMI overtime" = "无法编辑会议。请检查您的网络连接并重试。";
+
+"Edit PMI unknown error" = "无法编辑会议，错误代码：%d";
+
+"Auto Connect Internet Audio" = "自动连接语音";
+
+"Auto Connect Internet Audio Setting" = "加入会议时自动连接设备语音";
+
+"Always Mute My Microphone" = "麦克风自动静音";
+
+"Always mute my microphone when joining others' meeting" = "当使用互联网音频加入会议时，我的麦克风自动静音";
+
+"Always Mute My Video" = "不自动打开摄像头";
+
+"Always mute my video when joining others' meeting" = "当加入会议时不要自动打开我的摄像头";
+
+"Allow participants unmute themselves" = "允许参会者解除自我静音";
+
+"IDS_ERROR_TEMPLATE_MATCH_PHONE_NUMBER" = "无法开启聊天 (错误代码:%d)";
+
+"IDS_INVALID_PHONENUMBER_INPUT" = "请输入有效的电话号码";
+
+"Can not edit meeting ID while meeting is in progress" = "会议进行时不允许更改会议ID";
+
+"Failed to apply Personal Meeting ID. Error code: %d." = "无法更新个人会议ID，错误代码：%d";
+
+"Upcoming Meetings" = "我的会议";
+
+"Start Meeting" = "开始会议";
+
+"Delete Meeting" = "删除会议";
+
+"Connecting to SSO service..." = "正在连接SSO服务...";
+
+"Done" = "完成";
+
+"Search" = "搜索";
+
+"Find users and add to Company Contacts" = "发现用户并添加到企业通讯录";
+
+"Please input full email address" = "请输入完整的电子邮箱地址";
+
+"No users in your account" = "当前帐号没有好友，请点击添加。";
+
+"Configure Account" = "配置账号";
+
+"All and new participants will be muted." = "所有以及新加入的参与者将被静音。";
+
+"Link to Zoom International" = "绑定到Zoom International";
+
+"Profile Photo" = "头像";
+
+"To invite people to Google IM, type their email addresses below:" = "输入电子邮箱地址，邀请他人加入谷歌IM:";
+
+"Join Meeting from Link Hint" = "如果您收到了一个邀请链接，请再次点击它加入会议。";
+
+"Company Copyright" = "Copyright ©2012-2016 Zoom Video Communications, Inc. All rights reserved.";
+
+"Invited" = "已邀请";
+
+"Reset Password Hint" = "请输入您的电子邮箱地址以便重置密码。您可能要到垃圾邮件中查找密码重置邮件，或将 no-reply@zoom.us 添加至白名单";
+
+"Using fingers for remote control" = "通过手指进行远程控制";
+
+"One finger tap" = "一根手指轻击";
+
+"One finger single tap for mouse left-click" = "一根手指单击相当于鼠标左键点击";
+
+"One finger double taps" = "一根手指双击";
+
+"One finger double taps for mouse left double-click" = "一根手指双击相当于鼠标左键双击";
+
+"One finger long tap" = "一根手指长按";
+
+"One finger long tap for mouse right-click" = "一根手指长按相当于鼠标右键单击";
+
+"Two fingers scroll" = "两根手指滚动";
+
+"Two fingers scroll for up and down mouse scroll" = "两根手指滚动相当于鼠标滚轮上翻和下翻";
+
+"Two fingers pinch" = "两根手指捏放";
+
+"Two fingers pinch in or out to zoom in or zoom out" = "通过两只手指捏放来控制放大或缩小";
+
+"Mouse icon" = "鼠标图标";
+
+"Use mouse icon to move remote mouse" = "使用鼠标图标区移动远程鼠标";
+
+"BUSINESS MESSAGING & MOBILE MEETINGS" = "Group Messaging & Mobile Meetings";
+
+"Click Add button above to add company contacts" = "点击上方的添加按钮添加联系人";
+
+"Reconnect" = "重新连接";
+
+"Set Password Hint" = "谢谢您选择Zoom，您的账号已经激活，请设置您的密码以便登录。";
+
+"Set Password Successfully" = "您的密码已经成功重置。";
+
+"Share Whiteboard" = "共享白板";
+
+"Join Meeting" = "加入会议";
+
+"AddressBook No Access" = "由于无法调用您的手机通讯录，无法显示正在使用Zoom的联系人。\n\n若希望Zoom调用，请进入iPhone设置->隐私->通讯录，将Zoom的状态设为打开。";
+
+"Click enable to show contacts using Zoom." = "点击此处显示电话通讯录中哪些联系人在使用Zoom。";
+
+"Enable" = "启用";
+
+"We don't store any contact information" = "我们无法保存任何联系人信息";
+
+"Loading Contacts..." = "正在加载联系人...";
+
+"You have no contacts in your address book." = "您的地址簿中没有任何联系人信息。";
+
+"End Call" = "结束";
+
+"Please enable address book matching in Contacts" = "请启用通讯录以匹配联系人";
+
+"Zoom does not store your contact information in our cloud" = "Zoom不会将您的联系人信息保存到云端";
+
+"A reset password email was sent to name@email.com" = "重置后的密码已经发送到 name@email.com";
+
+"Next" = "下一步";
+
+"Forgot password?" = "忘记密码？";
+
+"Forgot Password" = "忘记密码";
+
+"Email" = "邮箱";
+
+"Sign up" = "注册";
+
+"Start" = "开始";
+
+"Send Invitation" = "发送邀请";
+
+"No Upcoming Meetings" = "没有即将开始的会议";
+
+"The scheduled meetings will be listed here." = "安排好的会议将在此处显示。";
+
+"We show your phone contacts on Zoom" = "手机通讯录中使用Zoom的联系人将会被显示";
+
+"Verification SMS has been sent to" = "验证码已发送至";
+
+"Enter verification code here" = "请在此输入验证码";
+
+"A confirmation email is sent to name@email.com" = "确认邮件已经发送至 name@email.com";
+
+"I agree to the Terms of Service" = "我同意服务条款";
+
+"Terms of Service" = "服务条款";
+
+"Send Confirmation Email Again" = "重新发送确认邮件";
+
+"Required" = "必填";
+
+"Search Topic" = "搜索主题";
+
+"Sign in Zoom International" = "登录到ZOOM国际版";
+
+"Sign Out" = "退出登录";
+
+"Camera" = "拍照";
+
+"Select from Photo Album" = "从手机相册选择";
+
+"Meeting ID is a 9 or 10 digits number" = "会议ID是一串九至十一位的数字";
+
+"Meeting Password (optional)" = "会议密码 (可选)";
+
+"Allow Join Before Host" = "允许在主持人之前加入会议";
+
+"Select files then share" = "请选择文件后共享";
+
+"Select Contacts" = "选择联系人";
+
+"Spot" = "点";
+
+"Loading..." = "加载中...";
+
+"Load file from Dropbox fail." = "从Dropbox加载文件失败";
+
+"Connect to Dropbox fail." = "连接Dropbox失败";
+
+"Loading File..." = "加载文件中...";
+
+"Connect to Google Drive fail." = "连接GoogleDrive失败";
+
+"Connect to One Drive fail." = "连接OneDrive失败";
+
+"Connect to One Drive Business fail." = "连接OneDrive Business失败";
+
+"Load file from Google Drive fail." = "从GoogleDrive加载文件失败";
+
+"Load file from One Drive fail." = "从OneDrive加载文件失败";
+
+"Release to refresh..." = "松开刷新...";
+
+"Pull down to refresh..." = "下拉刷新...";
+
+"Time Left: %ds" = "剩余时间: %d秒";
+
+"RRect" = "圆角矩形";
+
+"Arrow" = "箭头";
+
+"Rect" = "矩形";
+
+"Picker" = "选取";
+
+"Eraser" = "擦除";
+
+"Lighter" = "亮度";
+
+"More..." = "更多...";
+
+"Claim Host" = "申请当主持人";
+
+"Waiting for the host to start this meeting" = "等待主持人开始会议";
+
+"Failed to record voice" = "录音失败，错误代码: %d。";
+
+"Failed to play voice" = "播放失败，错误代码: %d。";
+
+"Feedback and Support" = "如需技术支持，请访问Zoom支持。\n\n我们欢迎任何关于Zoom的意见，想法和建议。请在这填写反馈:";
+
+"Zoom Support" = "Zoom支持";
+
+"Please sign in to start a meeting" = "请登录您的账号以便召开会议";
+
+"IDS_NEW_VERSION_READY" = "Zoom有新版本啦！您是否想现在更新?";
+
+"Later" = "以后再说";
+
+"Are you sure to remove %@ from your favorite list?" = "您确定将%@移除出您的好友列表吗?";
+
+"Load file from Box fail." = "从Box加载文件失败";
+
+"An error occurred while retrieving data" = "获取数据时出现错误";
+
+"Toll Free:" = "免费电话:";
+
+"International numbers available" = "国际号码可用";
+
+"Save to Phone" = "保存图片";
+
+"Saved to Album" = "已保存到手机相册";
+
+"Failed to save" = "保存失败";
+
+"Copied" = "复制成功";
+
+"Resend" = "重发";
+
+"Copy" = "复制";
+
+"Delete" = "删除";
+
+"Congratulations! You have successfully changed your personal meeting ID." = "恭喜! 您已经成功更改您的个人会议ID。";
+
+"The ID is occupied, try another one please." = "这个ID已被使用，请选择一个新ID。";
+
+"Resend Message" = "重新发送信息";
+
+"Apply" = "应用";
+
+"Enter email addresses here, separated by commas." = "请在此输入电子邮箱，多个邮箱间用逗号分隔。";
+
+"Reset Password" = "重置密码";
+
+"Set Your Password" = "设置密码";
+
+"New Password (required)" = "新密码 (必填)";
+
+"Confirm Password (required)" = "确认密码 (必填)";
+
+"Email Address" = "电子邮箱";
+
+"Invalid email or password" = "无效的邮箱或密码";
+
+"Authentication failed, please try it again" = "认证失败，请重试";
+
+"Enter meeting ID or click meeting link" = "输入会议ID或点击会议链接";
+
+"Start or Schedule a Meeting" = "召开或安排一个会议";
+
+"Start or schedule your meetings" = "召开或安排您的会议";
+
+"Groups" = "群组";
+
+"New Group" = "新建群组";
+
+"Create a name for this group" = "创建群组名称";
+
+"Group Name" = "群组名称";
+
+"%@, %@ & others" = "%@、%@和其他人";
+
+"%@, %@, %@" = "%@、%@、%@";
+
+"%@, %@" = "%@、%@";
+
+"%d characters left" = "剩余 %d 个字符";
+
+"New Chat" = "开始聊天";
+
+"Start a Chat" = "开始聊天";
+
+"Select people to join this group" = "选择联系人加入群组";
+
+"Select people to start this chat" = "选择联系人开始聊天";
+
+"Select people to join this meeting" = "选择联系人加入会议";
+
+"Added" = "已增加";
+
+"Create" = "创建";
+
+"Phone Contacts" = "手机联系人";
+
+"Company Contacts" = "企业联系人";
+
+"Select people to add to contact list" = "选择加入联系人列表";
+
+"Search More" = "搜索更多";
+
+"Click to re-activate your messenger" = "点击此处重新激活您的Zoom消息";
+
+"Click to re-activate your zoom service" = "点击此处重新激活您的Zoom服务";
+
+"Connection Disconnected by Conflict" = "您的帐号已在其他设备上登录, 消息连接已中断";
+
+"Sign in again" = "重新登录";
+
+"Q&A" = "问答";
+
+"You" = "您";
+
+"Ask" = "提问";
+
+"Open" = "未回答";
+
+"Open(%d)" = "未回答(%d)";
+
+"Answered" = "已回答";
+
+"Answered(%d)" = "已回答(%d)";
+
+"asked:" = "提问：";
+
+"answered:" = "回答：";
+
+"New Question" = "新的问题";
+
+"Anonymous viewer" = "匿名与会者";
+
+"Ask Anonymously" = "匿名提问";
+
+"Answer privately" = "私下回答";
+
+"answered privately:" = "私下回答：";
+
+"answered this live." = "完成语音回答。";
+
+"would like answer this live." = "正在语音回答。";
+
+"Add an Answer" = "添加回答";
+
+"Answer this Live" = "语音回答";
+
+"Answer by Text" = "文字回答";
+
+"Input your question here" = "在这里输入您的问题";
+
+"Input your answer here" = "在这里输入您的回答";
+
+"There is no open question" = "无未回答的问题";
+
+"There is no answered question" = "无已回答的问题";
+
+"You have no questions" = "您还未提出问题";
+
+"Tap OK to register this webinar" = "您必须先注册，然后再参加这个网络研讨会";
+
+"You are disconnected from Q&A session" = "问答会话已经断开。";
+
+"Another device joined this webinar" = "您的账号已通过其他设备加入了这个网络研讨会，问答会话已经断开。";
+
+"Start a Meeting" = "召开会议";
+
+"Video On" = "打开视频";
+
+"Use Personal Meeting ID (PMI)" = "使用个人会议ID (PMI)";
+
+"PMI" = "PMI";
+
+"Network is unavailable" = "网络连接不可用";
+
+"Host Video On" = "主持人视频开启";
+
+"Attendee Video On" = "与会人视频开启";
+
+"Audio Option" = "音频选项";
+
+"Telephony Only" = "仅支持电话";
+
+"Voip Only" = "仅支持Voip";
+
+"Both" = "支持Voip和电话";
+
+"Call Me" = "打电话给我";
+
+"Invite by Phone" = "电话邀请";
+
+"Input your phone number to call" = "输入您的电话号码";
+
+"Input invitee's name and phone number to call" = "请输入邀请人的名字和电话号码";
+
+"Call" = "呼叫";
+
+"Hang Up" = "挂断";
+
+"Calling..." = "呼叫中...";
+
+"Ringing..." = "响铃中...";
+
+"Incoming Call" = "来电";
+
+"Call Accepted" = "呼叫成功";
+
+"Call Busy" = "占线";
+
+"Fail to Call" = "呼叫失败";
+
+"Disconnecting Call" = "断开呼叫";
+
+"Call Canceled" = "呼叫已取消";
+
+"Fail to disconnect call" = "断开呼叫失败";
+
+"Invite H.323/SIP Room System" = "邀请H.323/SIP会议室系统";
+
+"Enter pairing code on your room system screen" = "请输入会议室系统屏幕上的配对码";
+
+"pairing code" = "配对码";
+
+"No Contacts" = "无联系人";
+
+"Click Add button above to add contacts" = "点击上方的添加按钮添加联系人";
+
+"Specify New Message Sound" = "接收新消息时，您可以设置是否需要声音提示";
+
+"Specify New Message Sound or Vibration" = "接收新消息时，您可以设置是否需要声音或振动提示";
+
+"Enable Zoom Messenger Notifications" = "如果Zoom的新消息通知被禁用，请在iPhone的\"设置\"-\"通知\"功能中，找到应用程序\"Zoom\"更改";
+
+"Failed to Call Out" = "呼叫失败，请选择一个国家代码是Zoom支持的电话号码并重试。";
+
+"Failed to Add Zoom Contact" = "无法添加Zoom联系人，请检查您的消息连接。";
+
+"Failed to Remove Zoom Contact" = "无法移除Zoom联系人，请检查您的消息连接。";
+
+"You are not member in this group" = "您已不是该群成员";
+
+" (Host,me)" = " (主持人,我)";
+
+" (CoHost,me)" = " (联席主持人,我)";
+
+" (Host)" = " (主持人)";
+
+" (CoHost)" = " (联席主持人)";
+
+" (me)" = " (我)";
+
+" (On Hold)" = " (等待状态)";
+
+"Cancel Mute On Entry" = "取消静音加入";
+
+"Mute On Entry" = "静音加入";
+
+"Remove Enter/Exit Chime" = "移除进出提示音";
+
+"Play Enter/Exit Chime" = "播放进出提示音";
+
+"Raised Hands (%d)" = "举手 (%d)";
+
+"Raise Hand" = "举手";
+
+"Lower Hand" = "停止举手";
+
+"Lower All Hands" = "全部停止举手";
+
+"Fail to Pairing, Error code: %d" = "配对失败，错误代码: %d";
+
+"%d Participants raised hand" = "%d 个与会者举手";
+
+"%@ raised hand" = "%@ 举手";
+
+"Failed to sign in, Error code: %d" = "登录失败，错误代码: %d";
+
+"Failed to set password, Error code: %d" = "设置密码失败，错误代码: %d";
+
+"Failed to send email, Error code: %d" = "发送邮件失败，错误代码: %d";
+
+"Can't Sign in, Please check your network connection." = "登录失败，请检查您的网络连接。";
+
+"Mic unavailable" = "麦克风不可用，请尝试重启机器。";
+
+"You already have a call in progress" = "您已有一个呼叫在进行中";
+
+"Dial:" = "拨号:";
+
+"Toll" = "付费电话";
+
+"Toll Free" = "免费电话";
+
+"Participant ID" = "参与人ID";
+
+"International numbers" = "国际号码";
+
+"Failed to start a group chat for messenger connection" = "无法启动群消息，请检查您的消息连接。";
+
+"Failed to add contacts to the group message for messenger connection" = "无法添加联系人，请检查您的消息连接。";
+
+"Invite a Room System" = "邀请会议室系统";
+
+"Enter the pairing code below" = "或在下面输入配对码";
+
+"Dial from your H.323/SIP" = "从您的H.323/SIP会议系统拨号";
+
+"IP Address" = "IP地址";
+
+"\n or " = "\n 或 ";
+
+"Your microphone is muted" = "您的麦克风已被静音";
+
+"Your microphone is unmuted" = "您的麦克风已解除静音";
+
+"Your video is stopped" = "您的视频已被停止";
+
+"Enable Attendee Annotation" = "启用与会者注释";
+
+"Disable Attendee Annotation" = "禁用与会者注释";
+
+"Unable to record voice for storage space." = "无法录音，请检查您的设备存储空间";
+
+"Enable phone contacts matching description" = "启用手机联系人匹配帮助您发现更多使用Zoom的联系人";
+
+"Host has stopped your video" = "您的视频已被主持人停止";
+
+"Gallery View" = "视频墙视图";
+
+"Speaker View" = "演讲者视图";
+
+"Show Offline Contacts" = "显示离线联系人";
+
+"(Admin)" = "(管理员)";
+
+"Add to Contacts List" = "添加到联系人列表";
+
+"Contact Requests" = "联系人请求";
+
+"%d Contact Requests" = "联系人请求 (%d)";
+
+"1 Contact Request" = "联系人请求 (1)";
+
+"Cannot add this contact. The contact is running an older version of Zoom" = "无法添加此好友，对方正使用较早版本的Zoom。";
+
+"Your request has been sent successfully!" = "您的请求已成功发送！";
+
+"Unable to add a Zoom contact" = "无法添加Zoom联系人。";
+
+"Viewers" = "观众";
+
+"Viewers (%d)" = "观众 (%d)";
+
+"Panelists (%d)" = "嘉宾 (%d)";
+
+"Zoom Messenger Network Connection Error" = "Zoom消息连接失败，请检查您的网络连接。";
+
+"Unable to access contacts" = "通讯录被禁用";
+
+"Contacts Privacy Settings" = "请在iPhone的“设置”-“隐私”-“通讯录”中允许Zoom访问您的通讯录。";
+
+"Failed to handle contact request" = "无法处理此联系人请求，请检查您的消息连接。";
+
+"Home" = "首页";
+
+"Meet" = "会议";
+
+"Meet & Chat" = "会议与聊天";
+
+"Total %d phone call-in listeners" = "共 %d 个电话呼入与会者";
+
+"Total %d phone call-in listener" = "共 %d 个电话呼入与会者";
+
+"Enter user name and password" = "请输入用户名和密码";
+
+"Third Party Audio" = "第三方提供的电话会议";
+
+"Please input 3rd party audio info" = "请输入您的电话会议信息";
+
+"Use PMI (%@)" = "使用PMI (%@)";
+
+"Use PMI" = "使用PMI";
+
+"Pause" = "暂停";
+
+"Resume" = "继续";
+
+"Recording..." = "录制中...";
+
+"Record Paused" = "录制已暂停";
+
+"Stop Recording" = "停止录制";
+
+"Start Recording..." = "启动录制中...";
+
+"Record to the Cloud" = "录制到云端";
+
+"%@ of %@" = "%@ of %@";
+
+"%@ of %@ (%@/sec)" = "%@ of %@ (%@/秒)";
+
+"Do you want to download this file using your mobile data network?" = "您想用您的移动数据网络下载这个文件吗？";
+
+"Failed to connect CMR" = "无法连接云端媒体录制服务器";
+
+"Confirm to stop connecting cloud recording" = "您确定要停止云端录制吗？";
+
+"Confirm to stop cloud recording" =  "您确定要停止云端录制吗？如果是的话，当云端录制完成后您将会收到一封邮件通知。";
+
+"Record" = "录制";
+
+"Stop Record" = "停止录制";
+
+"Open in" = "打开";
+
+"Your %@ doesn't seem to have any other Apps installed that can open this document." = "您的%@上没有其他的应用可以打开这个文件。";
+
+"No suitable App installed" = "没有合适的应用";
+
+"Select a file" = "选择一个文件";
+
+"Password: %@" = "密码: %@";
+
+"Authenticate using Touch ID?" = "通过指纹来认证？";
+
+"There was a problem verifying your identity" = "无法认证你的指纹。";
+
+"Confirm to sign in with Touch ID" = "您是否希望通过指纹来登录？";
+
+"Confirm to logout to enable Touch ID" = "您是否希望重新登录并启用指纹登录?";
+
+"Use Touch ID" = "使用指纹登录";
+
+"H.323" = "H.323";
+
+"SIP" = "SIP";
+
+"Dial In" = "拨入";
+
+"Call Out" = "呼出";
+
+"IP address or E.164 number" = "IP地址 或 E.164号码";
+
+"IP address or URL" = "IP地址 或 URL";
+
+"CHOOSE YOUR ROOM SYSTEM TYPE" = "选择你的会议系统类型";
+
+"ENTER IP ADDRESS OR H.323 EXTENSION" = "输入你的IP地址或者H.323扩展";
+
+"H.323 extension is also known as E.164 number" = "H.323扩展也被称为E.164号码";
+
+"Missed Call" = "未接来电";
+
+"Incoming Call - Declined" = "来电-已拒接";
+
+"Preparing" = "准备中";
+
+"Waiting for %@ to approve your request" = "等待%@批准您的请求";
+
+"%@ requested to control your camera" = "%@请求控制您的摄像头";
+
+"%@ declined your request of camera control" = "%@拒绝了您控制摄像头的请求";
+
+"Request approved. You can now control %@'s camera" = "请求批准。您现在可以控制%@的摄像头";
+
+"%@ has controlled your camera" = "%@已经控制您的摄像头";
+
+"%@ no longer controls your camera" = "%@不再控制您的摄像头";
+
+"Confirm to send this message" = "您确定要发送该消息吗？";
+
+"Private chat has been disabled" = "私聊功能已被关闭";
+
+"You can’t start your video" = "主持人已将您的视频关闭，您无法自我开启";
+
+"%@ will start video later" = "%@将晚点开启视频";
+
+"The Host has asked you to start your video" = "主持人希望能开启您的视频";
+
+"Host meeting in China" = "使用中国专用线路";
+
+"Pure Audio Conference" = "纯电话会议";
+
+"Dial-in Number" = "拨入号码";
+
+"Host Key" = "主持人密钥";
+
+"Select @ Contact" = "选择提醒的联系人";
+
+"[You were mentioned]" = "[有人@我]";
+
+"Disconnect Audio" = "断开音频";
+
+"Speaker On" = "扬声器开启";
+
+"Speaker Off" = "扬声器关闭";
+
+"Headphones" = "耳机";
+
+"Bluetooth" = "蓝牙";
+
+"Stop Video" = "关闭视频";
+
+"Start Video" = "开启视频";
+
+"Share Content" = "共享";
+
+"Participants" = "参与人";
+
+"More" = "更多";
+
+"To hear others\n please join audio" = "为了听到他人\n 请加入音频";
+
+"You have accepted the invitation from another device" = "您已经从另一个设备接受了邀请";
+
+"You have declined the invitation from another device" = "您已经从另一个设备拒绝了邀请";
+
+"Assign CoHost" = "设为联席主持人";
+
+"Remove CoHost" = "取消联席主持人权限";
+
+"Do you want to make %@ the cohost of this meeting" = "您想让%@成为这个会议的联席主持人吗？";
+
+"You has been assigned as cohost of the meeting" = "您已成为联席主持人";
+
+"Your cohost permission has been retrieved by host" = "您被取消联席主持人权限";
+
+"%@ has been assigned as cohost of the meeting" = "%@已成为联席主持人";
+
+"%@'s cohost permission has been retrieved by host" = "%@被取消联席主持人权限";
+
+"System Notification" = "系统通知";
+
+"Add a Contact" = "添加一个联系人";
+
+"%@ requests to add you as a contact" = "%@ 请求加您为联系人";
+
+"requests to add you as a contact" = "请求加您为联系人";
+
+"contact request sent" = "联系人请求已发送";
+
+"Contact request has been sent to %@" = "联系人请求已发送至 %@";
+
+"An email invitation has been sent to %@" = "邮件邀请已发送至 %@";
+
+"accepted your contact request" = "接受了您的联系人请求";
+
+"declined your contact request" = "拒绝了您的联系人请求";
+
+"%@ accepted your contact request" = "%@ 接受了您的联系人请求";
+
+"%@ declined your contact request" = "%@ 拒绝了您的联系人请求";
+
+"Invite to use Zoom" = "邀请使用Zoom";
+
+"Add Contact" = "添加联系人";
+
+"Enter an Email Address" = "输入邮件地址";
+
+"Enter someone's email or phone number to find them on Zoom" = "输入邮件地址查找Zoom用户";
+
+"Could not match %@ to a person on Zoom" = "Zoom用户中无人匹配 %@";
+
+"Add contact overtime" = "无法添加联系人。请检查您的网络连接并重试。";
+
+"Already my buddy, can not request contact" = "已经是您的联系人，无须发送请求";
+
+"Accepted" = "已接受";
+
+"Declined" = "已拒绝";
+
+"Pending" = "待处理";
+
+"Put Attendee On Hold Upon Entry" = "等待状态加入";
+
+"Cancel Attendee On Hold Upon Entry" = "取消等待状态加入";
+
+"Your token is expired" = "您的登录信息已经过期，请重新登录！";
+
+"Your account does not exist" = "您的账号已经不存在。";
+
+"Your account is inactive or locked" = "您的账号已停用或已锁定。";
+
+"Disable Auto Accept Call" = "禁止自动接受呼叫";
+
+"Enable Auto Accept Call" = "开启自动接受呼叫";
+
+"You will accept %@'s meeting invitation automatically" = "您将自动接受%@的会议邀请";
+
+"You will deal with %@'s meeting request manually" = "您将手动处理%@的会议请求";
+
+"Country or Region" = "国家或地区";
+
+"PICK A COUNTRY OR REGION" = "选择一个国家或地区";
+
+"DIAL NUMBER" = "拨号号码";
+
+"MEETING INFORMATION" = "会议信息";
+
+"Confirm to start group call" = "您将要开始会议并邀请所有群组成员，是否确定？";
+
+"Group Meeting" = "群组会议";
+
+"Save to Contacts" = "保存群组联系人";
+
+"You can save a group by turning on option" = "您可以通过群组聊天中的“保存群组联系人”功能将群组联系人保存在这里。";
+
+"You are muted by host" = "您已被主持人静音";
+
+"You are unmuted by host" = "您已被主持人解除静音";
+
+"The host has muted all participants" = "主持人已将所有参会者静音";
+
+"The host has unmuted all participants" = "主持人已将所有参会者解除静音";
+
+"Chat Groups" = "聊天群组";
+
+"View More" = "查看更多";
+
+"Keep meeting running tip" = "如果您不想中断会议，请在离开前指定一个主持人";
+
+"Leave With Telephone Connected" = "离会但保持电话接通";
+
+"Notify everyone in the group" = "通知群组中所有人";
+
+"Unable to save" = "无法保存";
+
+"," = "、";
+
+"You have been removed from this group." = "您已经被从该讨论组中移除。";
+
+"You've changed password on web, please login with your new password." = "您已经在网页上更改了登录密码,请重新使用新密码登录。";
+
+"Security Certificate" = "加密认证";
+
+"Security Certificate Tip" = "是否信任这个连接?\n\n颁发给: %@\n颁发自: %@\n序列号: %@\n指纹: %@";
+
+"You have reached the Maximum number of group members." = "本组成员已达上限。";
+
+"Sign In as Host" = "主持人身份登录";
+
+"Enter Hostkey to Claim Host" = "申请当主持人";
+
+"Enter Hostkey" = "输入Host Key";
+
+"Claim host %@ by hostkey" = "主持人%@现在不在会议里面，请输入Host Key申请当主持人";
+
+"Invalid hostkey tip" = "您输入的Host Key无效，请尝试再次输入";
+
+"Hostkey is a 6-digit number" = "Host Key是一串六位的数字";
+
+"Join webinar fail with same email tip" = "该邮件地址已经被其他人注册使用，请使用另一个邮箱地址";
+
+"User unsupport annotation join tip" = "因为注释功能被禁止，所以您的与会者需要更新到最新的版本才能共享他们的屏幕";
+
+// Accessibility
+"TextView" = "文本栏";
+
+"Double tap to edit" = "双击进行编辑";
+
+"Switch to audio input" = "切换到语音输入";
+
+"Switch to text input" = "切换到文字输入";
+
+"Option" = "选项";
+
+"Refresh" = "刷新";
+
+"Agree" = "同意";
+
+"Not Agree" = "不同意";
+
+"Meeting History" = "会议记录";
+
+"Photo" = "图片";
+
+"No Audio" = "无音频";
+
+"No Video" = "无视频";
+
+"Telephony" = "电话";
+
+"Voip" = "Voip";
+
+"Muted" = "静音";
+
+"Unmuted" = "开启";
+
+"Audio Muted" = "音频静音";
+
+"Audio Unmuted" = "音频开启";
+
+"Video Muted" = "视频关闭";
+
+"Video Unmuted" = "视频开启";
+
+"Recording" = "记录";
+
+"Hand Raising" = "举手";
+
+"Displaying %@'s Video" = "正在显示%@的视频";
+
+"Displaying %@'s Avatar" = "正在显示%@的头像";
+
+"Displaying %@" = "正在显示%@";
+
+"Annotation Bar" = "注释工具条";
+
+"Collapse Video Panels" = "收缩视频栏";
+
+"Hide Video Panels" = "隐藏视频栏";
+
+"Expand Video Panels" = "展开视频栏";
+
+"Show Video Panels" = "显示视频栏";
+
+"%d Photo Selected" = "%d张照片已选";
+
+"Image" = "图片";
+
+"%d seconds voice" = "%d秒语音";
+
+"Unread" = "未读";
+
+"Send Fail" = "发送失败";
+
+"I say %@" = "我说%@";
+
+"%@ say %@" = "%@说%@";
+
+"I send a picture" = "我发送了一张图片";
+
+"%@ send a picture" = "%@发送了一张图片";
+
+"I send %@" = "我发送了%@";
+
+"%@ send %@" = "%@发送了%@";
+
+"I send a voice message" = "我发送了一段语音";
+
+"%@ send a voice message" = "%@发送了一段语音";
+
+"I send a file" = "我发送了一个文件";
+
+"%@ send a file" = "%@发送了一个文件";
+
+"Add Contact to Group" = "添加联系人到该群";
+
+"Remove Contact from Group" = "从该群移除联系人";
+
+"Meeting menu is displayed tip" = "会议菜单栏已显示，双击隐藏他";
+
+"Meeting menu is hidden tip" = "会议菜单栏已隐藏，双击显示他";
+
+"Red" = "红色";
+
+"Pink" = "玫红色";
+
+"Yellow" = "黄色";
+
+"Green" = "绿色";
+
+"Light Blue" = "淡蓝色";
+
+"Dark Blue" = "深蓝色";
+
+"Purplish Red" = "紫红色";
+
+"Black" = "黑色";
+
+"File name %@" = "文件名 %@";
+
+"Download paused" = "下载暂停";
+
+"Download failed" = "下载失败";
+
+"Downloaded" = "已下载";
+
+"Downloading" = "正在下载";
+
+"Double tap to download" = "双击进行下载";
+
+"Online" = "在线";
+
+"Selected" = "已选定";
+
+"Unselected" = "未选定";
+
+"Forward" = "前进";
+
+"Reload" = "刷新";
+
+"H.323 Source" = "H.323资源表";
+
+"Only signed-in users can join" = "仅登录用户可加会";
+
+"From specified domains" = "指定域名登录的用户可加会";
+
+"Allow Join Meeting" = "允许用户加会";
+
+"Any signed user" = "任何登录用户";
+
+"Choose a User Type" = "选择用户类型";
+
+"Qualified domain" = "认证的域名";
+
+"Internal Meeting Only" = "仅内部会议";
+
+"Please sign in with your company account to join" = "请使用企业账号登录来加会";
+
+"Switch Account" = "切换账号";
+
+"Invalid domain" = "无效的域";
+
+"Input domain here..." = "在这里输入域名...";
+
+"Add a new domain" = "增加一个域名";
+
+"My Video" = "我的视频";
+
+"My Avatar" = "我的头像";
+
+"Active Speaker Video" = "发言者的视频";
+
+"Active Speaker Avatar" = "发言者的头像";
+
+"You are sharing your screen" = "您正在共享您的屏幕";
+
+"Zoom in" = "放大";
+
+"Zoom out" = "缩小";
+
+"Up" = "上";
+
+"Down" = "下";
+
+"Left" = "左";
+
+"Right" = "右";
+
+// Webinar
+"Register Webinar" = "注册网络研讨会";
+
+"Promote to Panelist" = "提升为嘉宾";
+
+"Degrade to Viewer" = "降级为观众";
+
+"Promoting..." = "提升为嘉宾中...";
+
+"Degrading..." = "降级为观众中...";
+
+"Poll in Progress" = "调查进行中";
+
+"Poll Results" = "调查结果";
+
+"Skip Poll" = "稍后调查";
+
+"Submit" = "提交";
+
+"Previous" = "上一步";
+
+"Host and panelists can't vote" = "主持人和嘉宾不能投票。";
+
+"(Multiple choice)" = "（多选）";
+
+"Webinar has reached its maximum" = "非常抱歉，网络研讨会的注册人数已经达到上限。";
+
+"Sign in to start the webinar" = "如果你是主持人，请先登录然后开启这个网络研讨会。";
+
+"Join the webinar from the link" = "如果你被邀请成为嘉宾，请通过邮件里的链接来加入这个网络研讨会。";
+
+"Host has denied your webinar registration" = "主持人已经拒绝了你的网络研讨会注册申请。";
+
+"Sign in with the specified account to join webinar" = "您需要登录指定的账号才能加入此次网络研讨会。请联系会议主持人以获取更多详细信息。";
+
+"can't add more panelists because reach maximum capacity" = "您不能增加更多的嘉宾，因为此次会议已经达到%d人的嘉宾人数上限。";
+
+"Host starts a poll" = "主持人发起了一份调查";
+
+"Host shares poll results" = "主持人共享了调查结果";
+
+"Failed to fetch poll content, Error Code:%d" = "获取调查内容失败, 错误码：%d";
+
+"Failed to submit poll result, Error Code:%d" = "提交调查结果失败, 错误码：%d";
+
+"Allow Panelist Turn On Video" = "允许嘉宾开启视频";
+
+"To %@" = "发送至 %@";
+
+"To %@, %@" = "发送至 %@, %@";
+
+"To %@ %@" = "发送至 %@ %@";
+
+"From %@ to %@" = "从 %@ 发送至 %@";
+
+"From %@ to %@, %@" = "从 %@ 发送至 %@, %@";
+
+"From %@ to %@ %@" = "从 %@ 发送至 %@ %@";
+
+"(Priviately)" = "(私密)";
+
+"Send to:" = "发送至：";
+
+"Send To" = "发送至";
+
+"me" = "我";
+
+"and" = "和";
+
+"Tap here to chat or tap a message to reply" = "轻击此处聊天或者轻击消息回复";
+
+"Tap here to chat" = "轻击此处聊天";
+
+"Panelists" = "嘉宾";
+
+"All Panelists" = "所有嘉宾";
+
+"View Full Viewer List" = "查看完整观众列表";
+
+"%@ is not in session" = "%@ 不在此会议中";
+
+"Failed to send chat message" = "聊天消息发送失败";
+
+"Host disabled attendee chat" = "会议主持人关闭了观众聊天";
+
+"Allow Viewer Chat" = "允许观众聊天";
+
+"Broadcast" = "广播";
+
+"Practice Mode Only" = "会议准备模式";
+
+"Viewers cannot join until you broadcast" = "在未启动广播之前观众无法加入研讨会";
+
+"The webinar is now boardcasting to all viewers" = "网络研讨会正在广播";
+
+// Meeting Reminder
+"Meeting Reminder" = "会议提醒";
+
+"Reminder Date" = "M月d日";
+
+"Host:" = "主持人:";
+
+"Meeting ID:" = "会议ID:";
+
+"Reminder Ignore" = "忽略";
+
+"Reminder Join" = "进入";
+
+"Remind me later" = "稍后提醒";
+
+"%d minutes" = "%d 分钟";
+
+"Quiet Mode" = "安静模式";
+
+"Normal Mode" = "正常模式";
+
+"Meeting synchronizing..." = "会议信息同步中...";
+
+"Zoom Meeting: %@ started at %@" = "会议：%@，%@开始";
+
+"Turn on background refresh for Zoom" = "请打开后台应用程序刷新，Zoom需要此权限来提供会议提醒功能。";
+
+"Remind you when meeting starts" = "Zoom会提醒您加入即将开始的会议";
+
+// Kubi
+"Enable Kubi Device" = "启用Kubi遥控设备";
+
+"Connect Kubi Tip" = "加入会议的时候将自动连接Kubi遥控设备。 (在允许远程控制摄像头的会议中您可以远程控制Kubi遥控设备)";
+
+"Cannot connect to Kubi" = "无法连接您的Kubi遥控设备，请检查蓝牙是否连接成功。";
+
+"Kubi Connected" = "Kubi已连接";
+
+"Kubi Disconnected" = "Kubi未连接";
+
+"Connect available Kubi" = "连接可用的Kubi";
+
+"Switch to another available Kubi" = "切换到另一个可用的Kubi";
+
+"Kubi - %@" = "Kubi - %@";
+
+"Disconnect Kubi - %@" = "断开Kubi - %@";
+
+// BO
+"The host is inviting you to join a breakout session" = "主持人邀请您加入一个分组讨论: %@";
+
+"End All Breakout Sessions" = "分组讨论结束";
+
+"Return to Main Session" = "返回主会场";
+
+"End All Breakout Sessions tip" = "分组讨论将于60秒后关闭，届时所有与会者都将离开。";
+
+"Leave Now" = "离开";
+
+"Returning to Main Session" = "正在返回主会场...";
+
+"This may take a few moments" = "请稍候片刻。";
+
+"Breakout session will end in %d seconds" = "分组讨论将在 %d 秒后关闭";
+
+"You will be returned to the main session automatically" = "您即将自动返回主会场。";
+
+"Ask for Help" = "请求帮助";
+
+"The host can't help you now" = "主持人正忙，请稍后再试。";
+
+"The host has been invited" = "已向主持人发送了邀请。";
+
+"The host already in your session now" = "主持人在当前讨论组内。";
+
+"You can invite the host to this session to help you out" = "您可以邀请主持人进入分组讨论以帮助您。";
+
+"Joining Breakout Session" = "正在加入分组讨论...";
+
+"Breakout Session" = "分组讨论";
+
+"Join Breakout Session" = "加入分组讨论";
+
+"Confirm to leave Breakout Session" = "您确定离开分组讨论并返回主会场？";
+
+"Invite Host" = "邀请主持人";
+
+"Tap to join the started breakout session" = "点击加入开始的分组讨论";
+
+"Wait to be assigned tip" = "主持人已经开始分组讨论，请等待被分配";
+
+"The host is currently in this session" = "主持人与您在同一个讨论组里。";
+
+"The host has moved you to" = "主持人将您移到";
+
+//
+"Exit pin video" = "退出选定视频";
+
+"Double tap to switch to active speaker" = "双击切换到正在发言的人";
+
+"Allow viewer to raise hand" = "允许听众举手";
+
+"Don't Connect To Audio" = "不自动连接语音";
+
+"Turn Off My Video" = "保持摄像头关闭";
+
+"JOIN OPTION" = "加会选项";
+
+"No one raised their hands" = "没有人举手";
+
+"Denied with Wells Fargo IT policy" = "根据Wells Fargo的IT条例，请使用台式机开会。";
+
+"Start With Video" = "召开视频会议";
+
+"Start Without Video" = "召开无视频会议";
+
+"Request Camera Control" = "请求控制摄像头";
+
+"Give up Camera Control" = "放弃控制摄像头";
+
+"Give up Control" = "放弃控制";
+
+"iCloud Drive not available tip" = "iCloud Drive的文稿不可用，请进入iPhone设置->iCloud->iCloud Drive，将Zoom的状态设为打开。";
+
+"share content tip" = "上传图片或文件到您的个人空间，然后就可以将他分享给其他人或群组";
+
+
+"[This is an encrypted message]" = "[消息已加密]";
+
+"[Fail to decrypt message]" = "[消息解密失败]";
+
+"E2E enabled, invite %@ online" = "您的账户已经启用加密聊天，您需要邀请%@上线接受聊天邀请。";
+
+"E2E enabled for %@, invite %@ online" = "%@的帐号启用了加密聊天，因此您需要邀请%@上线来开启聊天。";
+
+"Waiting for %@ to get online..." = "等待%@上线接受邀请";
+
+"%@ is using an older version of the Zoom client and cannot see your messages." = "%@的客户端版本过低，无法查看您的消息。";
+
+"Group E2E enabled, offline member cannot see" = "本聊天群组启用了加密聊天，离线用户无法查看您的消息。";
+
+"E2E enabled, cannot chat with non-buddy" = "您的账户已经启用加密聊天，您只能和好友列表中的联系人聊天。";
+
+"E2E enabled, cannot chat in non-E2E group" = "您的账户已经启用加密聊天，您不能在非加密的聊天群组中发送消息。";
+
+"[%@ is inviting you to chat, you need to update your client to join]" = "[%@邀请您加入聊天，您需要更新客户端去接受]";
+
+"%@ accepted your chat invitation." = "%@接受了您的聊天邀请。";
+
+"%@ is inviting you to chat." = "%@邀请您聊天";
+
+"%@ has send you a new message" = "%@给您发送了一条新消息";
+
+"You can start end to end encrypted chat with %@ now." = "您可以开始和%@进行加密聊天了。";
+
+"Send too frequently, please try again later." = "消息发送太频繁，请稍候几秒。";
+
+"You cannot send photo in e2e chat" = "您不能在加密聊天中发送图片。";
+
+"Signed out for being inactive %d minutes" = "因为帐户安全要求，系统检测到您在%d分钟内没有操作设备，已经自动登出。";
+
+// On Boarding Screen
+"OB_Page1_title" = "视频会议";
+
+"OB_Page1_desc" = "方便快捷的召开或加入视频会议";
+
+"OB_Page2_title" = "屏幕共享";
+
+"OB_Page2_desc" = "身临其境的逼真体验";
+
+"OB_Page3_title" = "团队信息分享";
+
+"OB_Page3_desc" = "分享文字，语音消息，文件和图片";
+
+"OB_Page4_title" = "开启 Zoom 的精彩之旅";
+
+"OB_Page4_desc" = "无论何时何地，协作无处不在";
+
+
+"NTLM Auth" = "NTLM 认证";
+
+"Please input your username and password for NTLM Auth" = "请输入NTLM身份验证的用户名和密码";
+
+// Pending
+"Jump to contacts" = "跳转到联系人";
+
+"Jump to groups" = "跳转到群组";
+
+"Search for Zoom Rooms" = "搜索Zoom会议室";
+
+"No Groups" = "无群组";
+
+"No Zoom Rooms" = "无Zoom会议室";
+
+"Add New" = "添加";
+
+"Create a New Group" = "新建一个群组";
+
+"Create a Private Group" = "创建一个私有群组";
+
+"Create a Public Group" = "创建一个公开群组";
+
+"Join a Public Group" = "加入公开群组";
+
+"No available public groups to join." = "无可加入的公开群组";
+
+"Name Your Group" = "给群组取名";
+
+"Invited members only" = "只允许邀请成员";
+
+"Anyone in your organization can join" = "组织内任何人可以加入";
+
+"Private Group (%@)" = "私有群组(%@)";
+
+"Public Group (%@)" = "公开群组(%@)";
+
+"Created by %@" = "创建者 %@";
+
+"Group Information" = "群组信息";
+
+"Chat Information" = "聊天信息";
+
+"Group Options" = "群组选项";
+
+"Members in your organization only" = "仅能邀请组织内成员";
+
+"%@ can not be invited to this group" ="%@ 不能被邀请到此内部群组";
+
+"Type to filter" = "搜索";
+
+"Chat Topic" = "聊天主题";
+
+"%@ joined this group chat" = "%@ 加入了这个群组聊天";
+
+"You've joined this group chat" = "您已加入了这个群组聊天";
+
+"Unable to change the group information" = "无法更改群组信息";
+
+"You've created this group chat %@" = "您已经创建了这个群组聊天 %@";
+
+"Failed to join a public group. (Error Code: %@)" = "无法加入公开群组（错误代码：%@）。";
+
+"Invite Members" = "邀请成员";
+
+"Meeting Settings" = "会议设置";
+
+"Message Settings" = "即时消息设置";
+
+"Jump to chat..." = "跳转到聊天...";
+
+"Disabled" = "已禁用";
+
+"Synced Calendars" = "同步日历";
+
+"Sync Zoom Meetings from Calendars" = "从日历中同步Zoom会议";
+
+"To:" = "致：";
+
+"Recent" = "最近的";
+
+"Me" = "我";
+
+"Shared in %@" = "共享在%@";
+
+"%d Groups" = "%d个群组";
+
+"Private" = "私人文件";
+
+"%@ shared with you" = "%@和你分享";
+
+"show more…" = "显示更多...";
+
+"All Files" = "所有文件";
+
+"Personal Files" = "个人文件";
+
+"Images" = "图像";
+
+"Loading error, <a>retry</a>?" = "加载错误，<a>重试</a>？";
+
+"Contents" = "内容";
+
+"No Contents." = "无内容。";
+
+"Are you sure you want to delete \"%@\"?" = "是否确实要删除\"%@\"?";
+
+"file content file removed warning" = "该文件将从所有共享群组或聊天记录中删除。";
+
+"Jump to this group" = "跳转到这个群组";
+
+"Unshare in this group" = "在此群组中停止共享";
+
+"Unshare This File" = "停止共享此文件";
+
+"file content unshare file warning" = "取消共享不会删除你的文件，但目前的群组成员将无法再访问该文件。";
+
+"Yes, Unshare this file" = "是，停止共享此文件";
+
+"%@ unshared %@." = "%@停止共享了%@。";
+
+"%@ deleted %@." = "%@删除了%@。";
+
+"Upload \"%@\" failed. (Error code: %d.)" = "上传文件\"%@\"失败。（错误代码: %d。)";
+
+"\"%@\" can not be renamed. (Error code: %d.)" = "文件\"%@\"重命名失败。（错误代码: %d。)";
+
+"\"%@\" can not be shared. (Error code: %d.)" = "共享文件\"%@\"失败。（错误代码: %d。)";
+
+"\"%@\" can not be unshared. (Error code: %d.)" = "停止共享文件\"%@\"失败。（错误代码: %d。)";
+
+"\"%@\" can not be deleted. (Error code: %d.)" = "文件\"%@\"删除失败。（错误代码: %d。)";
+
+"Share \"%@\" success" = "共享 \"%@\" 成功";
+
+"Share To" = "分享至";
+
+"Jump" = "跳转";
+
+"File can not open in Zoom, please try to open it with other apps" = "Zoom无法打开此文件，请使用其它程序进行重试";
+
+"Open with other app" = "使用其它程序打开";
+
+"%@ File" = "%@ 文件";
+
+"Sent" = "已发送";
+
+"Send a File" = "文件";
+
+"Do you want to upload this file using your mobile data network?" = "您想用您的移动数据网络上传这个文件吗？";
+
+"Upload failed" = "上传失败";
+
+"Uploaded" = "已上传";
+
+"Uploading" = "正在上传";
+
+"Tap to upload" = "点击进行上传";
+
+"Upload paused" = "上传暂停";
+
+"Forward Text" = "转发";
+
+"You cannot send photo or file in e2e chat" = "您不能在加密聊天中发送图片或文件。";
+
+"Keyword included in the content." = "关键字包括在文件内容中。";
+
+"The file size exceeds the limit (512MB) and cannot be uploaded." = "该文件的大小超过了限制（512MB），无法上传。";
+
+"Filter" = "过滤";
+
+"Failed to upload files" = "无法上传文件";
+
+"Retry" = "重试";
+
+"%@ of %@ (%@/sec)" = "%@ of %@ (%@/秒)";
+
+"Select and Share in..." = "选择并分享至...";
+
+"Share File" = "共享文件";
+
+"Search for files and messages" = "搜索文件和消息";
+
+"Search for messages and files" = "搜索消息和文件";
+
+"Contents (%d)" = "内容（%d）";
+
+"Messages (%d)" = "即时消息（%d）";
+
+"Search all chats/groups…" = "搜寻所有聊天记录/群组...";
+
+"Leave This Chat" = "离开聊天组";
+

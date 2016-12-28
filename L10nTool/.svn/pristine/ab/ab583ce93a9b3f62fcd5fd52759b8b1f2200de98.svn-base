@@ -1,0 +1,311 @@
+package us.zoom.tools.l10n.windows;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.dom4j.Document;
+import org.dom4j.Element;
+
+import us.zoom.tools.l10n.core.CloneUtils;
+import us.zoom.tools.l10n.core.XmlParser;
+
+public class testWindows {
+
+	public static Element element_menu = null;
+
+	public static Map<String, List<Element>> readMenu(String path) {
+
+		Document doc = XmlParser.getDocument(path);
+		Element root = XmlParser.getRootNode(doc);
+
+		List<Element> list = XmlParser.getChildList(root);
+		while (true) {
+			element_menu = list.get(0);
+			if (element_menu.getName().equals("Menu")) {
+				break;
+			} else {
+
+				list = XmlParser.getChildList(list.get(0));
+
+			}
+		}
+		Map<String, List<Element>> resultMap = new HashMap<String, List<Element>>();
+
+		if (element_menu != null) {// find Menu
+
+			List<Element> tag_list = new ArrayList<Element>();
+
+			// elementMenu's kids
+			tag_list = XmlParser.getChildList(element_menu);
+
+			for (Element element : tag_list) {
+				List<Element> allkidsList = new ArrayList<Element>();
+				// elementMenu's all kids
+				allkidsList = XmlParser.ransack(element, allkidsList);
+
+				resultMap.put(element.getName(), allkidsList);
+
+			}
+
+			return resultMap;
+		}
+		return null;
+
+	}
+
+	public static void compare(Map<String, List<Element>> tag_defaultMap, Map<String, List<Element>> tag_othertMap) {
+		@SuppressWarnings("unused")
+		Map<String, List<Element>> tag_defaultMap_back = new HashMap<String, List<Element>>();
+		tag_defaultMap_back = CloneUtils.clone(tag_defaultMap);
+		@SuppressWarnings("unused")
+		Map<String, List<Element>> tag_othertMap_back = new HashMap<String, List<Element>>();
+		tag_defaultMap_back = CloneUtils.clone(tag_othertMap);
+
+		if (!(tag_defaultMap.isEmpty() || tag_othertMap.isEmpty())) {
+			String keyName;
+			// miss
+			for (Map.Entry<String, List<Element>> entry : tag_defaultMap.entrySet()) {
+				List<Element> tag_missList = new ArrayList<Element>();
+				keyName = entry.getKey();
+				// System.out.println("#################tag_misslist*******************"
+				// + keyName);
+				if (tag_othertMap.containsKey(keyName)) {
+
+					List<Element> tag_defaultList = new ArrayList<Element>();
+					List<Element> tag_otherList = new ArrayList<Element>();
+
+					tag_defaultList = tag_defaultMap.get(keyName);
+					tag_otherList = tag_othertMap.get(keyName);
+					// int rebackIndex = 0;
+					for (int i = 0; i < tag_defaultList.size();) {
+						// int isthatID = 0;
+
+						Element currentElement = tag_defaultList.get(i);
+						if (i < tag_otherList.size()) {
+							// System.out.println("<<<<<<<<<<<<");
+
+							Element tempElement = tag_otherList.get(i);
+
+							// System.out.println(tempElement.getName() + " " +
+							// tempElement.attributeValue("text") + i +
+							// "tag_otherList size :" + tag_otherList.size() +
+							// "tag_defaultList size :" +
+							// tag_defaultList.size());
+							if (currentElement.getName().equals(tempElement.getName())) {
+								if (XmlParser.hasChild(currentElement) == false && XmlParser.hasChild(tempElement) == false) {
+									// System.out.println("bingo");
+
+								} else if (XmlParser.hasChild(currentElement) == true && XmlParser.hasChild(tempElement) == true) {
+									// need to compare their sub nodes to
+									// confirm whether it is that <ID-1>
+									List<Element> allkidsList1 = new ArrayList<Element>();
+									allkidsList1 = XmlParser.ransack(currentElement, allkidsList1);
+
+									List<Element> allkidsList2 = new ArrayList<Element>();
+									allkidsList2 = XmlParser.ransack(tempElement, allkidsList2);
+
+									for (int j = 0; j < allkidsList1.size() && j < allkidsList2.size(); j++) {
+										if (!allkidsList1.get(j).getName().equals(allkidsList2.get(j).getName())) {
+											// isSame = false;
+										}
+									}
+									if (true) {
+										// System.out.println("still bingo");
+									} else {
+										// System.out.println("not bingo");
+										// System.out.println(currentElement.getName()
+										// +
+										// currentElement.attributeValue("text"));
+										// System.out.println(tempElement.getName()
+										// +
+										// tempElement.attributeValue("text"));
+										// rollBack
+										tag_missList.add(currentElement);
+										List<Element> tempallkidslist = new ArrayList<Element>();
+										XmlParser.ransack(currentElement, tempallkidslist);
+										int allkidsnum = tempallkidslist.size();
+										// add blank nodes: sum is current( 1 )
+										// +
+										// allkidsnum
+										for (int j = i; j < i + allkidsnum + 1; j++) {
+											// add a blank node
+											tag_otherList.add(j, null);
+
+										}
+										i += allkidsnum;
+										// System.out.println("3.jump many steps");
+									}
+								} else {
+
+									// System.out.println("different");
+
+									i = jump(tag_missList, tag_otherList, i, currentElement);
+								}
+							} else {
+								i = jump(tag_missList, tag_otherList, i, currentElement);
+							}
+						} else {
+							// System.out.println(">=>=>=>=>=>=");
+
+							i = jump(tag_missList, tag_otherList, i, currentElement);
+						}
+						i++;
+					}
+
+					// System.out.println("size:" + tag_missList.size());
+					// clean
+					// if (tag_missList.size() > 1) {
+					//
+					// for (int i = 0; i < tag_missList.size(); i++) {
+					// Element temp = tag_missList.get(i);
+					//
+					// for (int j = 0; j < tag_missList.size(); j++) {
+					// Element temp2 = tag_missList.get(j);
+					// if (temp != null && temp2 != null) {
+					// if (temp2.getParent().equals(temp)) {
+					// System.out.println(temp2.getName() + "clean" +
+					// temp.getName() + temp.attributeValue("text"));
+					// tag_missList.set(i, null);
+					// }
+					// }
+					//
+					// }
+					// }
+					// } else {
+					// // System.out.println("only one");
+					// }
+				} else {
+					tag_missList.add(entry.getValue().get(0).getParent());
+					// System.out.println("miss");
+				}
+
+				// for (Element element : tag_missList) {
+				// if (element != null) {
+				//
+				// System.out.println(element.getName() + "^^^afterclean^^^" +
+				// element.attributeValue("text"));
+				// }
+				// }
+				// after read a menu , display the menu
+				for (int j = 0; j < tag_missList.size(); j++) {
+					Element current = tag_missList.get(j);
+					if (current != null) {
+						@SuppressWarnings("unused")
+						Element father;
+						father = current.getParent();
+						List<Element> children = new ArrayList<Element>();
+						if (father != null) {
+
+							if (father.getName().equals("Menu")) {
+								break;
+							}
+							// System.out.println("---------------" +
+							// father.getName() + "－－－－－－－－－" +
+							// father.attributeValue("text"));
+							children = XmlParser.getChildList(father);
+
+							for (int k = 0; k < children.size(); k++) {
+								Element temp = children.get(k);
+								if (!tag_missList.contains(temp)) {
+
+									father.remove(temp);
+									// System.out.println("*******remove***********");
+								}
+
+							}
+							tag_missList.add(father);
+
+						}
+					}
+
+				}
+				// System.out.println(tag_missList.size());
+				// for (Element element : tag_missList) {
+				// System.out.println(element.getName() + "   " +
+				// element.attributeValue("text"));
+				// }
+				if (tag_missList.size() != 0) {
+
+					// System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+					// Element root = null;
+					// for (int i = 0; i < tag_defaultMap.get(keyName).size();
+					// i++)
+					// {
+					// if (tag_defaultMap.get(keyName).get(i) != null) {
+					//
+					// root = tag_defaultMap.get(keyName).get(i).getParent();
+					// break;
+					// }
+					// }
+					// if (root != null) {
+					//
+					// System.out.println(root.asXML());
+					// }
+					// System.out.println("look here");
+					System.out.println(tag_missList.get(tag_missList.size() - 1).asXML());
+				}
+
+			}
+
+			List<Element> tag_extraList = new ArrayList<Element>();
+			// extra
+
+		} else {
+			System.err.println("get xml info error");
+		}
+
+	}
+
+	/**
+	 * @param tag_missList
+	 * @param tag_otherList
+	 * @param i
+	 * @param currentElement
+	 * @return
+	 */
+	protected static int jump(List<Element> tag_missList, List<Element> tag_otherList, int i, Element currentElement) {
+		if (XmlParser.hasChild(currentElement) == false) {
+			// is a leaf node
+
+			tag_missList.add(currentElement);
+			// add a blank node
+			tag_otherList.add(i, null);
+			// System.out.println("jump one step");
+
+		} else {
+			// not a leaf node
+
+			tag_missList.add(currentElement);
+			List<Element> tempallkidslist = new ArrayList<Element>();
+			XmlParser.ransack(currentElement, tempallkidslist);
+			int allkidsnum = tempallkidslist.size();
+			// add blank nodes: sum is current( 1 ) +
+			// allkidsnum
+			for (int j = i; j < i + allkidsnum + 1; j++) {
+				// add a blank node
+				tag_otherList.add(j, null);
+
+			}
+			i += allkidsnum;
+			// System.out.println("jump many steps");
+
+		}
+		return i;
+	}
+
+	public static void main(String[] args) {
+		Map<String, List<Element>> tag_defaultMap = readMenu("src/file/windows/language_en.xml");
+		Map<String, List<Element>> tag_othertMap = readMenu("src/file/windows/language_zh_cn.xml");
+		// Iterator<Element> itr =
+		// XmlParser.getIterator(tag_defaultMap.get("ID105").get(0));
+		// while (itr.hasNext()) {
+		// Element element = (Element) itr.next();
+		// System.err.println(element.getName());
+		// }
+
+		compare(tag_defaultMap, tag_othertMap);
+
+	}
+}

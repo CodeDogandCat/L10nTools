@@ -1,0 +1,12 @@
+@echo off
+
+::call L10nMissRewriter.bat -p android  -dr ../android/En.xml -cr ../android/De.xml -db  ../android/Ge-updataC4v.xlsx  -sh  Sheet3  -o  ../android/android_rewriter.xml
+
+::call L10nMissRewriter.bat -p windows -dr ../windows/win-En.xml -cr ../windows/win-Fr.xml  -db  ../android/Already-translated-Fr-all.xlsx  -sh  Sheet1 -o ../windows/windows_rewriter.xml
+
+
+::call L10nMissRewriter.bat -p ios  -dr ../ios/IOS-En.strings -cr ../ios/IOS-Fr.strings  -db  ../android/Already-translated-Fr-all.xlsx  -sh  Sheet1  -o ../ios/ios_rewriter.xml
+
+call L10nMissRewriter.bat -p mac  -dr ../mac/Mac.En.strings -cr ../mac/Mac-Fr.strings  -db  ../android/Already-translated-Fr-all.xlsx  -sh  Sheet1  -o ../mac/mac_rewriter.xml
+
+pause

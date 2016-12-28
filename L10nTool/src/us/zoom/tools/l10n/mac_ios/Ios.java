@@ -1,0 +1,569 @@
+package us.zoom.tools.l10n.mac_ios;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
+
+import us.zoom.tools.l10n.core.AbstractCore;
+
+public class Ios extends AbstractCore {
+
+	@Override
+	protected void readHead() {
+		// TODO Auto-generated method stub
+
+	}
+
+	protected String readCommentLine() {
+		// System.err.println("readCommentLine");
+		String c = "#$%";
+		try {
+
+			if ((c = reader.readLine()) != null && run) {
+				// System.err.println("caca" + c);
+				if (c.charAt(0) == '/' && c.charAt(1) == '/') {
+					return c;
+				} else {
+					// this line not a comment line
+
+					return "notcommentline";
+
+				}
+			}
+
+			return null;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	@Override
+	protected String readComment() {
+		// System.err.println("readComment");
+		String commentLine = readCommentLine();
+		if (commentLine == null) {
+			// System.err.println("readCommentLine null");
+			return null;
+		} else if (!commentLine.equals("notcommentline")) {
+			// System.err.println("xxxxxxxxxx");
+
+			return commentLine;
+		} else {
+			// System.err.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+			try {
+				reader.reset();
+				reader.mark(length);
+				Character c;
+				// /*
+				// Localizable.strings
+				// iZipow
+				//
+				// Created by Robust Hu on 3/8/12.
+				// Copyright (c) 2012 Zipow. All rights reserved.
+				// */
+				while ((c = getChar()) != null && run) {
+					if (c == '"') {
+						return "notcomment";
+					}
+					if (c == '/') {
+						break;
+					}
+				}
+
+				if (c == null) {
+					return null;
+				}
+
+				StringBuffer commentbBuffer = new StringBuffer();
+				// go until be sure it isn't a comment
+				c = getChar();
+
+				if (c == '*') {
+					// System.out.println("------it is a comment");
+					commentbBuffer.append("/*");
+					while (true) {// just go until the */ then
+									// return
+
+						// */
+						if ((c = getChar()) != null && run) {
+							commentbBuffer.append(c);
+							if (c == '*') {
+								if ((c = getChar()) != null && run) {
+									commentbBuffer.append(c);
+									if (c == '/') {
+										String commentContent = commentbBuffer.toString();
+										// System.err.println(commentContent);
+										// System.out.println("-----------readComment()"
+										// + commentContent);
+										commentbBuffer.setLength(0);// clean
+																	// the
+																	// buffer
+																	// System.err.println(commentContent);
+										return commentContent;
+									}
+								}
+							}
+						}
+					}
+
+				} else {// reset,because be sure this is not a comment
+					// System.out.println("notcomment");
+					getChar();
+					getChar();
+					return "notcomment";
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return null;
+	}
+
+	@Override
+	protected String readTag() {
+		// System.err.println("readTag");
+		Character c;
+		boolean flag = false;
+		c = getChar();
+		while (c != null && run) {
+			if (c == '"') {
+
+				tagBuffer.append("\"");
+
+				while ((c = getChar()) != null && run) {
+					tagBuffer.append(c);
+					if (c == ';') {
+						if (tagBuffer.charAt(tagBuffer.length() - 2) == '"') {
+							flag = true;
+							break;
+						}
+
+					}
+				}
+
+				if (flag) {
+
+					String tmp = tagBuffer.toString();
+					tagBuffer.setLength(0);
+					// System.err.println(tmp);
+					return tmp;
+				}
+			} else if (c.toString().equals(" ")) {
+				tagBuffer.append(" ");
+
+			} else {
+				return "nottag";
+			}
+			c = getChar();
+		}
+
+		return null;
+	}
+
+	@Override
+	protected void readExt() {
+		// TODO Auto-generated method stub
+
+	}
+
+	protected String[] read() {
+		String result = null;
+		String[] returnArray = { "zoom", "android" };
+		try {
+			if (run) {
+				reader.mark(length);
+				if ((result = readBlank()) == null) {
+					// System.err.println("blank null");
+					return null;
+				} else {
+					if (result.equals("notblankline")) {
+						reader.reset();
+						reader.mark(length);
+						if ((result = readComment()) == null) {
+							// System.err.println("Comment null");
+							return null;
+						} else if (result.equals("notcomment")) {
+							reader.reset();
+							reader.mark(length);
+							if (run) {
+								if ((result = readTag()) == null) {
+									// System.err.println("Tag null" + "run is "
+									// + run);
+									return null;
+								} else if (result.equals("nottag")) {
+									reader.reset();
+									returnArray[0] = "nottag";
+									returnArray[1] = result;
+
+									// System.err.println("not not a tag");
+									return returnArray;
+
+								} else {
+									returnArray[0] = "tag";
+									returnArray[1] = result;
+									// System.err.println(returnArray[0] +
+									// "%%%%" + returnArray[1]);
+									// jump '\r'-->acall 10
+									// mac only \r
+									if (getChar() == null) {// last line
+
+										run = true;
+									}
+									// System.err.println("&&&&&&&&&&&" + run);
+									return returnArray;
+								}
+							}
+						} else {
+							returnArray[0] = "comment";
+							returnArray[1] = result;
+
+							return returnArray;
+						}
+					} else {
+						returnArray[0] = "blank";
+						returnArray[1] = result;
+						return returnArray;
+					}
+
+				}
+
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	protected Map<String, String> readFileByTags(int type, String fileName) {
+
+		File file = new File(fileName);
+		length = 8192;
+		// length = (int) file.length();
+		// BufferedReader reader = null;
+		Map<String, String> tag_Map = new HashMap<String, String>();
+		try {
+
+			InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
+			reader = new BufferedReader(isr);
+
+			readHead();
+
+			String tempString = null;
+			String[] returnArray = { "", "" };
+			int i = 1;
+
+			while ((returnArray = read()) != null && run) {
+
+				if (returnArray[0].equals("tag")) {
+					// System.err.println((i++) + "@@@@@@@@@@@@@@@" +
+					// returnArray[0] + "**" + returnArray[1]);
+					tempString = returnArray[1];
+					// System.err.println(tempString);
+					// "You changed the group name to \"%@\"" =
+					// "You changed the group name to \"%@\"";
+					String regEx = "\\\"(.*?)\\\"\\s*=\\s*\\\".*?\\\";";
+					Pattern pattern = Pattern.compile(regEx);
+					Matcher matcher = pattern.matcher(tempString);
+					// System.err.println(tempString);
+					if (matcher.find()) {
+						tag_Map.put(matcher.group(1), tempString.trim());
+
+					}
+
+				} else if (returnArray[0].equals("blank")) {
+					// System.err.println((i++) + "@@@@@@@@@@@@@@@" +
+					// returnArray[0] + "**");
+					// System.out.println("get a blank line");
+					// tempString = returnArray[1];
+				} else {
+					// if (returnArray[0].equals("comment")) {
+					// System.err.println((i++) + "@@@@@@@@@@@@@@@" +
+					// returnArray[0] + "**" + returnArray[1]);
+					// }
+					if (type == 0) {
+
+					} else if (type == 1) {
+						if (returnArray[0].equals("comment")) {
+							tempString = returnArray[1];
+							tag_Map.put(tempString.trim(), "");
+							// System.out.println("get a comment");
+
+						}
+					}
+				}
+
+			}
+			// System.err.println(returnArray + "run is " + run);
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.err.println("read xml file error , maybe path error");
+		} finally {
+			// reset
+			run = true;
+			tagBracketStack.clear();
+			tagBuffer.setLength(0);
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e1) {
+					System.err.println("close BufferedReader error");
+				}
+
+			}
+			return tag_Map;
+		}
+	}
+
+	@Override
+	protected void printHead() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void printTail() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void printMergerBody() {
+		String tempString = null;
+		String name = "";
+		String[] returnArray = { "zoom", "android" };
+
+		while ((returnArray = read()) != null && run) {
+			// System.out.println("##############################");
+			// System.out.println("merger :" + returnArray[0] + "@" +
+			// returnArray[1]);
+			if (returnArray[0].equals("tag")) {
+				tempString = returnArray[1];
+				// System.err.println(tempString);
+				String regEx = "\\\"(.*?)\\\"\\s*=\\s*\\\".*?\\\";";
+				Pattern pattern = Pattern.compile(regEx);
+				Matcher matcher = pattern.matcher(tempString);
+				if (matcher.find()) {
+					name = matcher.group(1);
+
+					if (tag_otherMap.containsKey(name)) {
+						// System.out.println(name);
+
+						System.out.print(tempString.substring(0, tempString.indexOf('"')) + tag_otherMap.get(name) + "\n");
+						// System.err.print(tag_otherMap.get(name) + "\n\n");
+
+					}
+				}
+
+			} else if (returnArray[0].equals("comment")) {
+				tempString = returnArray[1];
+
+				if (tag_otherMap.containsKey(tempString.trim())) {
+					// System.out.println(tempString);
+
+					System.out.print(tempString + "\n");
+				}
+
+				// System.out.println("get a comment");
+
+			} else if (returnArray[0].equals("blank")) {
+				// System.out.println("get a blank line");
+				// tempString = returnArray[1];
+				// System.out.println("\n");
+				System.out.print("\n");
+
+			}
+
+		}
+
+	}
+
+	@Override
+	protected void printHistoryChangeBody() {
+		if (tag_defaultMap.size() != 0 && tag_otherMap.size() != 0) {
+			// loop through tag_reversionMap , if tag_localMap doesn't
+			// contains
+			// the item ,then add into the misslist
+			tag_missMap = new HashMap<String, String>();
+			tag_changeMap = new HashMap<String, String>();
+			tag_extraMap = new HashMap<String, String>();
+
+			for (Map.Entry<String, String> entry : tag_defaultMap.entrySet()) {
+
+				if (!tag_otherMap.containsKey(entry.getKey())) {
+					tag_missMap.put(entry.getKey(), " - " + entry.getValue());
+				} else {
+					// if all
+					// contain
+					// the item ,but value is not same ,then add into the
+					// changelist
+					if (!entry.getValue().equals(tag_otherMap.get(entry.getKey()))) {
+						tag_changeMap.put(entry.getKey(), " - " + entry.getValue() + "\n" + " + " + tag_otherMap.get(entry.getKey()) + "\n");
+					}
+				}
+			}
+
+			// loop through tag_localMap , if tag_reversionMap doesn't
+			// contains
+			// the item ,then add into the extralist
+
+			for (Map.Entry<String, String> entry : tag_otherMap.entrySet()) {
+
+				if (!tag_defaultMap.containsKey(entry.getKey())) {
+					tag_extraMap.put(entry.getKey(), " + " + entry.getValue());
+				}
+			}
+
+			System.out.print("#################################################################################" + "\n");
+			System.out.print("###############" + "\n");
+			System.out.print("###############        local version differ from reversion " + version + "\n");
+			System.out.print("###############" + "\n");
+			System.out.print("#################################################################################" + "\n");
+			if (tag_missMap.isEmpty() && tag_extraMap.isEmpty() && tag_changeMap.isEmpty()) {
+				System.out.print("                         same                      " + "\n");
+			}
+			if (!tag_missMap.isEmpty()) {
+				// print missingList
+				System.out.print("                          miss  " + tag_missMap.size() + " item(s)" + "\n");
+				System.out.print("\n\n");
+				for (Map.Entry<String, String> entry : tag_missMap.entrySet()) {
+					System.out.print(entry.getValue() + "\n");
+				}
+
+			}
+			if (!tag_extraMap.isEmpty()) {
+				// print extraList
+				System.out.print("\n\n");
+				System.out.print("                          extra  " + tag_extraMap.size() + " item(s)" + "\n");
+				System.out.print("\n\n");
+				for (Map.Entry<String, String> entry : tag_extraMap.entrySet()) {
+					System.out.print(entry.getValue() + "\n");
+				}
+			}
+			if (!tag_changeMap.isEmpty()) {
+				// print extraList
+				System.out.print("\n\n");
+				System.out.print("                         change  " + tag_changeMap.size() + " item(s)" + "\n");
+				System.out.print("\n\n");
+				for (Map.Entry<String, String> entry : tag_changeMap.entrySet()) {
+					System.out.print(entry.getValue() + "\n");
+				}
+			}
+			System.out.print("\n\n");
+			System.setOut(sysout);
+			// System.out.println("History change complete.");
+			// System.err.println("okkkk");
+
+		} else {
+			System.err.println("error: path error");
+		}
+		System.setOut(sysout);
+
+	}
+
+	@Override
+	protected String getTagValue(String str) {
+
+		String regEx = "\\\".*?\\\"\\s*=\\s*\\\"(.*?)\\\";";
+		Pattern pattern = Pattern.compile(regEx);
+		Matcher matcher = pattern.matcher(str);
+
+		// System.err.println(str);
+
+		if (matcher.find()) {
+			return matcher.group(1);
+		}
+
+		return null;
+	}
+
+	@Override
+	protected ArrayList<String> getParamsString(String str) {
+		int length = str.length();
+		ArrayList<String> paramsList = new ArrayList<String>();
+		paramsList.add("type1");
+		ArrayList<Character> twotonine = new ArrayList<Character>();
+
+		twotonine.add('2');
+		twotonine.add('3');
+		twotonine.add('4');
+		twotonine.add('5');
+		twotonine.add('6');
+		twotonine.add('7');
+		twotonine.add('8');
+		twotonine.add('9');
+
+		char tmp;
+		for (int i = 0; i < length; i++) {
+			// %
+			tmp = str.charAt(i);
+			if (tmp == '%') {
+				if (i + 1 < length) {
+					tmp = str.charAt(++i);
+
+					if (tmp == '%') {
+						// %% just to print a %
+					} else if (tmp == 's') {
+						// %s parameter
+						paramsList.add("%s");
+					} else if (tmp == 'd') {
+						// %d parameter
+						paramsList.add("%d");
+					} else if (tmp == '@') {
+						// %@ parameter
+						paramsList.add("%@");
+					} else if (tmp == 'u') {
+						// %u parameter
+						paramsList.add("%u");
+					} else if (tmp == 'q') {
+						if (i + 1 < length) {
+							tmp = str.charAt(++i);
+
+							if (tmp == 'u') {
+								// %qu
+								paramsList.add("%qu");
+							}
+						}
+					} else if (tmp == 'f') {
+						// %f parameter
+						paramsList.add("%f");
+					} else if (tmp == '.') {
+						if (i + 1 < length) {
+							tmp = str.charAt(++i);
+							if (twotonine.contains(tmp)) {
+								char num = tmp;
+								if (i + 1 < length) {
+									tmp = str.charAt(++i);
+									if (tmp == 'f') {
+										// %.2f parameter
+										paramsList.add("%." + num + "f");
+									}
+								}
+							}
+						}
+
+					}
+				}
+
+			}
+		}
+		return paramsList;
+	}
+
+}

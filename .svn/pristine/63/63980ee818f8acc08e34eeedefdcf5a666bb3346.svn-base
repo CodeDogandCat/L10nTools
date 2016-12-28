@@ -1,0 +1,72 @@
+@echo off
+echo **start**
+if "%1"=="" (
+  
+  goto help
+) else (
+   
+  if "%2"=="" (
+	
+	goto help
+  ) else (
+	
+	if "%3"=="" (
+	  
+      goto help
+    ) else (
+      
+      if "%4"=="" (
+	    
+	    goto help
+      ) else (
+	    
+	    if "%5"=="" (
+	      
+          goto do2
+        ) else (
+          
+          if "%6"=="" (
+	        set temp =""
+	        
+          ) else (
+	        
+	        goto do1
+          ) 
+        )
+      ) 
+    )
+  ) 
+) 
+
+		
+    
+
+
+:help
+	::params--1.url 2.version 3.localpath 4.resultpath 5.username 6.password
+	echo call L10nHistoryChange-Android.bat (svnurl) (reversion) (localpath) (resultpath) [username] [password]
+	echo Valid params:
+	echo --svnurl       :the whole url of your file in the svn repertory ,necessary
+	echo --reversion    :the reversion of the file in the svn repertory ,necessary  
+	echo --localpath    :the path of the local file which you want to compare,necessary
+	echo --resultpath   :the changes log will be saved to that path,necessary 
+	echo --username     :your svn username,optional
+	echo --password     :your svn password,optional
+	
+	goto end
+
+:do1
+	svn export -r %2 %1 %~dp0 --username %5 --password %6
+	goto do
+
+:do2
+	svn export -r %2 %1 %~dp0 
+	goto do
+
+:do
+	::version localpath resultpath temppath
+	java -jar L10nHistoryChange-Android.jar  %2 %3 %4 %~dp0
+	
+
+:end
+	pause

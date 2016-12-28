@@ -1,0 +1,3 @@
+@echo off
+call L10nChecker-Android.bat  strings.xml strings2.xml result.txt
+pause

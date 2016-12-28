@@ -1,0 +1,380 @@
+package us.zoom.tools.l10n.core;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintStream;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
+public abstract class AbstractCore {
+	protected BufferedReader reader = null;
+	protected OutputStreamWriter osw = null;
+	protected PrintStream printStream = null;
+	protected PrintStream sysout = System.out;
+
+	protected String path_default = null;
+	protected String path_other = null;
+	protected String path_output = null;
+	protected String svnurl = null;
+	protected String svnuser = null;
+	protected String svnpass = null;
+
+	protected Map<String, String> tag_defaultMap = new HashMap<String, String>();
+	protected Map<String, String> tag_otherMap = new HashMap<String, String>();
+	protected Map<String, String> tag_patchMap = new HashMap<String, String>();
+
+	protected Map<String, String> tag_extraMap = new HashMap<String, String>();
+	protected Map<String, String> tag_missMap = new HashMap<String, String>();
+	protected Map<String, String> tag_changeMap = new HashMap<String, String>();
+
+	protected Stack<String> tagBracketStack = new Stack<String>();
+	protected StringBuffer tagBuffer = new StringBuffer();
+	protected boolean run = true;
+	protected int length;
+
+	protected String path_local = null;
+	protected String version = null;
+	protected String path_des = null;
+
+	/**
+	 * read a char
+	 * 
+	 * @return null or a Character
+	 */
+	protected final Character getChar() {
+		try {
+			int temp = reader.read();
+			// System.err.println("(" + (char) temp + ")");
+			if (temp == -1) {
+				// System.err.println("this is null");
+				run = false;
+				return null;
+			} else {
+				return Character.valueOf((char) temp);
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	protected abstract void readHead();
+
+	protected final String readBlank() {
+		String c = "#$%";
+		try {
+			// reader.mark(length);
+			while ((c = reader.readLine()) != null && run) {
+
+				if (c.trim().equals("")) {
+					return "\n";
+				} else {
+					// this line not a blank line
+					// reader.reset();// reset to last line
+
+					return "notblankline";
+
+				}
+			}
+			return null;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	protected abstract String readComment();
+
+	protected abstract String readTag();
+
+	protected abstract void readExt();
+
+	/**
+	 * a read process when start reading after read head
+	 * 
+	 * @return
+	 */
+	protected abstract String[] read();
+
+	protected abstract Map<String, String> readFileByTags(int type, String fileName);
+
+	protected abstract void printHead();
+
+	protected abstract void printTail();
+
+	protected final boolean deleteFile(String sPath) {
+		boolean flag = false;
+		File file = new File(sPath);
+		if (file.isFile() && file.exists()) {
+			file.delete();
+			flag = true;
+		}
+		return flag;
+	}
+
+	/**
+	 * print merger result's body
+	 * 
+	 * @param other_Map
+	 * @throws IOException
+	 */
+	protected abstract void printMergerBody();
+
+	/**
+	 * print History Change Body
+	 * 
+	 * @param tag_reversionMap
+	 * @param tag_localMap
+	 * @throws IOException
+	 */
+	protected abstract void printHistoryChangeBody();
+
+	/**
+	 * compare other xml file with the default file
+	 * 
+	 * @param path_en
+	 *            the default file path
+	 * @param path_zh
+	 *            the other file path
+	 * @param path_output
+	 *            the output file path
+	 */
+	public final void checkerProcess(Map<String, String> commandMap) {
+
+		try {
+			path_default = commandMap.get(Command.DEFAULT_LANGUAGE_RESOURCE_FILE);
+			path_other = commandMap.get(Command.COMPARED_LANGUAGE_RESOURCE_FILE);
+
+			if (commandMap.containsKey(Command.OUT_FILE)) {
+				path_output = commandMap.get(Command.OUT_FILE);
+				FileOutputStream fos;
+				fos = new FileOutputStream(path_output);
+				printStream = new PrintStream(fos, true, "utf-8");
+				System.setOut(printStream);
+			}
+
+			// read xml file to arraylist
+			tag_defaultMap = readFileByTags(0, path_default);
+			tag_otherMap = readFileByTags(0, path_other);
+
+			// System.err.println("------------" + tag_defaultMap.size());
+			// System.err.println("------------" + tag_otherMap.size());
+
+			if (tag_defaultMap.size() != 0 && tag_otherMap.size() != 0) {
+				// loop through tag_enMap , if tag_zhMap doesn't
+				// contains
+				// the item ,then add into the misslist
+				tag_missMap = new HashMap<String, String>();
+				for (Map.Entry<String, String> entry : tag_defaultMap.entrySet()) {
+
+					if (!tag_otherMap.containsKey(entry.getKey())) {
+						tag_missMap.put(entry.getKey(), entry.getValue());
+					}
+				}
+
+				// loop through tag_zhMap , if tag_enMap doesn't
+				// contains
+				// the item ,then add into the extralist
+				tag_extraMap = new HashMap<String, String>();
+
+				for (Map.Entry<String, String> entry : tag_otherMap.entrySet()) {
+
+					if (!tag_defaultMap.containsKey(entry.getKey())) {
+						tag_extraMap.put(entry.getKey(), entry.getValue());
+					}
+				}
+				System.out.print("#################################################################################" + "\n");
+				System.out.print("###############" + "\n");
+				System.out.print("###############         checking result for " + path_other + "\n");
+				System.out.print("###############" + "\n");
+				System.out.print("#################################################################################" + "\n");
+				if (tag_missMap.isEmpty() && tag_extraMap.isEmpty()) {
+					System.out.print("                        perfect                      " + "\n");
+				}
+				if (!tag_missMap.isEmpty()) {
+					// print missingList
+
+					System.out.print("                         miss  " + tag_missMap.size() + " item(s)" + "\n");
+					System.out.print("\n\n");
+					for (Map.Entry<String, String> entry : tag_missMap.entrySet()) {
+						System.out.print(entry.getValue() + "\n");
+					}
+
+				}
+				if (!tag_extraMap.isEmpty()) {
+					// print extraList
+					System.out.print("\n\n");
+
+					System.out.print("                         extra  " + tag_extraMap.size() + " item(s)" + "\n");
+					System.out.print("\n\n");
+					for (Map.Entry<String, String> entry : tag_extraMap.entrySet()) {
+						System.out.print(entry.getValue() + "\n");
+					}
+				}
+				System.out.print("\n\n");
+				System.setOut(sysout);
+			} else {
+
+				System.err.println("get XMLinfo failed");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			System.err.println("result output failed ");
+		} finally {
+			System.setOut(sysout);
+		}
+
+	}
+
+	/**
+	 * merger a patch file into the other file
+	 * 
+	 * @param path_en
+	 * @param other_Map
+	 * @param patch_Map
+	 * @param path_output
+	 */
+	public final void mergerProcess(Map<String, String> commandMap) {
+
+		try {
+			path_default = commandMap.get(Command.DEFAULT_LANGUAGE_RESOURCE_FILE);
+			tag_otherMap = readFileByTags(1, commandMap.get(Command.COMPARED_LANGUAGE_RESOURCE_FILE));
+			tag_patchMap = readFileByTags(1, commandMap.get(Command.NEW_TRANSLATIONS_RESOURCE_FILE));
+
+			if (commandMap.containsKey(Command.OUT_FILE)) {
+				path_output = commandMap.get(Command.OUT_FILE);
+				FileOutputStream fos;
+				fos = new FileOutputStream(path_output);
+				printStream = new PrintStream(fos, true, "utf-8");
+				System.setOut(printStream);
+			}
+
+			File file = new File(path_default);
+			length = (int) file.length();
+
+			InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
+			reader = new BufferedReader(isr);
+
+			// override other_Map with patch_Map
+			tag_otherMap.putAll(tag_patchMap);
+
+			printHead();
+			readHead();
+			printMergerBody();
+			printTail();
+			System.setOut(sysout);
+			reader.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("result output failed ");
+		} finally {
+			System.setOut(sysout);
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e1) {
+					System.err.println("close BufferedReader error");
+				}
+
+			}
+
+		}
+	}
+
+	/**
+	 * compare the local modified strings.xml with the reversion in the svn
+	 * server
+	 * 
+	 */
+	public final void historyCompareProcess(Map<String, String> commandMap) {
+		try {
+			version = commandMap.get(Command.SVN_REVISION_OF_HISTORY_RESOURCE_FILE);
+			path_local = commandMap.get(Command.DEFAULT_LANGUAGE_RESOURCE_FILE);
+			svnurl = commandMap.get(Command.RESOURCE_SVN_PATH);
+			if (commandMap.containsKey(Command.SVN_USER) && commandMap.containsKey(Command.SVN_PASSWORD)) {
+				svnuser = commandMap.get(Command.SVN_USER);
+				svnpass = commandMap.get(Command.SVN_PASSWORD);
+			}
+			path_des = getPath() + "/strings.xml";
+
+			if (commandMap.containsKey(Command.OUT_FILE)) {
+				path_output = commandMap.get(Command.OUT_FILE);
+				FileOutputStream fos;
+				fos = new FileOutputStream(path_output);
+				printStream = new PrintStream(fos, true, "utf-8");
+
+			}
+			// export
+			Runtime runtime = Runtime.getRuntime();
+			Process exportProcess;
+			if (svnuser != null && svnpass != null) {
+
+				exportProcess = runtime.exec("cmd /c svn export -r " + version + " " + svnurl + " " + "--username " + svnuser + " --password " + svnpass);
+			} else {
+
+				exportProcess = runtime.exec("cmd /c svn export -r " + version + " " + svnurl);
+			}
+			try {
+
+				exportProcess.waitFor();
+				// read xml file to arraylist
+
+				tag_defaultMap = readFileByTags(0, path_des);
+
+				tag_otherMap = readFileByTags(0, path_local);
+
+				System.setOut(printStream);
+				printHistoryChangeBody();
+				System.setOut(sysout);
+
+			} catch (InterruptedException e) {
+				// TODO: handle exception
+			}
+
+		} catch (Exception e) {
+			System.err.println("result output failed ");
+		} finally {
+			System.setOut(sysout);
+			deleteFile(path_des);
+		}
+	}
+
+	public static final String getPath() {
+		URL url = AbstractCore.class.getProtectionDomain().getCodeSource().getLocation();
+		String filePath = null;
+		try {
+			filePath = URLDecoder.decode(url.getPath(), "utf-8");// utf-8
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (filePath.endsWith(".jar")) {//
+			//
+			filePath = filePath.substring(0, filePath.lastIndexOf("/") + 1);
+		}
+
+		File file = new File(filePath);
+
+		// /If this abstract pathname is already absolute, then the pathname
+		// string is simply returned as if by the getPath method. If this
+		// abstract pathname is the empty abstract pathname then the pathname
+		// string of the current user directory, which is named by the system
+		// property user.dir, is returned.
+		filePath = file.getAbsolutePath();//
+		return filePath;
+
+	}
+
+}

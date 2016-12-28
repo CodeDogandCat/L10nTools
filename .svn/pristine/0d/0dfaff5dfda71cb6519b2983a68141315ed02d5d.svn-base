@@ -1,0 +1,300 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class HistoryChange {
+	// default options and authentication drivers to use
+	// public static SVNClientManager myClientManager;
+
+	public static Map<String, String> readFileByLines(String fileName) {
+
+		File file = new File(fileName);
+		BufferedReader reader = null;
+		Map<String, String> tag_Map = new HashMap<String, String>();
+		try {
+
+			InputStreamReader isr = new InputStreamReader(new FileInputStream(
+					file), "UTF-8");
+			reader = new BufferedReader(isr);
+			String tempString = null;
+
+			// read line by line ,until the end of the file
+			while ((tempString = reader.readLine()) != null) {
+				String regEx = "<!--.*-->";
+				Pattern pattern = Pattern.compile(regEx);
+				Matcher matcher = pattern.matcher(tempString);
+
+				if (matcher.find()) {// ignore single line comment
+
+				} else {
+					// ignore multi lines comments
+					if (tempString.trim().contains("<!--")) {
+						while (!(tempString = reader.readLine()).trim()
+								.contains("-->")) {
+						}
+
+					} else {
+						// eg
+						// <string name="zm_msg_no_zoom_rooms">No Rooms
+						// yet</string>
+						// operation
+						regEx = "<string.*?name=\\\"(.*?)\\\">.*?</string>";
+						pattern = Pattern.compile(regEx);
+						matcher = pattern.matcher(tempString);
+						if (matcher.find()) {
+							tag_Map.put("string_" + matcher.group(1),
+									tempString.trim());
+						} else {
+
+							// eg
+							// <plurals name="zm_lbl_folder_items">
+							// <item quantity="one">1 Item</item>
+							// <item quantity="other">%d Items</item>
+							// </plurals>
+							// operation
+							String regEx2 = "<plurals.*?name=\\\"(.*?)\\\">";
+							Pattern pattern2 = Pattern.compile(regEx2);
+							Matcher matcher2 = pattern2.matcher(tempString);
+							if (matcher2.find()) {
+								StringBuilder builder = new StringBuilder(
+										tempString + "\n");
+								while (!((tempString = reader.readLine())
+										.trim().equals("</plurals>"))) {
+									builder.append(tempString + "\n");
+								}
+								builder.append("</plurals>");
+								tag_Map.put("plurals_" + matcher2.group(1),
+										builder.toString().trim());
+							}
+						}
+
+					}
+
+				}
+
+			}
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.err.println("read xml file error , maybe path error");
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e1) {
+					System.err.println("close BufferedReader error");
+				}
+
+			}
+			return tag_Map;
+		}
+	}
+
+	public static void compare(Project pro) {
+
+		try {
+			FileOutputStream fos;
+			fos = new FileOutputStream(pro.getPath_output());
+			OutputStreamWriter osw = new OutputStreamWriter(fos, "utf-8");
+
+			// read xml file to arraylist
+			Map<String, String> tag_reversionMap = new HashMap<String, String>();
+			tag_reversionMap = readFileByLines(pro.getPath_des());
+
+			Map<String, String> tag_localMap = new HashMap<String, String>();
+			tag_localMap = readFileByLines(pro.getPath_local());
+			// System.out.println("~~~~~~~~~~~~" + tag_localMap.size());
+			// System.out.println("~~~~~~~~~~~~" + tag_reversionMap.size());
+
+			if (tag_reversionMap.size() != 0 && tag_localMap.size() != 0) {
+				// loop through tag_reversionMap , if tag_localMap doesn't
+				// contains
+				// the item ,then add into the misslist
+				Map<String, String> tag_missMap = new HashMap<String, String>();
+				Map<String, String> tag_changeMap = new HashMap<String, String>();
+				Map<String, String> tag_extraMap = new HashMap<String, String>();
+
+				for (Map.Entry<String, String> entry : tag_reversionMap
+						.entrySet()) {
+
+					if (!tag_localMap.containsKey(entry.getKey())) {
+						tag_missMap.put(entry.getKey(),
+								" - " + entry.getValue());
+					} else {
+						// if all
+						// contain
+						// the item ,but value is not same ,then add into the
+						// changelist
+						if (!entry.getValue().equals(
+								tag_localMap.get(entry.getKey()))) {
+							tag_changeMap.put(entry.getKey(),
+									" - " + entry.getValue() + "\n" + " + "
+											+ tag_localMap.get(entry.getKey())
+											+ "\n");
+						}
+					}
+				}
+
+				// loop through tag_localMap , if tag_reversionMap doesn't
+				// contains
+				// the item ,then add into the extralist
+
+				for (Map.Entry<String, String> entry : tag_localMap.entrySet()) {
+
+					if (!tag_reversionMap.containsKey(entry.getKey())) {
+						tag_extraMap.put(entry.getKey(),
+								" + " + entry.getValue());
+					}
+				}
+
+				osw.write("#################################################################################"
+						+ "\n");
+				osw.write("###############" + "\n");
+				osw.write("###############        local version differ from reversion "
+						+ pro.getVersion() + "\n");
+				osw.write("###############" + "\n");
+				osw.write("#################################################################################"
+						+ "\n");
+				if (tag_missMap.isEmpty() && tag_extraMap.isEmpty()
+						&& tag_changeMap.isEmpty()) {
+					osw.write("                         same                      "
+							+ "\n");
+				}
+				if (!tag_missMap.isEmpty()) {
+					// print missingList
+					osw.write("                          miss  "
+							+ tag_missMap.size() + " item(s)" + "\n");
+					osw.write("\n\n");
+					for (Map.Entry<String, String> entry : tag_missMap
+							.entrySet()) {
+						osw.write(entry.getValue() + "\n");
+					}
+
+				}
+				if (!tag_extraMap.isEmpty()) {
+					// print extraList
+					osw.write("\n\n");
+					osw.write("                          extra  "
+							+ tag_extraMap.size() + " item(s)" + "\n");
+					osw.write("\n\n");
+					for (Map.Entry<String, String> entry : tag_extraMap
+							.entrySet()) {
+						osw.write(entry.getValue() + "\n");
+					}
+				}
+				if (!tag_changeMap.isEmpty()) {
+					// print extraList
+					osw.write("\n\n");
+					osw.write("                         change  "
+							+ tag_changeMap.size() + " item(s)" + "\n");
+					osw.write("\n\n");
+					for (Map.Entry<String, String> entry : tag_changeMap
+							.entrySet()) {
+						osw.write(entry.getValue() + "\n");
+					}
+				}
+				osw.write("\n\n");
+				osw.flush();
+				System.out.println("History change complete.");
+				System.out.println("**DONE**");
+
+			} else {
+				System.out.println("get strings.xml failed");
+			}
+			osw.close();
+		} catch (Exception e) {
+			System.out.println("result output failed ");
+		} finally {
+			DeleteFolder(pro.getPath_des());
+		}
+
+	}
+
+	public static boolean DeleteFolder(String sPath) {
+		boolean flag = false;
+		File file = new File(sPath);
+
+		if (!file.exists()) {
+			return flag;
+		} else {
+
+			if (file.isFile())
+				return deleteFile(sPath);
+			else {
+				return flag;
+			}
+
+		}
+	}
+
+	public static boolean deleteFile(String sPath) {
+		boolean flag = false;
+		File file = new File(sPath);
+		if (file.isFile() && file.exists()) {
+			file.delete();
+			flag = true;
+		}
+		return flag;
+	}
+
+	// public static boolean checkWorkCopy(Project pro) {
+	//
+	// try {
+	// // StringBuilder cmdBuilder = new
+	// // StringBuilder("cmd svn export -r ");
+	// // cmdBuilder.append("r" + pro.getVersion());
+	// // cmdBuilder.append(" " + pro.getSvnurl());
+	// // cmdBuilder.append(" " + pro.getPath_des());
+	// // cmdBuilder.append(" --username " + pro.getUsername());
+	// // cmdBuilder.append(" --password " + pro.getPassword());
+	// // Runtime.getRuntime().exec(cmdBuilder.toString());
+	// Runtime.getRuntime()
+	// .exec("cmd /C svn export -r r17 https://10.100.56.178/svn/zoom/trunk/tools/l10n/L10nHistoryChange-Android/src/values/strings.xml z:/temp.xml --username lei.li --password uPtJlJqM");
+	// // Runtime.getRuntime().exec("cmd /k start javac");
+	//
+	// return true;
+	//
+	// } catch (Exception e) {
+	// // TODO: handle exception
+	// e.printStackTrace();
+	// return false;
+	// }
+	//
+	// }
+
+	public static void differ(Project pro) {
+		// boolean flag = checkWorkCopy(pro);
+		// if (flag) {
+		//
+		// } else {
+		// System.err.println("failed");
+		// }
+		compare(pro);
+
+	}
+
+	public static void main(String[] args) {
+		String url = "https://10.100.56.178/svn/zoom/trunk/tools/l10n/L10nHistoryChange-Android/src/values/strings.xml";
+		String path_local = args[1];
+		String username = "lei.li";
+		String password = "uPtJlJqM";
+		String name = "L10nHistoryChange-Android";
+		String version = args[0];
+		String path_output = "z:/judge.txt";
+		Project pro = new Project(url, path_local, username, password, name,
+				version);
+		pro.setPath_des(args[3] + "strings.xml");
+		pro.setPath_output(args[2]);
+
+		differ(pro);
+
+	}
+}

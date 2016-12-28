@@ -1,0 +1,6 @@
+@echo off
+::set /p version=version:
+::lei.li uPtJlJqM
+::next line params--1.url 2.version 3.localpath 4.resultpath 5.username 6.password
+call L10nHistoryChange-Android.bat  https://10.100.56.178/svn/zoom/trunk/tools/l10n/L10nHistoryChange-Android/src/values/strings.xml 17 src/values/strings.xml result.txt 
+pause

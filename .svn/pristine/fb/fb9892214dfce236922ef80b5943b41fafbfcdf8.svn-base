@@ -1,0 +1,203 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Checker {
+	/**
+	 * read per line
+	 */
+	public static Map<String, String> readFileByLines(String fileName) {
+
+		File file = new File(fileName);
+		BufferedReader reader = null;
+		Map<String, String> tag_Map = new HashMap<String, String>();
+		try {
+
+			InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
+			reader = new BufferedReader(isr);
+			String tempString = null;
+
+			// read line by line ,until the end of the file
+			while ((tempString = reader.readLine()) != null) {
+				String regEx = "<!--.*-->";
+				Pattern pattern = Pattern.compile(regEx);
+				Matcher matcher = pattern.matcher(tempString);
+
+				if (matcher.find()) {// ignore single line comment
+
+				} else {
+					// ignore multi lines comments
+					if (tempString.trim().contains("<!--")) {
+						while (!(tempString = reader.readLine()).trim().contains("-->")) {
+						}
+
+					} else {
+						// eg
+						// <string name="zm_msg_no_zoom_rooms">No Rooms
+						// yet</string>
+						// operation
+						regEx = "<string.*?name=\\\"(.*?)\\\">.*?</string>";
+						pattern = Pattern.compile(regEx);
+						matcher = pattern.matcher(tempString);
+						if (matcher.find()) {
+							tag_Map.put("string_" + matcher.group(1), tempString.trim());
+						} else {
+
+							// eg
+							// <plurals name="zm_lbl_folder_items">
+							// <item quantity="one">1 Item</item>
+							// <item quantity="other">%d Items</item>
+							// </plurals>
+							// operation
+							String regEx2 = "<plurals.*?name=\\\"(.*?)\\\">";
+							Pattern pattern2 = Pattern.compile(regEx2);
+							Matcher matcher2 = pattern2.matcher(tempString);
+							if (matcher2.find()) {
+								StringBuilder builder = new StringBuilder(tempString + "\n");
+								while (!((tempString = reader.readLine()).trim().equals("</plurals>"))) {
+									builder.append(tempString + "\n");
+								}
+								builder.append("</plurals>");
+								tag_Map.put("plurals_" + matcher2.group(1), builder.toString().trim());
+							}
+						}
+
+					}
+
+				}
+
+			}
+			reader.close();
+		} catch (IOException e) {
+			// e.printStackTrace();
+			System.err.println("read xml file error , maybe path error");
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e1) {
+					System.err.println("close BufferedReader error");
+				}
+
+			}
+			return tag_Map;
+		}
+	}
+
+	public static void compare(String path_en, ArrayList<String> path_other, String path_output) {
+
+		try {
+			FileOutputStream fos;
+			fos = new FileOutputStream(path_output);
+			OutputStreamWriter osw = new OutputStreamWriter(fos, "utf-8");
+
+			// read xml file to arraylist
+			Map<String, String> tag_enMap = new HashMap<String, String>();
+			tag_enMap = readFileByLines(path_en);
+			for (int k = 0; k < path_other.size(); k++) {
+
+				Map<String, String> tag_zhMap = new HashMap<String, String>();
+				tag_zhMap = readFileByLines(path_other.get(k));
+
+				if (tag_enMap.size() != 0 && tag_zhMap.size() != 0) {
+					// loop through tag_enMap , if tag_zhMap doesn't
+					// contains
+					// the item ,then add into the misslist
+					Map<String, String> tag_missMap = new HashMap<String, String>();
+					for (Map.Entry<String, String> entry : tag_enMap.entrySet()) {
+
+						if (!tag_zhMap.containsKey(entry.getKey())) {
+							tag_missMap.put(entry.getKey(), entry.getValue());
+						}
+					}
+
+					// loop through tag_zhMap , if tag_enMap doesn't
+					// contains
+					// the item ,then add into the extralist
+					Map<String, String> tag_extraMap = new HashMap<String, String>();
+
+					for (Map.Entry<String, String> entry : tag_zhMap.entrySet()) {
+
+						if (!tag_enMap.containsKey(entry.getKey())) {
+							tag_extraMap.put(entry.getKey(), entry.getValue());
+						}
+					}
+					osw.write("#################################################################################"
+							+ "\n");
+					osw.write("###############" + "\n");
+					osw.write("###############         checking result for " + path_other.get(k) + "\n");
+					osw.write("###############" + "\n");
+					osw.write("#################################################################################"
+							+ "\n");
+					if (tag_missMap.isEmpty() && tag_extraMap.isEmpty()) {
+						osw.write("                         perfect                      " + "\n");
+					}
+					if (!tag_missMap.isEmpty()) {
+						// print missingList
+						osw.write("                         miss                       " + "\n");
+						osw.write("                         totally miss  " + tag_missMap.size() + " item(s)" + "\n");
+						osw.write("\n\n");
+						for (Map.Entry<String, String> entry : tag_missMap.entrySet()) {
+							osw.write(entry.getValue() + "\n");
+						}
+
+					}
+					if (!tag_extraMap.isEmpty()) {
+						// print extraList
+						osw.write("\n\n");
+						osw.write("                         extra                  " + "\n");
+						osw.write("                         totally extra  " + tag_extraMap.size() + " item(s)" + "\n");
+						osw.write("\n\n");
+						for (Map.Entry<String, String> entry : tag_extraMap.entrySet()) {
+							osw.write(entry.getValue() + "\n");
+						}
+					}
+					osw.write("\n\n");
+					osw.flush();
+
+				} else {
+					System.out.println("get XMLinfo failed");
+				}
+			}
+			osw.close();
+		} catch (Exception e) {
+			System.out.println("result output failed ");
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		String path_output = "src/out.txt";
+		String path_en = "src/strings.xml";
+		String path_zh = "src/strings2.xml";
+
+		ArrayList<String> path_other = new ArrayList<String>();
+		/*
+		 * Scanner in = new Scanner(System.in);
+		 * 
+		 * System.out.println("input output file path ,then input enter");
+		 * path_output = in.nextLine();
+		 * 
+		 * System.out.println("input default strings.xml path ,then input enter")
+		 * ; path_en = in.nextLine(); System.out.println(
+		 * "input other strings.xml path(s) ,input enter for more, input \"end\" for stop"
+		 * ); while (true) { String path = in.nextLine(); if
+		 * (path.equals("end")) { break; } else { path_other.add(path); } }
+		 */
+		path_other.add(args[1]);
+		compare(args[0], path_other, args[2]);
+		// compare(args[0], path_other);
+
+	}
+}

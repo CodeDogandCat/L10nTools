@@ -1,0 +1,449 @@
+package us.zoom.tools.l10n.core;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.OutputStreamWriter;
+import java.io.PrintStream;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import us.zoom.tools.l10n.item.FrenchItem;
+import us.zoom.tools.l10n.item.GermanItem;
+import us.zoom.tools.l10n.item.HansItem;
+import us.zoom.tools.l10n.item.HantItem;
+import us.zoom.tools.l10n.item.JapaneseItem;
+import us.zoom.tools.l10n.item.ModifiedItem;
+import us.zoom.tools.l10n.item.SpanishItem;
+
+public class AbstractCore {
+	protected BufferedReader reader = null;
+	protected OutputStreamWriter osw = null;
+	protected PrintStream printStream = null;
+
+	protected String path_default = null;
+	protected String path_french = null;
+	protected String path_japanese = null;
+	protected String path_spanish = null;
+	protected String path_german = null;
+	protected String path_hans = null;
+	protected String path_hant = null;
+	protected String sheetName = "Sheet1";
+
+	protected Map<String, String> tag_default_modified = new HashMap<String, String>();
+	protected Map<String, String> tag_french = new HashMap<String, String>();
+	protected Map<String, String> tag_japanese = new HashMap<String, String>();
+	protected Map<String, String> tag_spanish = new HashMap<String, String>();
+	protected Map<String, String> tag_german = new HashMap<String, String>();
+	protected Map<String, String> tag_hans = new HashMap<String, String>();
+	protected Map<String, String> tag_hant = new HashMap<String, String>();
+	protected Map<String, String> tag_temp = new HashMap<String, String>();
+
+	protected ArrayList<Map<String, String>> tags_list = new ArrayList<Map<String, String>>();
+	protected Map<Integer, Integer> isUpdated = new HashMap<Integer, Integer>();
+
+	protected int length;
+	protected ExcelManage em;
+
+	protected boolean readValueFromExcel(String fileDir, Map<String, String> map, int type) {
+		try {
+			ExcelManage em = new ExcelManage();
+
+			if (em.fileExist(fileDir)) {
+
+				if (em.sheetExist(fileDir, sheetName)) {
+					switch (type) {
+					case 0:
+						ModifiedItem item0 = new ModifiedItem();
+						List list0 = em.readFromExcel(fileDir, sheetName, item0);
+						for (int i = 0; i < list0.size(); i++) {
+							item0 = (ModifiedItem) list0.get(i);
+							map.put(item0.getWhich(0, null), item0.getWhich(1, null));
+
+						}
+						break;
+					case 1:
+						FrenchItem item = new FrenchItem();
+						List list = em.readFromExcel(fileDir, sheetName, item);
+						for (int i = 0; i < list.size(); i++) {
+							item = (FrenchItem) list.get(i);
+							map.put(item.getWhich(0, null), item.getWhich(1, null));
+
+						}
+						break;
+					case 2:
+						JapaneseItem item2 = new JapaneseItem();
+						List list2 = em.readFromExcel(fileDir, sheetName, item2);
+						for (int i = 0; i < list2.size(); i++) {
+							item2 = (JapaneseItem) list2.get(i);
+							map.put(item2.getWhich(0, null), item2.getWhich(1, null));
+
+						}
+						break;
+					case 3:
+						SpanishItem item3 = new SpanishItem();
+						List list3 = em.readFromExcel(fileDir, sheetName, item3);
+						for (int i = 0; i < list3.size(); i++) {
+							item3 = (SpanishItem) list3.get(i);
+							map.put(item3.getWhich(0, null), item3.getWhich(1, null));
+
+						}
+						break;
+					case 4:
+						GermanItem item4 = new GermanItem();
+						List list4 = em.readFromExcel(fileDir, sheetName, item4);
+						for (int i = 0; i < list4.size(); i++) {
+							item4 = (GermanItem) list4.get(i);
+							map.put(item4.getWhich(0, null), item4.getWhich(1, null));
+
+						}
+						break;
+					case 5:
+						HansItem item5 = new HansItem();
+						List list5 = em.readFromExcel(fileDir, sheetName, item5);
+						for (int i = 0; i < list5.size(); i++) {
+							item5 = (HansItem) list5.get(i);
+							map.put(item5.getWhich(0, null), item5.getWhich(1, null));
+
+						}
+						break;
+					case 6:
+						HantItem item6 = new HantItem();
+						List list6 = em.readFromExcel(fileDir, sheetName, item6);
+						for (int i = 0; i < list6.size(); i++) {
+							item6 = (HantItem) list6.get(i);
+							map.put(item6.getWhich(0, null), item6.getWhich(1, null));
+
+						}
+						break;
+
+					default:
+						break;
+					}
+
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+		return false;
+
+	}
+
+	protected void updateMap() {
+		for (Map.Entry<String, String> entry : tag_default_modified.entrySet()) {
+			if (!entry.getValue().equals("")) {
+				for (int i = 0; i < 6; i++) {
+					Map<String, String> tempMap = tags_list.get(i);
+					if (tempMap != null) {
+						if (tempMap.size() != 0 && tempMap.containsKey(entry.getKey())) {
+							tempMap.put(entry.getKey(), entry.getValue());
+							// mark this is updated
+							isUpdated.put(i + 1, 1);
+						}
+					}
+
+				}
+
+			}
+		}
+
+	}
+
+	public final void rewriterProcess(Map<String, String> commandMap) {
+
+		try {
+			path_default = commandMap.get(Command.DEFAULT_LANGUAGE_RESOURCE_FILE);
+			// System.err.println("$$$$");
+			readValueFromExcel(path_default, tag_default_modified, 0);
+
+			if (commandMap.containsKey(Command.FRENCH_RESOURCE_FILE)) {
+				// System.err.println("1");
+				path_french = commandMap.get(Command.FRENCH_RESOURCE_FILE);
+				if (readValueFromExcel(path_french, tag_french, 1)) {
+					tags_list.add(tag_french);
+					isUpdated.put(1, 0);
+				} else {
+					tags_list.add(tag_temp);
+					System.err.println(path_japanese + " read error");
+				}
+			} else {
+				tags_list.add(tag_temp);
+			}
+			if (commandMap.containsKey(Command.JAPANESE_RESOURCE_FILE)) {
+				// System.err.println("2");
+				path_japanese = commandMap.get(Command.JAPANESE_RESOURCE_FILE);
+				if (readValueFromExcel(path_japanese, tag_japanese, 2)) {
+					tags_list.add(tag_japanese);
+					isUpdated.put(2, 0);
+				} else {
+					tags_list.add(tag_temp);
+					System.err.println(path_japanese + " read error");
+				}
+			} else {
+				tags_list.add(tag_temp);
+			}
+			if (commandMap.containsKey(Command.SPANISH_RESOURCE_FILE)) {
+				// System.err.println("3");
+				path_spanish = commandMap.get(Command.SPANISH_RESOURCE_FILE);
+				if (readValueFromExcel(path_spanish, tag_spanish, 3)) {
+					tags_list.add(tag_spanish);
+					isUpdated.put(3, 0);
+				} else {
+					tags_list.add(tag_temp);
+					System.err.println(path_spanish + " read error");
+				}
+			} else {
+				tags_list.add(tag_temp);
+			}
+			if (commandMap.containsKey(Command.GERMAN_RESOURCE_FILE)) {
+				// System.err.println("4");
+				path_german = commandMap.get(Command.GERMAN_RESOURCE_FILE);
+				if (readValueFromExcel(path_german, tag_german, 4)) {
+					tags_list.add(tag_german);
+					isUpdated.put(4, 0);
+				} else {
+					tags_list.add(tag_temp);
+					System.err.println(path_german + " read error");
+				}
+			} else {
+				tags_list.add(tag_temp);
+			}
+			if (commandMap.containsKey(Command.HANS_RESOURCE_FILE)) {
+				// System.err.println("5");
+				path_hans = commandMap.get(Command.HANS_RESOURCE_FILE);
+				if (readValueFromExcel(path_hans, tag_hans, 5)) {
+					tags_list.add(tag_hans);
+					isUpdated.put(5, 0);
+				} else {
+					tags_list.add(tag_temp);
+					System.err.println(path_hans + " read error");
+				}
+			} else {
+				tags_list.add(tag_temp);
+			}
+			if (commandMap.containsKey(Command.HANT_RESOURCE_FILE)) {
+				// System.err.println("6");
+				path_hant = commandMap.get(Command.HANT_RESOURCE_FILE);
+				if (readValueFromExcel(path_hant, tag_hant, 6)) {
+					tags_list.add(tag_hant);
+					isUpdated.put(6, 0);
+				} else {
+					tags_list.add(tag_temp);
+					System.err.println(path_hant + " read error");
+				}
+			} else {
+				tags_list.add(tag_temp);
+			}
+			// for (Entry<Integer, Integer> entry : isUpdated.entrySet()) {
+			// System.err.println(entry.getKey() + "^^^^^" + entry.getValue());
+			// }
+
+			if (tags_list.size() != 0) {
+				// update map
+				updateMap();
+				// for (Entry<Integer, Integer> entry : isUpdated.entrySet()) {
+				// System.err.println(entry.getKey() + "^^^^^" +
+				// entry.getValue());
+				// }
+
+				// write to file
+				writeToExcel();
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+	}
+
+	protected void writeToExcel() {
+		// create excel
+		for (Entry<Integer, Integer> entry : isUpdated.entrySet()) {
+			if (entry.getValue() == 1) {
+				// this map is updated
+				ExcelManage em = new ExcelManage();
+				String oldpath = null;
+				String title[] = { "", "" };
+				String part = null;
+				String prefix = null;
+				String newpath = null;
+				switch (entry.getKey()) {
+
+				case 1:
+					FrenchItem item = new FrenchItem();
+					oldpath = path_french;
+					title[0] = "English";
+					title[1] = "French";
+					// System.err.println("!!!!!!!!!!!!!!" + title[0] + "****" +
+					// title[1]);
+
+					part = oldpath.substring(0, oldpath.lastIndexOf("."));
+					part += DateFormat.getDateInstance(DateFormat.MEDIUM).format(new Date());
+					prefix = oldpath.substring(oldpath.lastIndexOf(".") + 1);
+					newpath = part + "." + prefix;
+
+					em.createExcel(newpath, sheetName, title);
+
+					for (Entry<String, String> entry2 : tags_list.get(entry.getKey() - 1).entrySet()) {
+
+						item.setEnglish(entry2.getKey());
+						item.setFrench(entry2.getValue());
+						em.writeToExcel(newpath, sheetName, item);
+					}
+					break;
+				case 2:
+					JapaneseItem item2 = new JapaneseItem();
+					oldpath = path_japanese;
+					title[0] = "English";
+					title[1] = "Japanese";
+					// System.err.println("!!!!!!!!!!!!!!" + title[0] + "****" +
+					// title[1]);
+
+					part = oldpath.substring(0, oldpath.lastIndexOf("."));
+					part += DateFormat.getDateInstance(DateFormat.MEDIUM).format(new Date());
+					prefix = oldpath.substring(oldpath.lastIndexOf(".") + 1);
+					newpath = part + "." + prefix;
+
+					em.createExcel(newpath, sheetName, title);
+
+					for (Entry<String, String> entry2 : tags_list.get(entry.getKey() - 1).entrySet()) {
+
+						item2.setEnglish(entry2.getKey());
+						item2.setJapanese(entry2.getValue());
+						em.writeToExcel(newpath, sheetName, item2);
+					}
+					break;
+				case 3:
+					SpanishItem item3 = new SpanishItem();
+					oldpath = path_spanish;
+					title[0] = "English";
+					title[1] = "Spanish";
+					// System.err.println("!!!!!!!!!!!!!!" + title[0] + "****" +
+					// title[1]);
+
+					part = oldpath.substring(0, oldpath.lastIndexOf("."));
+					part += DateFormat.getDateInstance(DateFormat.MEDIUM).format(new Date());
+					prefix = oldpath.substring(oldpath.lastIndexOf(".") + 1);
+					newpath = part + "." + prefix;
+
+					em.createExcel(newpath, sheetName, title);
+
+					for (Entry<String, String> entry2 : tags_list.get(entry.getKey() - 1).entrySet()) {
+
+						item3.setEnglish(entry2.getKey());
+						item3.setSpanish(entry2.getValue());
+						em.writeToExcel(newpath, sheetName, item3);
+					}
+					break;
+				case 4:
+					GermanItem item4 = new GermanItem();
+					oldpath = path_german;
+					title[0] = "English";
+					title[1] = "German";
+					// System.err.println("!!!!!!!!!!!!!!" + title[0] + "****" +
+					// title[1]);
+
+					part = oldpath.substring(0, oldpath.lastIndexOf("."));
+					part += DateFormat.getDateInstance(DateFormat.MEDIUM).format(new Date());
+					prefix = oldpath.substring(oldpath.lastIndexOf(".") + 1);
+					newpath = part + "." + prefix;
+
+					em.createExcel(newpath, sheetName, title);
+
+					for (Entry<String, String> entry2 : tags_list.get(entry.getKey() - 1).entrySet()) {
+
+						item4.setEnglish(entry2.getKey());
+						item4.setGerman(entry2.getValue());
+						em.writeToExcel(newpath, sheetName, item4);
+					}
+					break;
+				case 5:
+					HansItem item5 = new HansItem();
+					oldpath = path_hans;
+					title[0] = "English";
+					title[1] = "Hans";
+					// System.err.println("!!!!!!!!!!!!!!" + title[0] + "****" +
+					// title[1]);
+
+					part = oldpath.substring(0, oldpath.lastIndexOf("."));
+					part += DateFormat.getDateInstance(DateFormat.MEDIUM).format(new Date());
+					prefix = oldpath.substring(oldpath.lastIndexOf(".") + 1);
+					newpath = part + "." + prefix;
+
+					em.createExcel(newpath, sheetName, title);
+
+					for (Entry<String, String> entry2 : tags_list.get(entry.getKey() - 1).entrySet()) {
+
+						item5.setEnglish(entry2.getKey());
+						item5.setHans(entry2.getValue());
+						em.writeToExcel(newpath, sheetName, item5);
+					}
+					break;
+				case 6:
+					HantItem item6 = new HantItem();
+					oldpath = path_hant;
+					title[0] = "English";
+					title[1] = "Hant";
+					// System.err.println("!!!!!!!!!!!!!!" + title[0] + "****" +
+					// title[1]);
+
+					part = oldpath.substring(0, oldpath.lastIndexOf("."));
+					part += DateFormat.getDateInstance(DateFormat.MEDIUM).format(new Date());
+					prefix = oldpath.substring(oldpath.lastIndexOf(".") + 1);
+					newpath = part + "." + prefix;
+
+					em.createExcel(newpath, sheetName, title);
+
+					for (Entry<String, String> entry2 : tags_list.get(entry.getKey() - 1).entrySet()) {
+
+						item6.setEnglish(entry2.getKey());
+						item6.setHant(entry2.getValue());
+						em.writeToExcel(newpath, sheetName, item6);
+					}
+					break;
+
+				default:
+					break;
+				}
+
+			}
+		}
+	}
+
+	public static final String getPath() {
+		URL url = AbstractCore.class.getProtectionDomain().getCodeSource().getLocation();
+		String filePath = null;
+		try {
+			filePath = URLDecoder.decode(url.getPath(), "utf-8");// utf-8
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (filePath.endsWith(".jar")) {//
+			//
+			filePath = filePath.substring(0, filePath.lastIndexOf("/") + 1);
+		}
+
+		File file = new File(filePath);
+
+		// /If this abstract pathname is already absolute, then the pathname
+		// string is simply returned as if by the getPath method. If this
+		// abstract pathname is the empty abstract pathname then the pathname
+		// string of the current user directory, which is named by the system
+		// property user.dir, is returned.
+		filePath = file.getAbsolutePath();//
+		return filePath;
+
+	}
+
+}

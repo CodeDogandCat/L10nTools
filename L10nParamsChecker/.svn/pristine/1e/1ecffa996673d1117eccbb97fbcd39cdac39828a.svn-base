@@ -1,0 +1,431 @@
+package us.zoom.tools.l10n.mac_ios;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import us.zoom.tools.l10n.core.AbstractCore;
+
+public class Ios extends AbstractCore {
+
+	@Override
+	protected void readHead() {
+		// TODO Auto-generated method stub
+
+	}
+
+	protected String readCommentLine() {
+		// System.err.println("readCommentLine");
+		String c = "#$%";
+		try {
+
+			if ((c = reader.readLine()) != null && run) {
+				// System.err.println("caca" + c);
+				if (c.charAt(0) == '/' && c.charAt(1) == '/') {
+					return c;
+				} else {
+					// this line not a comment line
+
+					return "notcommentline";
+
+				}
+			}
+
+			return null;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	@Override
+	protected String readComment() {
+		// System.err.println("readComment");
+		String commentLine = readCommentLine();
+		if (commentLine == null) {
+			// System.err.println("readCommentLine null");
+			return null;
+		} else if (!commentLine.equals("notcommentline")) {
+			// System.err.println("xxxxxxxxxx");
+			return commentLine;
+		} else {
+			// System.err.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+			try {
+				reader.reset();
+				reader.mark(length);
+				Character c;
+				// /*
+				// Localizable.strings
+				// iZipow
+				//
+				// Created by Robust Hu on 3/8/12.
+				// Copyright (c) 2012 Zipow. All rights reserved.
+				// */
+				while ((c = getChar()) != null && run) {
+					if (c == '"') {
+						return "notcomment";
+					}
+					if (c == '/') {
+						break;
+					}
+				}
+
+				if (c == null) {
+					return null;
+				}
+
+				StringBuffer commentbBuffer = new StringBuffer();
+				// go until be sure it isn't a comment
+				c = getChar();
+
+				if (c == '*') {
+					// System.out.println("------it is a comment");
+					commentbBuffer.append("/*");
+					while (true) {// just go until the */ then
+									// return
+
+						// */
+						if ((c = getChar()) != null && run) {
+							commentbBuffer.append(c);
+							if (c == '*') {
+								if ((c = getChar()) != null && run) {
+									commentbBuffer.append(c);
+									if (c == '/') {
+										String commentContent = commentbBuffer.toString();
+										// System.err.println(commentContent);
+										// System.out.println("-----------readComment()"
+										// + commentContent);
+										commentbBuffer.setLength(0);// clean
+																	// the
+																	// buffer
+																	// System.err.println(commentContent);
+										return commentContent;
+									}
+								}
+							}
+						}
+					}
+
+				} else {// reset,because be sure this is not a comment
+					// System.out.println("notcomment");
+					return "notcomment";
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return null;
+	}
+
+	@Override
+	protected String readTag() {
+		// System.err.println("readTag");
+		Character c;
+		boolean flag = false;
+		c = getChar();
+		while (c != null && run) {
+			if (c == '"') {
+
+				tagBuffer.append("\"");
+
+				while ((c = getChar()) != null && run) {
+					tagBuffer.append(c);
+					if (c == ';') {
+						if (tagBuffer.charAt(tagBuffer.length() - 2) == '"') {
+							flag = true;
+							break;
+						}
+
+					}
+				}
+
+				if (flag) {
+
+					String tmp = tagBuffer.toString();
+					tagBuffer.setLength(0);
+					// System.err.println(tmp);
+					return tmp;
+				}
+			}
+			c = getChar();
+		}
+
+		return null;
+	}
+
+	@Override
+	protected void readExt() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected String[] read() {
+		String result = null;
+		String[] returnArray = { "zoom", "android" };
+		try {
+			if (run) {
+				reader.mark(length);
+				if ((result = readBlank()) == null) {
+					// System.err.println("blank null");
+					return null;
+				} else {
+					if (result.equals("notblankline")) {
+						reader.reset();
+						reader.mark(length);
+						if ((result = readComment()) == null) {
+							// System.err.println("Comment null");
+							return null;
+						} else if (result.equals("notcomment")) {
+							reader.reset();
+							reader.mark(length);
+							if (run) {
+								if ((result = readTag()) == null) {
+									// System.err.println("Tag null" + "run is "
+									// + run);
+									return null;
+								} else {
+									returnArray[0] = "tag";
+									returnArray[1] = result;
+
+									return returnArray;
+								}
+							}
+						} else {
+							returnArray[0] = "comment";
+							returnArray[1] = result;
+
+							return returnArray;
+						}
+					} else {
+						returnArray[0] = "blank";
+						returnArray[1] = result;
+						return returnArray;
+					}
+
+				}
+
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	protected Map<String, String> readFileByTags(int type, String fileName) {
+
+		File file = new File(fileName);
+		length = (int) file.length();
+		// BufferedReader reader = null;
+		Map<String, String> tag_Map = new HashMap<String, String>();
+		try {
+
+			InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
+			reader = new BufferedReader(isr);
+
+			readHead();
+
+			String tempString = null;
+			String[] returnArray = { "", "" };
+			int i = 1;
+
+			while ((returnArray = read()) != null && run) {
+
+				if (returnArray[0].equals("tag")) {
+
+					tempString = returnArray[1];
+					// System.err.println(tempString);
+					// "You changed the group name to \"%@\"" =
+					// "You changed the group name to \"%@\"";
+					String regEx = "\\\"(.*?)\\\"\\s*=\\s*\\\".*?\\\";";
+					Pattern pattern = Pattern.compile(regEx);
+					Matcher matcher = pattern.matcher(tempString);
+					// System.err.println(tempString);
+					if (matcher.find()) {
+						tag_Map.put(matcher.group(1), tempString.trim());
+
+					}
+
+				} else if (returnArray[0].equals("blank")) {
+					// System.out.println("get a blank line");
+					// tempString = returnArray[1];
+				} else {
+					if (type == 0) {
+
+					} else if (type == 1) {
+						if (returnArray[0].equals("comment")) {
+							tempString = returnArray[1];
+							tag_Map.put(tempString.trim(), "");
+							// System.out.println("get a comment");
+
+						}
+					}
+				}
+
+			}
+			// System.err.println(returnArray + "run is " + run);
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.err.println("read xml file error , maybe path error");
+		} finally {
+			// reset
+			run = true;
+			tagBracketStack.clear();
+			tagBuffer.setLength(0);
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e1) {
+					System.err.println("close BufferedReader error");
+				}
+
+			}
+			return tag_Map;
+		}
+	}
+
+	@Override
+	protected void printHead() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void printTail() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected boolean paramsCheckerBody() {
+		tag_changeMap = new HashMap<String, String>();
+		// int i = 1;
+		for (Map.Entry<String, String> entry : tag_defaultMap.entrySet()) {
+
+			if (tag_otherMap.containsKey(entry.getKey())) {
+				// System.err.println(i);
+				// i++;
+				// System.err.println("get tag value");
+				String defaultValue = getTagValue(entry.getValue());
+				String otherValue = getTagValue(tag_otherMap.get(entry.getKey()));
+				// System.err.println("defaultValue: " + defaultValue);
+				// System.err.println("otherValue: " + otherValue);
+				// System.err.println();
+				if (defaultValue != null && otherValue != null) {
+					String params_default = getParamsString(defaultValue);
+					String params_other = getParamsString(otherValue);
+
+					if (!params_default.equals(params_other)) {
+						tag_changeMap.put(entry.getValue(), tag_otherMap.get(entry.getKey()));
+					}
+
+				} else {
+					return false;
+				}
+
+			}
+		}
+		return true;
+
+	}
+
+	@Override
+	protected String getTagValue(String str) {
+
+		String regEx = "\\\".*?\\\"\\s*=\\s*\\\"(.*?)\\\";";
+		Pattern pattern = Pattern.compile(regEx);
+		Matcher matcher = pattern.matcher(str);
+
+		// System.err.println(str);
+
+		if (matcher.find()) {
+			return matcher.group(1);
+		}
+
+		return null;
+	}
+
+	@Override
+	protected String getParamsString(String str) {
+		int length = str.length();
+		StringBuilder builder = new StringBuilder();
+		ArrayList<Character> onetonine = new ArrayList<Character>();
+		onetonine.add('1');
+		onetonine.add('2');
+		onetonine.add('3');
+		onetonine.add('4');
+		onetonine.add('5');
+		onetonine.add('6');
+		onetonine.add('7');
+		onetonine.add('8');
+		onetonine.add('9');
+
+		char tmp;
+		for (int i = 0; i < length; i++) {
+			// %
+			tmp = str.charAt(i);
+			if (tmp == '%') {
+				if (i + 1 < length) {
+					tmp = str.charAt(++i);
+
+					if (tmp == '%') {
+						// %% just to print a %
+					} else if (tmp == 's') {
+						// %s parameter
+						builder.append("%s");
+					} else if (tmp == 'd') {
+						// %d parameter
+						builder.append("%d");
+					} else if (tmp == '@') {
+						// %d parameter
+						builder.append("%d");
+					} else if (tmp == 'q') {
+						if (i + 1 < length) {
+							tmp = str.charAt(++i);
+
+							if (tmp == 'u') {
+								// %qu
+								builder.append("%qu");
+							}
+						}
+					} else if (tmp == 'f') {
+						// %f parameter
+						builder.append("%f");
+					} else if (tmp == '.') {
+						if (i + 1 < length) {
+							tmp = str.charAt(++i);
+							if (onetonine.contains(tmp)) {
+								char num = tmp;
+								if (i + 1 < length) {
+									tmp = str.charAt(++i);
+									if (tmp == 'f') {
+										// %.2f parameter
+										builder.append("%." + num + "f");
+									}
+								}
+							}
+						}
+
+					}
+				}
+
+			}
+		}
+		return builder.toString();
+	}
+
+}

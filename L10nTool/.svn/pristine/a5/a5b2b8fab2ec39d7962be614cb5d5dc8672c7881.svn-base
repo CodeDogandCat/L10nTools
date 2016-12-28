@@ -1,0 +1,31 @@
+package us.zoom.tools.l10n.android;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import us.zoom.tools.l10n.core.Command;
+
+public class testAndroid {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// Android tool = new Android();
+		// Map<String, String> commandMap = new HashMap<String, String>();
+		// commandMap.put(Command.PLATFORM, "android");
+		// commandMap.put(Command.FUNCTION, "checker");
+		// commandMap.put(Command.DEFAULT_LANGUAGE_RESOURCE_FILE,
+		// "src/merger.xml");
+		// commandMap.put(Command.COMPARED_LANGUAGE_RESOURCE_FILE,
+		// "src/strings2.xml");
+		// commandMap.put(Command.OUT_FILE, "src/xxx.txt");
+		// tool.checkerProcess(commandMap);
+		Runtime runtime = Runtime.getRuntime();
+		try {
+			runtime.exec("cmd /c svn export -r 17 https://10.100.56.178/svn/zoom/trunk/tools/l10n/L10nHistoryChange-Android/src/values/strings.xml  ");
+		} catch (Exception e) {
+			System.out.println("Error!");
+		}
+
+	}
+
+}

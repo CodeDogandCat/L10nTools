@@ -1,0 +1,42 @@
+
+1.如果在default存在，在other中不存在，则忽略
+
+2.不能检查name中的参数是否正确
+eg.  
+   "Password: %@" = "Password: %@";     
+   "Password: %@" = "密码: %@";     
+   
+   如果name中的参数同时出错，检查不出来
+   "Password: %p" = "Password: %@";     
+   "Password: %P" = "密码: %@";    
+   
+   
+3. 
+android:
+	%% 忽略
+	%s
+	%d
+	%f
+	%.【2到9】f
+	%【1到9】$【s 或 d 或 .【2到9】f】
+	${xxxxxxxx}
+
+
+windows:
+	%% 忽略
+	%s
+	%d
+	%f
+	%.【2到9】f
+
+
+ios/mac:
+    %% 忽略
+	%s
+	%d
+	%@
+	%qu
+	%f
+	%.【2到9】f
+
+

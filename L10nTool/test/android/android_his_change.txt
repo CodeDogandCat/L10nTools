@@ -1,0 +1,15 @@
+#################################################################################
+###############
+###############        local version differ from reversion 36
+###############
+#################################################################################
+
+
+                         change  1 item(s)
+
+
+ - 	<string name="zm_lbl_copy_to_clipboard">wwwwwwwwwwwwwwwwww</string>
+ + 	<string name='zm_lbl_copy_to_clipboard'>wwwwwwwwwwwwwwwwww</string>
+
+
+

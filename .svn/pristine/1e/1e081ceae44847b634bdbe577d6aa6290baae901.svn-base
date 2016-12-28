@@ -1,0 +1,164 @@
+#################################################################################
+###############
+###############         checking result for strings2.xml
+###############
+#################################################################################
+                         miss  126 item(s)
+
+
+	<string name="zm_lbl_content_load_error">Loading Error, <![CDATA[<font color="#2da5ff">Retry</font>]]></string>
+	<string name="zm_btn_view_file">View File</string>
+	<string name="zm_msg_select_zoomrooms_to_invite_to_meeting_instructions">Select Zoom Rooms and invite to this meeting</string>
+	<string name="zm_mm_msg_upload_file_prompt">Choose and upload a file to your personal container.</string>
+	<string name="zm_callout_msg_block_no_host">The number you dialed is not available until the host joins.</string>
+	<string name="zm_callout_msg_block_high_rate">The number you dialed is not supported.</string>
+	<string name="zm_mm_opt_file">Send a File</string>
+	<plurals name="zm_msg_invitations_sent">
+        <item quantity="one">1 invitation was sent out</item>
+        <item quantity="other">%d invitations were sent out</item>
+    </plurals>
+	<string name="zm_msg_convert_private_group">Are you sure to convert this group to private group.</string>
+	<string name="zm_lbl_create_private_group">Create a Pravite Group</string>
+	<string name="zm_mm_lbl_allow_new_see_history">Allow new member see history</string>
+	<string name="zm_alert_download_file_failed">Failed to download file.</string>
+	<string name="zm_lbl_content_me">me</string>
+	<string name="zm_alert_unshare_msg">Unshare will not delete your file, but current group members will not be able to access the file anymore.</string>
+	<string name="zm_mm_title_invite_member">Invite Members</string>
+	<string name="zm_mm_lbl_group_type_private_tips">Invited member only</string>
+	<string name="zm_alert_delete_file_failed">Failed to delete file.</string>
+	<string name="zm_msg_conffail_join_webinar_withsameemail">The email address has been registered by another user, please use a different one.</string>
+	<string name="zm_mm_lbl_group_type_private">Private Group</string>
+	<string name="zm_tab_content_shared">All Files</string>
+	<string name="zm_mm_lbl_group_information">Group Information</string>
+	<string name="zm_msg_e2e_get_invite_for_old_client">[%s is inviting you to chat, you need to update your client to join]</string>
+	<string name="zm_mm_lbl_group_type">Group Type</string>
+	<string name="zm_btn_join_public_group">Join Public Group</string>
+	<string name="zm_lbl_content_no_share">private</string>
+	<string name="zm_tab_content_rooms">Rooms</string>
+	<string name="zm_mm_lbl_privte">Private</string>
+	<string name="zm_btn_jump_group">Jump to this group</string>
+	<string name="zm_lbl_translate_speed">%1$s of %2$s(%3$s/ec)</string>
+	<string name="zm_hintl_not_set">Not set yet</string>
+	<string name="zm_msg_e2e_fake_message">[This is an encrypted message]</string>
+	<string name="zm_mm_lbl_group_type_public_tips">Anyone in your organization can join</string>
+	<string name="zm_lbl_content_time_today_format">Today at %s</string>
+	<string name="zm_hint_file_name">File Name</string>
+	<string name="zm_title_sharer_action">%1$s shared in %2$s</string>
+	<string name="zm_hint_search_groups">Search Groups</string>
+	<string name="zm_msg_verifying_hostkey">Verifying Host Key…</string>
+	<string name="zm_mm_msg_file_unshared">%1$s unshared %2$s</string>
+	<string name="zm_alert_msg_success">Success</string>
+	<string name="zm_mm_lbl_only_organization">Members in your organization only</string>
+	<string name="zm_mm_msg_convert_private_group_failed">Unable to convert to private group.</string>
+	<string name="zm_msg_file_too_large">The file size exceeds the limit allow(512MB) and cannot be uploaded.</string>
+	<string name="zm_tab_content_person">Just My</string>
+	<string name="zm_lbl_content_upload_file">Upload photos or files to your personal container, then you can share it to others or groups later.</string>
+	<string name="zm_lbl_content_time_other_day_format">%1$s at %2$s</string>
+	<string name="zm_btn_claim_as_host">Claim Host Role…</string>
+	<string name="zm_title_group_information">Group Information</string>
+	<string name="zm_btn_unshare_group">Unshare in this group</string>
+	<string name="zm_lbl_content_share_by_me">%1$s,%2$s</string>
+	<string name="zm_lbl_share_category_groups_chats">Groups &amp;  Chats</string>
+	<string name="zm_lbl_empty_group_name_greater_3">%s &amp; others</string>
+	<string name="zm_mm_lbl_group_type_public">Public Group</string>
+	<string name="zm_lbl_share_category_contact">Contacts</string>
+	<string name="zm_lbl_file_type_images">Images</string>
+	<string name="zm_alert_share_file_failed">Failed to share file.</string>
+	<string name="zm_lbl_select_everyone">everyone</string>
+	<string name="zm_lbl_allow_new_member_see_chat_history">Allow new member access chat history</string>
+	<string name="fb_msg_loading">Loading…</string>
+	<string name="zm_lbl_hostkey_error_desc">The Host Key you entered is invalid.</string>
+	<string name="zm_mm_title_forward_to">Forward to...</string>
+	<string name="zm_lbl_add_contact">Add a Contact</string>
+	<string name="zm_lbl_system_not_support_preview">Sorry, the file can not be previewed in system.</string>
+	<string name="zm_description_tab_content">Contents tab.</string>
+	<string name="zm_tab_content">Contents</string>
+	<plurals name="zm_msg_n_participants_raised_hands">
+        <item quantity="one">1 participant raised hand</item>
+        <item quantity="other">%d participants raised hands</item>
+    </plurals>
+	<string name="zm_btn_upload">Upload</string>
+	<string name="zm_lbl_instructions_share_to">Select contacts to share</string>
+	<string name="zm_hint_name_group">Name your group</string>
+	<string name="zm_mm_lbl_chat_topic">Chat Topic</string>
+	<string name="zm_mm_msg_join_group_failed">Unable to join a public group. (Error Code: %d)</string>
+	<string name="zm_lbl_invite_zoom_rooms">Invite Zoom Rooms</string>
+	<string name="zm_alert_msg_context_failed">Failed to get message context.</string>
+	<string name="zm_lbl_contact_group_description">Created by %1$s</string>
+	<string name="zm_alert_upload_file_failed">Failed to upload file.</string>
+	<string name="zm_description_mm_btn_search">Search.</string>
+	<string name="zm_hint_search_zoom_room">Search Zoom Rooms</string>
+	<string name="zm_mm_msg_file_deleted">%1$s deleted %2$s</string>
+	<string name="zm_lbl_content_send_to">Send to %s</string>
+	<string name="zm_callout_msg_block_too_frequent">The number you dialed has not been responding to join the meeting.</string>
+	<string name="zm_lbl_create_public_group_des">Others in your organization can join from Join Public Groups or you can invite some contacts to public group.</string>
+	<string name="zm_mm_lbl_group_files">Files</string>
+	<string name="zm_hint_search_contacts">Search Contacts</string>
+	<string name="zm_lbl_file_type_files">All Files</string>
+	<string name="zm_lbl_content_search_result_empty">No Contents.</string>
+	<string name="zm_tab_content_search_messages">Messages</string>
+	<string name="zm_tab_content_groups">Groups</string>
+	<string name="zm_btn_enter_again">Re-enter</string>
+	<string name="zm_tab_content_search_contents">Contents</string>
+	<plurals name="zm_msg_charactors_left">
+        <item quantity="one">1 character left</item>
+        <item quantity="other">%d characters left</item>
+    </plurals>
+	<string name="zm_btn_claim">Claim</string>
+	<string name="zm_mm_title_share_to">Share to...</string>
+	<string name="zm_hint_hostkey">Hostkey is 6-digit number</string>
+	<string name="zm_lbl_create_public_group">Create a Public Group</string>
+	<string name="zm_lbl_groups">Groups</string>
+	<string name="zm_mm_lbl_private_group_des">By converting this chat session to a private group, you will make the entire message history and all shared files visible to the new memebers that you invite to the group.</string>
+	<string name="zm_lbl_instructions_forward_to">Select contacts to forward</string>
+	<string name="zm_mm_msg_add_buddies_not_allowed">%s can not be invited to this internal group</string>
+	<string name="zm_mm_lbl_group_images">Images</string>
+	<string name="zm_btn_convert_private_group">Convert to Private Group</string>
+	<string name="zm_tab_content_contact">Contacts</string>
+	<string name="zm_lbl_create_private_group_des">A Private Social Network A private online community that is exclusive to a club\'s members, trainers, and staff.</string>
+	<string name="zm_alert_unshare_file_failed">Failed to unshare file.</string>
+	<string name="zm_lbl_forward_to">Forward to</string>
+	<string name="zm_lbl_content_share_in_more_group">other %s groups</string>
+	<string name="zm_mm_lbl_public_group_list_empty_hint">There are no public groups</string>
+	<string name="zm_lbl_content_set_file_name_instructions">Please enter file name</string>
+	<string name="zm_msg_no_zoom_rooms">No Rooms yet</string>
+	<plurals name="zm_lbl_webinar_telephony_user_count">
+        <item quantity="one">Total 1 phone call-in listener</item>
+        <item quantity="other">Total %d phone call-in listeners</item>
+    </plurals>
+	<string name="zm_mm_group_action_modify_group_option_other">%1$s convert this group to private group</string>
+	<string name="zm_title_enter_hostkey">Enter Host Key to claim the host role</string>
+	<string name="zm_mm_lbl_public">Public</string>
+	<string name="zm_alert_upload_files_failed">Failed to upload files</string>
+	<string name="zm_msg_no_zoom_groups">No Zoom groups yet</string>
+	<string name="zm_lbl_contact_public_groups">Public Groups(%s)</string>
+	<string name="zm_lbl_content_share_in_group">Shared in %s</string>
+	<string name="zm_lbl_content_share_in_buddy">%s shared with you</string>
+	<string name="zm_lbl_content_share_by">Shared by %1$s,%2$s</string>
+	<string name="zm_lbl_contact_private_groups">Private Groups(%s)</string>
+	<string name="zm_mm_title_new_group">Create a New Group</string>
+	<string name="zm_alert_non_annotation_joined">Because annotation is disabled, your participants need to upgrade to the latest version of Zoom to share their screen.</string>
+	<string name="zm_btn_jump">Jump</string>
+	<string name="zm_btn_share_all_file">File</string>
+	<string name="zm_lbl_content_not_support_preview">The file can not be previewed in zoom, do you want to download it and open with other app?</string>
+	<string name="zm_btn_retry">Retry</string>
+	<string name="zm_title_join_public_group">Join Public Group</string>
+	<string name="zm_mm_group_action_modify_group_option_you">You convert this group to private group</string>
+
+
+                         extra  4 item(s)
+
+
+	<plurals name="dadadadad">
+        <item quantity="one">1 放松放松</item>
+        <item quantity="other">%d 机考</item>
+    </plurals>
+	<string name="lalalala">咔咔咔看</string>
+	<string name="aiaiaiaiia"><![CDATA[<a href="%s">Forgot password?</a>]]></string>
+	<plurals name="kakakakak">
+        <item quantity="one">1 Item</item>
+        <item quantity="other">%d Items</item>
+        <item quantity="other">%d Items</item>
+    </plurals>
+
+

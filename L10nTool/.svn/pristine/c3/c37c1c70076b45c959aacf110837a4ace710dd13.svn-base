@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<language>
+    <ResText>
+		<Strings>
+          <ID34004 text="无主题"></ID34004>
+          <ID34005 text="私密会议"></ID34005>
+          <ID34006 text="%s的会议"></ID34006>
+		  <ID143 text="您正在使用电脑语音"></ID143>
+        </Strings>
+    </ResText>
+</language>

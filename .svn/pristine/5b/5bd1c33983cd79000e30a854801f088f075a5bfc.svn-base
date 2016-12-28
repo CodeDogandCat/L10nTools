@@ -1,0 +1,329 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.tmatesoft.svn.core.SVNDepth;
+import org.tmatesoft.svn.core.SVNException;
+import org.tmatesoft.svn.core.SVNURL;
+import org.tmatesoft.svn.core.internal.io.dav.DAVRepositoryFactory;
+import org.tmatesoft.svn.core.internal.wc.DefaultSVNOptions;
+import org.tmatesoft.svn.core.wc.ISVNOptions;
+import org.tmatesoft.svn.core.wc.SVNClientManager;
+import org.tmatesoft.svn.core.wc.SVNDiffClient;
+import org.tmatesoft.svn.core.wc.SVNRevision;
+import org.tmatesoft.svn.core.wc.SVNUpdateClient;
+import org.tmatesoft.svn.core.wc.SVNWCUtil;
+
+public class HistoryChange {
+	// default options and authentication drivers to use
+	// public static SVNClientManager myClientManager;
+
+	public static Map<String, String> readFileByLines(String fileName) {
+
+		File file = new File(fileName);
+		BufferedReader reader = null;
+		Map<String, String> tag_Map = new HashMap<String, String>();
+		try {
+
+			InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
+			reader = new BufferedReader(isr);
+			String tempString = null;
+
+			// read line by line ,until the end of the file
+			while ((tempString = reader.readLine()) != null) {
+				String regEx = "<!--.*-->";
+				Pattern pattern = Pattern.compile(regEx);
+				Matcher matcher = pattern.matcher(tempString);
+
+				if (matcher.find()) {// ignore single line comment
+
+				} else {
+					// ignore multi lines comments
+					if (tempString.trim().contains("<!--")) {
+						while (!(tempString = reader.readLine()).trim().contains("-->")) {
+						}
+
+					} else {
+						// eg
+						// <string name="zm_msg_no_zoom_rooms">No Rooms
+						// yet</string>
+						// operation
+						regEx = "<string.*?name=\\\"(.*?)\\\">.*?</string>";
+						pattern = Pattern.compile(regEx);
+						matcher = pattern.matcher(tempString);
+						if (matcher.find()) {
+							tag_Map.put("string_" + matcher.group(1), tempString.trim());
+						} else {
+
+							// eg
+							// <plurals name="zm_lbl_folder_items">
+							// <item quantity="one">1 Item</item>
+							// <item quantity="other">%d Items</item>
+							// </plurals>
+							// operation
+							String regEx2 = "<plurals.*?name=\\\"(.*?)\\\">";
+							Pattern pattern2 = Pattern.compile(regEx2);
+							Matcher matcher2 = pattern2.matcher(tempString);
+							if (matcher2.find()) {
+								StringBuilder builder = new StringBuilder(tempString + "\n");
+								while (!((tempString = reader.readLine()).trim().equals("</plurals>"))) {
+									builder.append(tempString + "\n");
+								}
+								builder.append("</plurals>");
+								tag_Map.put("plurals_" + matcher2.group(1), builder.toString().trim());
+							}
+						}
+
+					}
+
+				}
+
+			}
+			reader.close();
+		} catch (IOException e) {
+			// e.printStackTrace();
+			System.err.println("read xml file error , maybe path error");
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e1) {
+					System.err.println("close BufferedReader error");
+				}
+
+			}
+			return tag_Map;
+		}
+	}
+
+	public static void compare(Project pro) {
+
+		try {
+			FileOutputStream fos;
+			fos = new FileOutputStream(pro.getPath_output());
+			OutputStreamWriter osw = new OutputStreamWriter(fos, "utf-8");
+
+			// read xml file to arraylist
+			Map<String, String> tag_reversionMap = new HashMap<String, String>();
+			tag_reversionMap = readFileByLines(pro.getPath_des() + "/strings.xml");
+
+			Map<String, String> tag_localMap = new HashMap<String, String>();
+			tag_localMap = readFileByLines(pro.getPath_local());
+
+			if (tag_reversionMap.size() != 0 && tag_localMap.size() != 0) {
+				// loop through tag_reversionMap , if tag_localMap doesn't
+				// contains
+				// the item ,then add into the misslist
+				Map<String, String> tag_missMap = new HashMap<String, String>();
+				Map<String, String> tag_changeMap = new HashMap<String, String>();
+				Map<String, String> tag_extraMap = new HashMap<String, String>();
+
+				for (Map.Entry<String, String> entry : tag_reversionMap.entrySet()) {
+
+					if (!tag_localMap.containsKey(entry.getKey())) {
+						tag_missMap.put(entry.getKey(), " - " + entry.getValue());
+					} else {
+						// if all
+						// contain
+						// the item ,but value is not same ,then add into the
+						// changelist
+						if (!entry.getValue().equals(tag_localMap.get(entry.getKey()))) {
+							tag_changeMap.put(entry.getKey(),
+									" - " + entry.getValue() + "\n" + " + " + tag_localMap.get(entry.getKey()) + "\n");
+						}
+					}
+				}
+
+				// loop through tag_localMap , if tag_reversionMap doesn't
+				// contains
+				// the item ,then add into the extralist
+
+				for (Map.Entry<String, String> entry : tag_localMap.entrySet()) {
+
+					if (!tag_reversionMap.containsKey(entry.getKey())) {
+						tag_extraMap.put(entry.getKey(), " + " + entry.getValue());
+					}
+				}
+
+				osw.write("#################################################################################" + "\n");
+				osw.write("###############" + "\n");
+				osw.write("###############         differ from reversion " + pro.getVersion() + "\n");
+				osw.write("###############" + "\n");
+				osw.write("#################################################################################" + "\n");
+				if (tag_missMap.isEmpty() && tag_extraMap.isEmpty()) {
+					osw.write("                         totally same                      " + "\n");
+				}
+				if (!tag_missMap.isEmpty()) {
+					// print missingList
+					osw.write("                         miss                       " + "\n");
+					osw.write("                         totally miss  " + tag_missMap.size() + " item(s)" + "\n");
+					osw.write("\n\n");
+					for (Map.Entry<String, String> entry : tag_missMap.entrySet()) {
+						osw.write(entry.getValue() + "\n");
+					}
+
+				}
+				if (!tag_extraMap.isEmpty()) {
+					// print extraList
+					osw.write("\n\n");
+					osw.write("                         extra                  " + "\n");
+					osw.write("                         totally extra  " + tag_extraMap.size() + " item(s)" + "\n");
+					osw.write("\n\n");
+					for (Map.Entry<String, String> entry : tag_extraMap.entrySet()) {
+						osw.write(entry.getValue() + "\n");
+					}
+				}
+				if (!tag_changeMap.isEmpty()) {
+					// print extraList
+					osw.write("\n\n");
+					osw.write("                         extra                  " + "\n");
+					osw.write("                         totally change  " + tag_changeMap.size() + " item(s)" + "\n");
+					osw.write("\n\n");
+					for (Map.Entry<String, String> entry : tag_changeMap.entrySet()) {
+						osw.write(entry.getValue() + "\n");
+					}
+				}
+				osw.write("\n\n");
+				osw.flush();
+				System.out.println("**DONE**");
+
+			} else {
+				System.out.println("get strings.xml failed");
+			}
+			osw.close();
+		} catch (Exception e) {
+			System.out.println("result output failed ");
+		} finally {
+			// DeleteFolder(pro.getPath_des());
+		}
+
+	}
+
+	public static boolean DeleteFolder(String sPath) {
+		boolean flag = false;
+		File file = new File(sPath);
+
+		if (!file.exists()) {
+			return flag;
+		} else {
+
+			if (file.isFile())
+				return deleteFile(sPath);
+			else {
+				return flag;
+			}
+
+		}
+	}
+
+	public static boolean deleteFile(String sPath) {
+		boolean flag = false;
+		File file = new File(sPath);
+		if (file.isFile() && file.exists()) {
+			file.delete();
+			flag = true;
+		}
+		return flag;
+	}
+
+	// public static void diff(String url, String name, String password, String
+	// path_local, String version,
+	// String path_output) {
+	// DAVRepositoryFactory.setup();// 对于使用http://和https：//
+	// SVNURL resposiSvnurl = null;
+	//
+	// try {
+	// resposiSvnurl = SVNURL.parseURIEncoded(url);
+	//
+	// } catch (Exception e) {
+	// System.out.println("connect failed");
+	// }
+	//
+	// ISVNOptions options = SVNWCUtil.createDefaultOptions(true);
+	// // init client
+	// myClientManager = SVNClientManager.newInstance((DefaultSVNOptions)
+	// options, name, password);
+	//
+	// String path_reversion = "src/temp";
+	// // export into this file
+	// File wcDir = new File(path_reversion);
+	// // init updateClien
+	// SVNUpdateClient updateClient = myClientManager.getUpdateClient();
+	//
+	// // sets externals not to be ignored during the checkout
+	// updateClient.setIgnoreExternals(false);
+	// // export
+	// try {
+	// updateClient.doCheckout(resposiSvnurl, wcDir, SVNRevision.HEAD,
+	// SVNRevision.parse(version), SVNDepth.FILES,
+	// false);
+	// // System.out.println(workingVersion);
+	// compare(path_local, path_reversion, version, path_output);
+	//
+	// } catch (SVNException e) {
+	// e.printStackTrace();
+	// System.out.println("export specific reversion failed,maybe it doesn't exist");
+	// }
+	// }
+
+	public static boolean checkWorkCopy(Project pro) {
+		SVNClientManager clientManager = SVNUtil.authSvn(pro.getSvnurl(), pro.getUsername(), pro.getPassword());
+
+		SVNURL repositoryURL = null;
+		try {
+			// eg: https://10.100.56.178/!/#zoom/view/head/trunk/tools/l10n
+			repositoryURL = SVNURL.parseURIEncoded(pro.getSvnurl());
+		} catch (SVNException e) {
+			System.err.println(e.getStackTrace());
+			return false;
+		}
+
+		File wc = new File(pro.getPath_des());
+		File wc_project = new File(pro.getPath_des());
+
+		SVNURL projectURL = null; // projectName
+		try {
+			projectURL = repositoryURL.appendPath(pro.getName(), false);
+		} catch (SVNException e) {
+			System.err.println(e.getStackTrace());
+			return false;
+		}
+		SVNUtil.checkout(clientManager, projectURL, SVNRevision.parse(pro.getVersion()), wc_project, SVNDepth.INFINITY);
+		return true;
+	}
+
+	public static void differ(Project pro) {
+		if (checkWorkCopy(pro)) {
+			compare(pro);
+
+		} else {
+			System.err.println("failed");
+		}
+
+	}
+
+	public static void main(String[] args) {
+		String url = "https://10.100.56.178/!/#zoom/view/head/trunk/tools/l10n/";
+		String name = "L10nHistoryChange-Android";
+		String path_local = "src/values/strings.xml";
+		String version = "18";
+		String path_output = "src/result.txt";
+		String username = "lei.li";
+		String password = "uPtJlJqM";
+		Project pro = new Project(url, path_local, username, password, name, version);
+		pro.setPath_des("src/temp");
+		pro.setPath_output(path_output);
+
+		differ(pro);
+
+	}
+}

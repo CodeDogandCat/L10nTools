@@ -1,0 +1,575 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Merger {
+	public static BufferedReader reader = null;
+	public static OutputStreamWriter osw = null;
+	public static Stack<String> tagBracketStack = new Stack<String>();
+	public static StringBuffer tagBuffer = new StringBuffer();
+	public static boolean run = true;
+	public static int length;
+
+	public static Character getChar() {
+		try {
+			int temp = reader.read();
+			if (temp == -1) {
+				run = false;
+				return null;
+			} else {
+				return Character.valueOf((char) temp);
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static void readHead() {
+		try {
+			reader.readLine();
+			reader.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static String readBlank() {
+
+		String c = "#$%";
+		try {
+			// reader.mark(length);
+			while ((c = reader.readLine()) != null && run) {
+
+				if (c.trim().equals("")) {
+					// System.err.println("--------------readBlank()-------blank");
+					return "\n";
+				} else {
+					// this line not a blank line
+					// reader.reset();// reset to last line
+
+					// System.err.println("--------------readBlank()-------notblank");
+					return "notblankline";
+
+				}
+			}
+			return null;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	/**
+	 * try to read a comment <!-- Parameters: joinMeetingUrl, meetingId -->
+	 */
+	public static String readComment() {
+		Character c;
+		// <string name="zm_msg_conffail_internal_only_sign">Please sign in
+		// with your company account to join.</string>
+		// while (true) {
+		// remark , be used to reset
+		// reader.mark(length);
+		while ((c = getChar()) != null && run) {
+			if (c == '<') {
+				break;
+			}
+		}
+		// System.err.println("jump--" + c);
+		if (c == null) {
+			return null;
+		}
+		// <!--
+		StringBuffer commentbBuffer = new StringBuffer();
+		// go until be sure it isn't a comment
+		c = getChar();
+
+		if (c == '!') {
+
+			c = getChar();
+			if (c == '-') {
+
+				c = getChar();
+
+				if (c == '-') {
+					// System.err.println("------it is a comment");
+					commentbBuffer.append("<!--");
+					while (true) {// just go until the --> then
+									// return
+
+						// -->
+						if ((c = getChar()) != null && run) {
+							commentbBuffer.append(c);
+							if (c == '-') {
+								if ((c = getChar()) != null && run) {
+									commentbBuffer.append(c);
+									if (c == '-') {
+										if ((c = getChar()) != null && run) {
+											commentbBuffer.append(c);
+											if (c == '>') {
+												String commentContent = commentbBuffer.toString();
+												// System.out.println("-----------readComment()"
+												// + commentContent);
+												commentbBuffer.setLength(0);// clean
+																			// the
+																			// buffer
+												return commentContent;
+											}
+										}
+									}
+								}
+							}
+
+						}
+
+					}
+				}
+			}
+		} else {// reset,because be sure this is not a comment
+			// System.err.println("notcomment");
+			// reader.reset();
+			return "notcomment";
+		}
+		return null;
+
+	}
+
+	/**
+	 * try to read a tag
+	 */
+	public static String readTag() {
+		boolean flag = false;
+		boolean readNextChar = true;
+		Character c;
+		// </ and />
+		// reader.mark(length);
+		c = getChar();
+		while (c != null && run) {
+			if (c == '<') {
+				// System.err.println("it is <");
+				if ((c = getChar()) != '!') {// it is a tag
+					tagBuffer.append("<" + c);
+					if (c != '/') {
+
+						tagBracketStack.push("<");
+
+					} else {// it's </,but the tag isn't completed
+
+						if (!tagBracketStack.isEmpty()) {
+							tagBracketStack.pop();
+							// System.err.println("it should pop");
+						} else {
+							// System.err.println("--------------null-----1");
+							return null;
+						}
+						flag = true;
+						// read until the end of the tag
+						while ((c = getChar()) != '>' && run) {
+							tagBuffer.append(c);
+						}
+						tagBuffer.append(c);// add >
+
+					}
+				} else {
+					// maybe it is also a tag
+					// but
+					// <string
+					// name="zm_lbl_forget_password_link"><![CDATA[<a
+					// href="%s">Forgot password?</a>]]></string>
+
+					// ## alter##
+					// <plurals name="zm_msg_invitations_sent">
+					// <!-- <item quantity="one">1个邀请已发出</item> -->
+					// <item quantity="other">%d个邀请已经发出</item>
+					// </plurals>
+					tagBuffer.append("<" + c);
+					if (tagBracketStack.isEmpty()) {
+
+						if ((c = getChar()) != null && run) {
+							tagBuffer.append(c);
+							if (c == '-') {
+								if ((c = getChar()) != null && run) {
+									tagBuffer.append(c);
+									if (c == '-') {
+										// be sure it is not a tag, it is a
+										// comment
+										// reader.reset();
+										return "nottag";
+									}
+								}
+							}
+						}
+					}
+
+				}
+
+			} else if (c == '/') {// maybe />
+				tagBuffer.append(c);
+				// System.err.println("it is /");
+				if ((c = getChar()) == '>') {
+					// it's /> ,and the tag is completed
+					tagBuffer.append(c);
+
+					if (!tagBracketStack.isEmpty()) {
+						tagBracketStack.pop();
+						flag = true;
+					} else {
+						// System.err.println("--------------null-----2");
+						return null;
+					}
+
+				} else {
+					if (c == '<') {
+						readNextChar = false;
+					}
+					tagBuffer.append(c);
+				}
+			} else {// it isn't start or end mark
+
+				tagBuffer.append(c);
+			}
+
+			if (tagBracketStack.isEmpty() && flag) {
+				String tagContent = tagBuffer.toString();
+
+				// System.out.println(tagContent);
+				tagBuffer.setLength(0);
+				return tagContent;
+			} else {
+				if (readNextChar) {
+
+					c = getChar();// read next char
+				}
+				readNextChar = true;
+			}
+
+		}
+
+		// System.err.println("--------------null-----3");
+		// System.err.println("--------------" + c);
+		return null;
+
+	}
+
+	/**
+	 * read
+	 */
+	public static String[] read() {
+		String result = null;
+		String[] returnArray = { "zoom", "android" };
+		try {
+			if (run) {
+				reader.mark(length);
+				if ((result = readBlank()) == null) {
+					// System.err.println("blank null");
+					return null;
+				} else {
+					if (result.equals("notblankline")) {
+						reader.reset();
+						reader.mark(length);
+						if ((result = readComment()) == null) {
+							// System.err.println("Comment null");
+							return null;
+						} else if (result.equals("notcomment")) {
+							reader.reset();
+							reader.mark(length);
+							if (run) {
+								if ((result = readTag()) == null) {
+									// System.err.println("Tag null" + "run is "
+									// + run);
+									return null;
+								} else if (result.equals("nottag")) {
+									reader.reset();
+									returnArray[0] = "nottag";
+									returnArray[1] = result;
+									// System.err.println("not not a tag");
+									return returnArray;
+
+								} else {
+									returnArray[0] = "tag";
+									returnArray[1] = result;
+									return returnArray;
+								}
+							}
+						} else {
+							returnArray[0] = "comment";
+							returnArray[1] = result;
+							return returnArray;
+						}
+					} else {
+						returnArray[0] = "blank";
+						returnArray[1] = result;
+						return returnArray;
+					}
+
+				}
+
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
+	/**
+	 * read tags into map
+	 */
+	@SuppressWarnings("finally")
+	public static Map<String, String> readFileByTags(String fileName) {
+
+		File file = new File(fileName);
+		length = (int) file.length();
+		// BufferedReader reader = null;
+		Map<String, String> tag_Map = new HashMap<String, String>();
+		try {
+
+			InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
+			reader = new BufferedReader(isr);
+			// jump <?xml <resources>
+			readHead();
+
+			String tempString = null;
+			String[] returnArray = { "", "" };
+			int i = 1;
+
+			// System.err.println("---------run  " + run);
+			while ((returnArray = read()) != null && run) {
+				// System.err.println(i++ + "------");
+				// System.err.println(returnArray[0] + "------" +
+				// returnArray[1]);
+				if (returnArray[0].equals("tag")) {
+					if (!returnArray[1].equals("nottag")) {
+						tempString = returnArray[1];
+						// System.err.println(tempString);
+						// eg
+						// <string name="zm_msg_no_zoom_rooms">No Rooms
+						// yet</string>
+						// operation
+						String regEx = "<string.*?name=\\\"(.*?)\\\">.*?</string>";
+						Pattern pattern = Pattern.compile(regEx);
+						Matcher matcher = pattern.matcher(tempString);
+						if (matcher.find()) {
+							tag_Map.put(matcher.group(1), "\t" + tempString.trim());
+						} else {
+
+							// eg
+							// <plurals name="zm_lbl_folder_items">
+							// <item quantity="one">1 Item</item>
+							// <item quantity="other">%d Items</item>
+							// </plurals>
+							// operation
+							regEx = "<plurals.*?name=\\\"(.*?)\\\">";
+							pattern = Pattern.compile(regEx);
+							matcher = pattern.matcher(tempString);
+							if (matcher.find()) {
+
+								tag_Map.put(matcher.group(1), "\t" + tempString.trim());
+							}
+						}
+						// System.err.println("get a tag");
+					}
+
+				} else if (returnArray[0].equals("comment")) {
+					tempString = returnArray[1];
+					tag_Map.put(tempString.trim(), "");
+					// System.err.println("get a comment");
+
+				} else if (returnArray[0].equals("blank")) {
+					// System.err.println("get a blank line");
+					// tempString = returnArray[1];
+				}
+
+			}
+			reader.close();
+		} catch (IOException e) {
+			// e.printStackTrace();
+			System.err.println("read xml file error , maybe path error");
+		} finally {
+			// reset
+			run = true;
+			tagBracketStack.clear();
+			tagBuffer.setLength(0);
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e1) {
+					System.err.println("close BufferedReader error");
+				}
+
+			}
+			return tag_Map;
+		}
+	}
+
+	public static void printHead() {
+		try {
+			osw.write("<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>" + "\n");
+			osw.write("<resources>" + "\n");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void Merge(String path_en, Map<String, String> other_Map, Map<String, String> patch_Map, String path_output) {
+
+		try {
+			// System.err.println("&&&&&&&&&&&&&&&&&&&&&Merger&&&&&&&&&&&&&&&&&&&&&");
+			FileOutputStream fos = null;
+			File file = new File(path_en);
+			fos = new FileOutputStream(path_output);
+			osw = new OutputStreamWriter(fos, "utf-8");
+			length = (int) file.length();
+
+			InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
+			reader = new BufferedReader(isr);
+			String tempString = null;
+			String name = "";
+
+			// override other_Map with patch_Map
+			other_Map.putAll(patch_Map);
+
+			printHead();
+			// read line by line ,until the end of the file
+			String[] returnArray = { "zoom", "android" };
+
+			// System.err.println("---------run  " + run);
+			//
+			readHead();
+
+			while ((returnArray = read()) != null && run) {
+				// System.err.println("##############################");
+				// System.err.println("merger :" + returnArray[0] + "@" +
+				// returnArray[1]);
+				if (returnArray[0].equals("tag")) {
+					tempString = returnArray[1];
+					if (!tempString.equals("nottag")) {
+
+						String regEx = "<string.*?name=\\\"(.*?)\\\".*?>.*?</string>";
+						Pattern pattern = Pattern.compile(regEx);
+						Matcher matcher = pattern.matcher(tempString);
+						if (matcher.find()) {
+							name = matcher.group(1);
+							if (other_Map.containsKey(name)) {
+								// System.err.println(name);
+								osw.write(other_Map.get(name));
+
+							}
+						} else {
+
+							regEx = "<plurals.*?name=\\\"(.*?)\\\">";
+							pattern = Pattern.compile(regEx);
+							matcher = pattern.matcher(tempString);
+							if (matcher.find()) {
+								name = matcher.group(1);
+								if (other_Map.containsKey(name)) {
+									// System.err.println(name);
+									osw.write(other_Map.get(name));
+
+								}
+							}
+
+						}
+					}
+
+				} else if (returnArray[0].equals("comment")) {
+					tempString = returnArray[1];
+
+					if (other_Map.containsKey(tempString.trim())) {
+						// System.err.println(tempString);
+						osw.write("\t" + tempString);
+
+					}
+
+					// System.err.println("get a comment");
+
+				} else if (returnArray[0].equals("blank")) {
+					// System.err.println("get a blank line");
+					// tempString = returnArray[1];
+					// System.err.println("\n");
+					osw.write("\n");
+				}
+
+			}
+			printTail();
+			osw.flush();
+			osw.close();
+			reader.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("result output failed ");
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e1) {
+					System.err.println("close BufferedReader error");
+				}
+
+			}
+			if (osw != null) {
+				try {
+					osw.close();
+				} catch (IOException e1) {
+					System.err.println("close OutputStreamWriter error");
+				}
+
+			}
+		}
+
+	}
+
+	public static void printTail() {
+		try {
+			osw.write("</resources>");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String path_output = "src/out.xml";
+		String path_en = "src/strings.xml";
+		String path_zh = "src/strings2.xml";
+		String path_patch = "src/patch.xml";
+
+		System.out.println("**START**");
+
+		Map<String, String> other_Map = readFileByTags(args[1]);
+		Map<String, String> patch_Map = readFileByTags(args[2]);
+
+		// Map<String, String> other_Map = readFileByTags(path_zh);
+		// Map<String, String> patch_Map = readFileByTags(path_patch);
+		Merge(args[0], other_Map, patch_Map, args[3]);
+
+		// System.err.println("other map size" + other_Map.size());
+		// System.err.println("patch map size" + patch_Map.size());
+		// Merge(path_en, other_Map, patch_Map, path_output);
+
+		// for (Map.Entry<String, String> entry : patch_Map.entrySet()) {
+		//
+		// System.out.println(entry.getKey() + " :" + entry.getValue());
+		// }
+		System.out.println("**DONE**");
+	}
+
+}

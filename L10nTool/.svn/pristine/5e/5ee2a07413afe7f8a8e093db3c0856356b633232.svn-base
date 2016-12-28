@@ -1,0 +1,23 @@
+#################################################################################
+###############
+###############         checking result for ../ios/Localizable-cn.strings
+###############
+#################################################################################
+                         miss  6 item(s)
+
+
+"In a Zoom meeting" = "In meeting";
+"Away" = "Away";
+"Messages" = "Messages";
+"Busy" = "Busy";
+"Hand Raising" = "Hand Raising";
+"Recording" = "Recording";
+
+
+                         extra  2 item(s)
+
+
+"booo" = "书";
+"messages" = "即时消息";
+
+

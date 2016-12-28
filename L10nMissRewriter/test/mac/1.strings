@@ -1,0 +1,74 @@
+
+"ZmPalletLabel" = "Zoom";
+"ScheduleMeetingLabel" = "Schedule a Meeting";
+"ScheduleMeetingTooltip" = "Schedule a Meeting";
+"InstantMeetingLabel" = "Start Instant Meeting";
+"InstantMeetingTooltip" = "Start Instant Meeting";
+"StartWithVideo" = "Start with video";
+"StartWithoutVideo" = "Start without video";
+"OpenLogFolderLabel" = "Open Log Folder";
+"OpenLogFolderTooltip" = "Open Log Folder";
+"SchedulePACMeetingLabel" = "Schedule a Personal Audio Conference";
+"SchedulePACMeetingTooltip" = "Schedule a Personal Audio Conference";
+
+"AddZoomButton" = "Add Zoom Meeting";
+"CancelZoomButton" = "Remove Zoom Meeting";
+"ChangeSettingButton" = "Change Settings";
+"AddPACButton" = "Personal Audio Conference";
+
+"RadioButton_On" = "On";
+"RadioButton_Off" = "Off";
+"HostvideoBoxTitle" = "Video (when joining a meeting)";
+"Video_Host" = "Host:";
+"Video_Paticipant" = "Participant:";
+"AudioOption" = "Audio Options";
+"Audio_Telephony" = "Telephony Only";
+"Audio_Voip" = "Voip Only";
+"Audio_Both" = "Both";
+"Audio_ThirdParty" = "3rd Party Audio";
+"MeetingOption" = "Meeting Options";
+"RequirdMeetingPassword" = "Required meeting password";
+"EnableJoinBeforeHost" = "Enable join before host";
+"UsePersonalMeetingID" = "Use Personal Meeting ID ";
+"SaveDataTitle" = "Save and do not show again";
+"Button_Continue" = "Continue";
+"Button_Cancel" = "Cancel";
+
+"CommunicationProgressTitle" = "Connect to server...";
+
+"SystemError" = "System error, please try again later.";
+"InternetError" = "Internal error, please update Zoom Outlook Plugin to latest version.";
+"NoZoomClient" = "Cannot find the Zoom client on your computer. Install the Zoom client.";
+"ZoomClientNotRunning" = "The Zoom client is not running in your computer, please start it.";
+"MeetingNotFound" = "The meeting might have been deleted already.";
+
+"OutlookVersionLowerThan1414" = "Your Microsoft Outlook version is too low. To use the Zoom Outlook Plugin, update Outlook to the latest patch.";
+
+"Button_LaunchClient" = "Launch Zoom Client";
+"Button_Cancel" = "Cancel";
+
+"NotSupportedZoomClientVersion" = "Please update Zoom client to the latest version.";
+"ZoomClientNotSignIn" = "Please login to Zoom client first.";
+
+"OnBehalfInfo" = "You are scheduling for %@";
+"RemoveZoomMeetingForOther" = "The Zoom meeting you scheduled will be deleted once you switch to another user.";
+"Button_OKGot" = "Got it";
+
+"NotAllowChangeZoomSettingsTip" = "You can't change Zoom settings for another user.";
+
+"WarnMsg_PACIsDisabled" = "Cannot get any Personal Audio Conference infomation.";
+
+"Account1" = "Account 1";
+"Account2" = "Account 2";
+
+"NotSupportPACForOnBehalf" = "You can't get any Personal Audio Conference information for another user.";
+
+"NoClientOrNotRunning" = "The Zoom client is not installed or not running in your computer.";
+"NetworkConnectionError" = "Please check your network connection and retry later.";
+
+
+
+
+
+//
+"SU_TITLE" = "Zoom Outlook Plugin";

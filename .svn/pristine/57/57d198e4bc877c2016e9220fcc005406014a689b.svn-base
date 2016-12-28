@@ -1,0 +1,7 @@
+@echo off
+
+::call L10nValueChecker.bat -p android  -dr ../android/and-En.xml -cr ../android/and-de.XML -db  ../android/new.xlsx  -sh  Sheet1  -o  ../android/android_value_checker.xml
+call L10nValueChecker.bat -p windows -dr ../windows/win-en.xml -cr ../windows/win-Ge.xml  -db  ../android/new.xlsx -sh  Sheet1 -o ../windows/windows_value_checker.xml
+
+
+pause

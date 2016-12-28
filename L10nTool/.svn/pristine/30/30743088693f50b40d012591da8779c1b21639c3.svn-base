@@ -1,0 +1,69 @@
+package us.zoom.tools.l10n.windows;
+
+import java.util.Map;
+
+import us.zoom.tools.l10n.core.AbstractCore;
+
+public class Windows extends AbstractCore {
+
+	@Override
+	protected void readHead() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected String readComment() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String readTag() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected void readExt() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected String[] read() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected Map<String, String> readFileByTags(int type, String fileName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected void printHead() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void printTail() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void printMergerBody() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void printHistoryChangeBody() {
+		// TODO Auto-generated method stub
+
+	}
+
+}
