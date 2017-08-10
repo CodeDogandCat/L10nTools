@@ -1,12 +1,10 @@
 package us.zoom.tools.l10n.android;
 
-import java.awt.RenderingHints.Key;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -47,7 +45,8 @@ public class Android extends AbstractCore {
 																	if ((c = getChar()) != null && run) {
 																		header += c;
 																		if (c == ' ') {
-																			header = header.substring(0, header.lastIndexOf('<'));
+																			header = header.substring(0,
+																					header.lastIndexOf('<'));
 																			reader.reset();
 																			break;
 																		}
@@ -190,8 +189,8 @@ public class Android extends AbstractCore {
 
 					// ## alter##
 					// <plurals name="zm_msg_invitations_sent">
-					// <!-- <item quantity="one">1个邀请已发出</item> -->
-					// <item quantity="other">%d个邀请已经发出</item>
+					// <!-- <item quantity="one">1涓個璇峰凡鍙戝嚭</item> -->
+					// <item quantity="other">%d涓個璇峰凡缁忓彂鍑�</item>
 					// </plurals>
 					tagBuffer.append("<" + c);
 					if (tagBracketStack.isEmpty()) {
@@ -297,13 +296,13 @@ public class Android extends AbstractCore {
 					// <string name="zm_msg_no_zoom_rooms">No Rooms
 					// yet</string>
 					// operation
-					String regEx = "<string.*?name=\\\"(.*?)\\\">.*?</string>";
+					String regEx = "<string.*?name=\\\"(.*?)\\\".*?>.*?</string>";
 					Pattern pattern = Pattern.compile(regEx);
 					Matcher matcher = pattern.matcher(tempString);
 					if (matcher.find()) {
 						tag_Map.put(matcher.group(1), "\t" + tempString.trim());
 					} else {
-						regEx = "<string.*?name='(.*?)'>.*?</string>";
+						regEx = "<string.*?name='(.*?)'.*?>.*?</string>";
 						pattern = Pattern.compile(regEx);
 						matcher = pattern.matcher(tempString);
 						if (matcher.find()) {
@@ -315,14 +314,14 @@ public class Android extends AbstractCore {
 							// <item quantity="other">%d Items</item>
 							// </plurals>
 							// operation
-							regEx = "<plurals.*?name=\\\"(.*?)\\\">";
+							regEx = "<plurals.*?name=\\\"(.*?)\\\".*?>";
 							pattern = Pattern.compile(regEx);
 							matcher = pattern.matcher(tempString);
 							if (matcher.find()) {
 
 								tag_Map.put(matcher.group(1), "\t" + tempString.trim());
 							} else {
-								regEx = "<plurals.*?name='(.*?)'>";
+								regEx = "<plurals.*?name='(.*?)'.*?>";
 								pattern = Pattern.compile(regEx);
 								matcher = pattern.matcher(tempString);
 								if (matcher.find()) {
@@ -392,7 +391,8 @@ public class Android extends AbstractCore {
 		Matcher matcher = pattern.matcher(str);
 		otherValue = otherValue.replaceAll("\\\\n", "#########1234567890###########");
 		if (matcher.find()) {
-			String tmp = str.replaceAll(regEx, ">" + otherValue + "</").replaceAll("@@@@@@@@@@", "\\$").replace("#########1234567890###########", "\\n");
+			String tmp = str.replaceAll(regEx, ">" + otherValue + "</").replaceAll("@@@@@@@@@@", "\\$")
+					.replace("#########1234567890###########", "\\n");
 			// System.err.println(tmp);
 			return tmp;
 		}

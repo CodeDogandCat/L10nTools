@@ -11,8 +11,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
-
 import us.zoom.tools.l10n.core.AbstractCore;
 
 public class Ios extends AbstractCore {
@@ -180,6 +178,7 @@ public class Ios extends AbstractCore {
 
 	}
 
+	@Override
 	protected String[] read() {
 		String result = null;
 		String[] returnArray = { "zoom", "android" };
@@ -355,6 +354,7 @@ public class Ios extends AbstractCore {
 			// returnArray[1]);
 			if (returnArray[0].equals("tag")) {
 				tempString = returnArray[1];
+				System.err.println(tempString);
 				// System.err.println(tempString);
 				String regEx = "\\\"(.*?)\\\"\\s*=\\s*\\\".*?\\\";";
 				Pattern pattern = Pattern.compile(regEx);
@@ -365,7 +365,8 @@ public class Ios extends AbstractCore {
 					if (tag_otherMap.containsKey(name)) {
 						// System.out.println(name);
 
-						System.out.print(tempString.substring(0, tempString.indexOf('"')) + tag_otherMap.get(name) + "\n");
+						System.out.print(
+								tempString.substring(0, tempString.indexOf('"')) + tag_otherMap.get(name) + "\n");
 						// System.err.print(tag_otherMap.get(name) + "\n\n");
 
 					}
@@ -373,7 +374,7 @@ public class Ios extends AbstractCore {
 
 			} else if (returnArray[0].equals("comment")) {
 				tempString = returnArray[1];
-
+				System.err.println(tempString);
 				if (tag_otherMap.containsKey(tempString.trim())) {
 					// System.out.println(tempString);
 
@@ -414,7 +415,8 @@ public class Ios extends AbstractCore {
 					// the item ,but value is not same ,then add into the
 					// changelist
 					if (!entry.getValue().equals(tag_otherMap.get(entry.getKey()))) {
-						tag_changeMap.put(entry.getKey(), " - " + entry.getValue() + "\n" + " + " + tag_otherMap.get(entry.getKey()) + "\n");
+						tag_changeMap.put(entry.getKey(),
+								" - " + entry.getValue() + "\n" + " + " + tag_otherMap.get(entry.getKey()) + "\n");
 					}
 				}
 			}
@@ -430,11 +432,13 @@ public class Ios extends AbstractCore {
 				}
 			}
 
-			System.out.print("#################################################################################" + "\n");
+			System.out
+					.print("#################################################################################" + "\n");
 			System.out.print("###############" + "\n");
 			System.out.print("###############        local version differ from reversion " + version + "\n");
 			System.out.print("###############" + "\n");
-			System.out.print("#################################################################################" + "\n");
+			System.out
+					.print("#################################################################################" + "\n");
 			if (tag_missMap.isEmpty() && tag_extraMap.isEmpty() && tag_changeMap.isEmpty()) {
 				System.out.print("                         same                      " + "\n");
 			}

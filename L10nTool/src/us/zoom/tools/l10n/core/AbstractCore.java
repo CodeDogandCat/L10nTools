@@ -371,11 +371,13 @@ public abstract class AbstractCore {
 						tag_extraMap.put(entry.getKey(), entry.getValue());
 					}
 				}
-				System.out.print("#################################################################################" + "\n");
+				System.out.print(
+						"#################################################################################" + "\n");
 				System.out.print("###############" + "\n");
 				System.out.print("###############         checking result for " + path_other + "\n");
 				System.out.print("###############" + "\n");
-				System.out.print("#################################################################################" + "\n");
+				System.out.print(
+						"#################################################################################" + "\n");
 
 				if (tag_missMap.isEmpty() && tag_extraMap.isEmpty()) {
 					System.out.print("                        perfect                      " + "\n");
@@ -417,7 +419,9 @@ public abstract class AbstractCore {
 	}
 
 	@SuppressWarnings("finally")
-	public final boolean ParamsCheckerProcess(Map<String, String> tag_defaultMap, Map<String, String> tag_otherMap_backup, Map<String, String> tag_patchMap, String path_other, String path_patch) {
+	public final boolean ParamsCheckerProcess(Map<String, String> tag_defaultMap,
+			Map<String, String> tag_otherMap_backup, Map<String, String> tag_patchMap, String path_other,
+			String path_patch) {
 		System.setOut(sysout);
 		boolean flag = false;
 
@@ -481,11 +485,11 @@ public abstract class AbstractCore {
 
 			path_default = commandMap.get(Command.DEFAULT_LANGUAGE_RESOURCE_FILE);
 			path_other = commandMap.get(Command.COMPARED_LANGUAGE_RESOURCE_FILE);
-
+			System.err.println("..........");
 			tag_otherMap = readFileByTags(1, path_other);
-
+			System.err.println(".........2");
 			tag_patchMap = readFileByTags(1, commandMap.get(Command.NEW_TRANSLATIONS_RESOURCE_FILE));
-
+			System.err.println(".........3");
 			if (commandMap.containsKey(Command.OUT_FILE)) {
 				path_output = commandMap.get(Command.OUT_FILE);
 				FileOutputStream fos;
@@ -506,6 +510,7 @@ public abstract class AbstractCore {
 
 			readHead();
 			printHead();
+			System.err.println(".........4");
 			printMergerBody();
 			printTail();
 			System.setOut(sysout);
@@ -515,8 +520,12 @@ public abstract class AbstractCore {
 			tag_patchMap = readFileByTags(0, commandMap.get(Command.NEW_TRANSLATIONS_RESOURCE_FILE));
 			tag_defaultMap = readFileByTags(0, path_default);
 			tag_otherMap.putAll(tag_patchMap);
-			ExtraCheckerAfterMerger(tag_defaultMap, tag_otherMap_backup, tag_patchMap, path_other, commandMap.get(Command.NEW_TRANSLATIONS_RESOURCE_FILE));
-			ParamsCheckerProcess(tag_defaultMap, tag_otherMap_backup, tag_patchMap, path_other, commandMap.get(Command.NEW_TRANSLATIONS_RESOURCE_FILE));
+			// ExtraCheckerAfterMerger(tag_defaultMap, tag_otherMap_backup,
+			// tag_patchMap, path_other,
+			// commandMap.get(Command.NEW_TRANSLATIONS_RESOURCE_FILE));
+			// ParamsCheckerProcess(tag_defaultMap, tag_otherMap_backup,
+			// tag_patchMap, path_other,
+			// commandMap.get(Command.NEW_TRANSLATIONS_RESOURCE_FILE));
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -535,7 +544,9 @@ public abstract class AbstractCore {
 		}
 	}
 
-	protected final void ExtraCheckerAfterMerger(Map<String, String> tag_defaultMap, Map<String, String> tag_otherMap_backup, Map<String, String> tag_patchMap, String path_other, String path_patch) {
+	protected final void ExtraCheckerAfterMerger(Map<String, String> tag_defaultMap,
+			Map<String, String> tag_otherMap_backup, Map<String, String> tag_patchMap, String path_other,
+			String path_patch) {
 		System.setOut(sysout);
 		tag_extraMap = new HashMap<String, String>();
 		Map<String, String> tag_extraMap2 = new HashMap<String, String>();
@@ -618,7 +629,8 @@ public abstract class AbstractCore {
 			Process exportProcess;
 			if (svnuser != null && svnpass != null) {
 
-				exportProcess = runtime.exec("cmd /c svn export -r " + version + " " + svnurl + " " + getPath() + "/" + " " + "--username " + svnuser + " --password " + svnpass);
+				exportProcess = runtime.exec("cmd /c svn export -r " + version + " " + svnurl + " " + getPath() + "/"
+						+ " " + "--username " + svnuser + " --password " + svnpass);
 			} else {
 
 				exportProcess = runtime.exec("cmd /c svn export -r " + version + " " + svnurl + " " + getPath() + "/");

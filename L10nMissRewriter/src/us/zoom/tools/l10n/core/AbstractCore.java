@@ -2,10 +2,8 @@ package us.zoom.tools.l10n.core;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.net.URL;
@@ -222,13 +220,21 @@ public abstract class AbstractCore {
 			// System.err.println("##############################");
 
 			for (Map.Entry<String, String> entry : tag_defaultMap.entrySet()) {
-
+				// System.err.println("en key: " + entry.getKey() + ", en str :"
+				// + entry.getValue());
 				if (!tag_otherMap.containsKey(entry.getKey())) {
 
 					tag_missMap.put(entry.getKey(), entry.getValue());
 
 					String defaultValue = getTagValue(entry.getValue());
-
+					// System.err.println("de not contain the key, get value : "
+					// + defaultValue);
+					// boolean flag = false;
+					// if (defaultValue.equals("Click ${joinMeetingUrl} to start
+					// or join a scheduled Zoom meeting.")) {
+					// System.err.println("get en str");
+					// flag = true;
+					// }
 					String otherValue = "";
 
 					if (tag_default_other.containsKey(defaultValue)) {
@@ -236,11 +242,15 @@ public abstract class AbstractCore {
 						// System.err.println(defaultValue);
 
 						otherValue = tag_default_other.get(defaultValue);
+						// System.err.println("get en str, and find de str:" +
+						// otherValue);
 						// System.err.println(otherValue);
 
 						// rewrite to string xml
 						if ((rewriteString = setTagValue(entry.getValue(), otherValue)) != null) {
 							rewriteList.add(rewriteString);
+							// System.err.println("rewritestring: " +
+							// rewriteString);
 						} else {
 							rewrite_miss_List.add(entry.getValue());
 						}
@@ -277,7 +287,8 @@ public abstract class AbstractCore {
 				}
 			}
 			if (rewrite_miss_List.size() != 0) {
-				System.out.print("                        rewrite  miss " + rewrite_miss_List.size() + " item(s)" + "\n");
+				System.out
+						.print("                        rewrite  miss " + rewrite_miss_List.size() + " item(s)" + "\n");
 				System.out.print("\n\n");
 				for (String string : rewrite_miss_List) {
 					System.out.println(string);
@@ -319,7 +330,8 @@ public abstract class AbstractCore {
 					printCheckerBody();
 					System.out.print("\n\n");
 				} else {
-					System.err.println("get tag value failed,check you excel title, it must be \"English\" and \"Other\"");
+					System.err.println(
+							"get tag value failed,check you excel title, it must be \"English\" and \"Other\"");
 				}
 
 				System.setOut(sysout);

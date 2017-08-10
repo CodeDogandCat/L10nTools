@@ -1,9 +1,5 @@
 package us.zoom.tools.l10n.mac_ios;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,9 +43,10 @@ public class TestIos {
 		Map<String, String> commandMap = new HashMap<String, String>();
 		commandMap.put(Command.PLATFORM, "mac");
 		commandMap.put(Command.FUNCTION, "merger");
-		commandMap.put(Command.DEFAULT_LANGUAGE_RESOURCE_FILE, "test/mac/mac-en.xml");
-		commandMap.put(Command.COMPARED_LANGUAGE_RESOURCE_FILE, "test/mac/mac-fr.xml");
-		commandMap.put(Command.NEW_TRANSLATIONS_RESOURCE_FILE, "test/mac/mac_fr_merger.xml");
+		commandMap.put(Command.DEFAULT_LANGUAGE_RESOURCE_FILE, "test/mac/mac_en.strings");
+		commandMap.put(Command.COMPARED_LANGUAGE_RESOURCE_FILE, "test/mac/mac_pt.strings");
+		commandMap.put(Command.NEW_TRANSLATIONS_RESOURCE_FILE, "test/mac/temp.xml");
+		commandMap.put(Command.OUT_FILE, "test/mac/ggg.xml");
 		tool.mergerProcess(commandMap);
 
 	}

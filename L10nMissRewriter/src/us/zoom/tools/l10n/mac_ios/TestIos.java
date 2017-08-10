@@ -1,9 +1,5 @@
 package us.zoom.tools.l10n.mac_ios;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,11 +54,11 @@ public class TestIos {
 
 		Map<String, String> commandMap = new HashMap<String, String>();
 		commandMap.put(Command.PLATFORM, "mac");
-		commandMap.put(Command.DEFAULT_LANGUAGE_RESOURCE_FILE, "test/mac/1.strings");
-		commandMap.put(Command.COMPARED_LANGUAGE_RESOURCE_FILE, "test/mac/2.strings");
-		commandMap.put(Command.DATABASE_FILE, "test/mac/Fr-all.xlsx");
+		commandMap.put(Command.DEFAULT_LANGUAGE_RESOURCE_FILE, "test/mac/en.strings");
+		commandMap.put(Command.COMPARED_LANGUAGE_RESOURCE_FILE, "test/mac/pt.strings");
+		commandMap.put(Command.DATABASE_FILE, "test/mac/Portuguese.xls");
 		commandMap.put(Command.SHEET_NAME, "Sheet1");
-		commandMap.put(Command.OUT_FILE, "test/mac/temp.xml");
+		commandMap.put(Command.OUT_FILE, "test/mac/dadada.xml");
 		tool.rewriterProcess(commandMap);
 
 	}
